@@ -8,6 +8,8 @@
 
 #import "YLTabBarViewController.h"
 #import "YLPluseTabBar.h"
+#import "YLhomeTableViewController.h"
+#import "YLNavigationController.h"
 @interface YLTabBarViewController ()<YLPluseTabBarDelegate>
 
 @end
@@ -20,7 +22,7 @@
     tabBar.delegate = self;
     [self setValue:tabBar forKeyPath:@"tabBar"];
     
-    UITableViewController *homeController = [[UITableViewController alloc]init];
+    YLhomeTableViewController *homeController = [[YLhomeTableViewController alloc]init];
     [self addChildViewController:homeController imageName:@"tabbar_home" title:@"首页"];
     UITableViewController *messageController = [[UITableViewController alloc]init];
     [self addChildViewController:messageController imageName:@"tabbar_message_center" title:@"消息"];
@@ -36,13 +38,16 @@
 - (void)addChildViewController:(UIViewController *)childController imageName:(NSString *)imageName title:(NSString *)title{
     
     childController.title = title;
+    
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
     dic[NSForegroundColorAttributeName] = [UIColor orangeColor];
     [childController.tabBarItem setTitleTextAttributes:dic forState:UIControlStateSelected];
     childController.tabBarItem.image = [UIImage imageNamed:imageName];
    
     childController.tabBarItem.selectedImage = [[UIImage imageNamed:[NSString stringWithFormat:@"%@_selected",imageName]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    [self addChildViewController:childController];
+    YLNavigationController *navController = [[YLNavigationController alloc]initWithRootViewController:childController];
+    
+    [self addChildViewController:navController];
 
 }
 

@@ -18,6 +18,12 @@
 		2BDF1E7B1C0FC3710074AE18 /* UIView+YLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF1E7A1C0FC3710074AE18 /* UIView+YLView.m */; };
 		2BDF1E7E1C0FCA030074AE18 /* YLPluseTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF1E7D1C0FCA030074AE18 /* YLPluseTabBar.m */; };
 		2BDF1E841C0FED940074AE18 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BDF1E831C0FED940074AE18 /* Images-2.xcassets */; };
+		2BDF1E871C10033E0074AE18 /* YLhomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF1E861C10033E0074AE18 /* YLhomeTableViewController.m */; };
+		2BDF1E901C100FE10074AE18 /* YLhomeTittleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF1E8F1C100FE10074AE18 /* YLhomeTittleButton.m */; };
+		2BDF1E931C1016F00074AE18 /* UIBarButtonItem+Extention.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF1E921C1016F00074AE18 /* UIBarButtonItem+Extention.m */; };
+		2BDF1E961C102F090074AE18 /* YLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF1E951C102F090074AE18 /* YLNavigationController.m */; };
+		2BDF1E991C102F6B0074AE18 /* YLtemp2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF1E981C102F6B0074AE18 /* YLtemp2ViewController.m */; };
+		2BDF1E9C1C102F7A0074AE18 /* YLtemp3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF1E9B1C102F7A0074AE18 /* YLtemp3ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +67,18 @@
 		2BDF1E7C1C0FCA030074AE18 /* YLPluseTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLPluseTabBar.h; sourceTree = "<group>"; };
 		2BDF1E7D1C0FCA030074AE18 /* YLPluseTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLPluseTabBar.m; sourceTree = "<group>"; };
 		2BDF1E831C0FED940074AE18 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
+		2BDF1E851C10033E0074AE18 /* YLhomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLhomeTableViewController.h; sourceTree = "<group>"; };
+		2BDF1E861C10033E0074AE18 /* YLhomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLhomeTableViewController.m; sourceTree = "<group>"; };
+		2BDF1E8E1C100FE10074AE18 /* YLhomeTittleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLhomeTittleButton.h; sourceTree = "<group>"; };
+		2BDF1E8F1C100FE10074AE18 /* YLhomeTittleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLhomeTittleButton.m; sourceTree = "<group>"; };
+		2BDF1E911C1016F00074AE18 /* UIBarButtonItem+Extention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extention.h"; sourceTree = "<group>"; };
+		2BDF1E921C1016F00074AE18 /* UIBarButtonItem+Extention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Extention.m"; sourceTree = "<group>"; };
+		2BDF1E941C102F090074AE18 /* YLNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLNavigationController.h; sourceTree = "<group>"; };
+		2BDF1E951C102F090074AE18 /* YLNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLNavigationController.m; sourceTree = "<group>"; };
+		2BDF1E971C102F6B0074AE18 /* YLtemp2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLtemp2ViewController.h; sourceTree = "<group>"; };
+		2BDF1E981C102F6B0074AE18 /* YLtemp2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLtemp2ViewController.m; sourceTree = "<group>"; };
+		2BDF1E9A1C102F7A0074AE18 /* YLtemp3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLtemp3ViewController.h; sourceTree = "<group>"; };
+		2BDF1E9B1C102F7A0074AE18 /* YLtemp3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLtemp3ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +135,18 @@
 				2BD005391C0F3CDC0009BBEC /* ViewController.m */,
 				2BD005651C0F3D0F0009BBEC /* YLTabBarViewController.h */,
 				2BD005661C0F3D0F0009BBEC /* YLTabBarViewController.m */,
+				2BDF1E851C10033E0074AE18 /* YLhomeTableViewController.h */,
+				2BDF1E861C10033E0074AE18 /* YLhomeTableViewController.m */,
+				2BDF1E8E1C100FE10074AE18 /* YLhomeTittleButton.h */,
+				2BDF1E8F1C100FE10074AE18 /* YLhomeTittleButton.m */,
+				2BDF1E911C1016F00074AE18 /* UIBarButtonItem+Extention.h */,
+				2BDF1E921C1016F00074AE18 /* UIBarButtonItem+Extention.m */,
+				2BDF1E941C102F090074AE18 /* YLNavigationController.h */,
+				2BDF1E951C102F090074AE18 /* YLNavigationController.m */,
+				2BDF1E971C102F6B0074AE18 /* YLtemp2ViewController.h */,
+				2BDF1E981C102F6B0074AE18 /* YLtemp2ViewController.m */,
+				2BDF1E9A1C102F7A0074AE18 /* YLtemp3ViewController.h */,
+				2BDF1E9B1C102F7A0074AE18 /* YLtemp3ViewController.m */,
 				2BDF1E7C1C0FCA030074AE18 /* YLPluseTabBar.h */,
 				2BDF1E7D1C0FCA030074AE18 /* YLPluseTabBar.m */,
 				2BDF1E791C0FC3710074AE18 /* UIView+YLView.h */,
@@ -290,10 +320,16 @@
 			files = (
 				2BD0053A1C0F3CDC0009BBEC /* ViewController.m in Sources */,
 				2BD005371C0F3CDC0009BBEC /* AppDelegate.m in Sources */,
+				2BDF1E991C102F6B0074AE18 /* YLtemp2ViewController.m in Sources */,
 				2BD005341C0F3CDC0009BBEC /* main.m in Sources */,
+				2BDF1E871C10033E0074AE18 /* YLhomeTableViewController.m in Sources */,
+				2BDF1E931C1016F00074AE18 /* UIBarButtonItem+Extention.m in Sources */,
 				2BDF1E7B1C0FC3710074AE18 /* UIView+YLView.m in Sources */,
+				2BDF1E961C102F090074AE18 /* YLNavigationController.m in Sources */,
 				2BDF1E7E1C0FCA030074AE18 /* YLPluseTabBar.m in Sources */,
 				2BD005671C0F3D0F0009BBEC /* YLTabBarViewController.m in Sources */,
+				2BDF1E901C100FE10074AE18 /* YLhomeTittleButton.m in Sources */,
+				2BDF1E9C1C102F7A0074AE18 /* YLtemp3ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
