@@ -18,9 +18,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    //YLTabBarViewController *tableViewController = [[YLTabBarViewController alloc]init];
+   YLTabBarViewController *tableViewController = [[YLTabBarViewController alloc]init];
     YLFearcherViewController *fearcherViewController = [[YLFearcherViewController alloc]init];
-    self.window.rootViewController = fearcherViewController;
+    
+    NSDictionary *infoDic = [NSBundle mainBundle].infoDictionary;
+    NSString *currentVersion = infoDic[@"CFBundleShortVersionString"];
+    
+    NSString *saveVersion = [[NSUserDefaults standardUserDefaults] valueForKey:KCFBundleShortVersionString];
+   NSComparisonResult result = [currentVersion compare:saveVersion];
+    if (!saveVersion || result == NSOrderedDescending) {
+        self.window.rootViewController = fearcherViewController;
+        [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:KCFBundleShortVersionString];
+    } else{
+        self.window.rootViewController = tableViewController;
+    }
     [self.window makeKeyAndVisible];
     
     return YES;

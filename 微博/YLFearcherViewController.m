@@ -7,7 +7,7 @@
 //
 
 #import "YLFearcherViewController.h"
-
+#import "YLTabBarViewController.h"
 @interface YLFearcherViewController ()<UIScrollViewDelegate>
 @property (weak, nonatomic)UIPageControl *pageControl;
 @end
@@ -60,6 +60,7 @@
     button.size = button.currentBackgroundImage.size;
     button.centerX = SCREENW * 0.5;
     button.centerY = SCREENH - 100;
+    [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [imageView addSubview:button];
 
 }
@@ -80,6 +81,13 @@
     shareBtn.centerY = SCREENH - 140;
     [shareBtn addTarget:self action:@selector(shareBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     [imageView addSubview:shareBtn];
+}
+
+- (void)buttonClicked:(UIButton *)btn{
+
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    YLTabBarViewController *tabBarController = [[YLTabBarViewController alloc]init];
+    window.rootViewController = tabBarController;
 }
 
 - (void)shareBtnClicked:(UIButton *)btn{
