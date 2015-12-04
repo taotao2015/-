@@ -17,6 +17,7 @@
     self.width = SCREENW;
     self.height = SCREENH;
         UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"popover_background"]];
+        imageView.userInteractionEnabled = YES;
         imageView.width = view.width + 10;
         imageView.height = view.height + 20;
         view.x = 5;

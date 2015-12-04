@@ -40,7 +40,7 @@
     redView.backgroundColor = [UIColor redColor];
     redView.width = 100;
     redView.height = 100;
-    
+    redView.userInteractionEnabled = YES;
     YLpopButton *popButton = [[YLpopButton alloc]initWithCustomView:redView showView:self.btn];
     popButton.backgroundColor = [UIColor clearColor];
     UIWindow *window = [[UIApplication sharedApplication].windows lastObject];

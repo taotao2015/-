@@ -95,7 +95,7 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    NSLog(@"%f",scrollView.contentOffset.x);
+   // NSLog(@"%f",scrollView.contentOffset.x);
     self.pageControl.currentPage = scrollView.contentOffset.x / SCREENW;
 }
 
