@@ -51,7 +51,7 @@
             
         }
         
-        NSLog(@"%@",view);
+        //NSLog(@"%@",view);
     }
     
     self.pluseBtn.width = btnWidth;

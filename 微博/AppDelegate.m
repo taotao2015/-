@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "YLTabBarViewController.h"
+#import "YLFearcherViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -17,8 +18,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    YLTabBarViewController *tableViewController = [[YLTabBarViewController alloc]init];
-    self.window.rootViewController = tableViewController;
+    //YLTabBarViewController *tableViewController = [[YLTabBarViewController alloc]init];
+    YLFearcherViewController *fearcherViewController = [[YLFearcherViewController alloc]init];
+    self.window.rootViewController = fearcherViewController;
     [self.window makeKeyAndVisible];
     
     return YES;

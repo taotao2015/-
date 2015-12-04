@@ -9,6 +9,7 @@
 #import "YLTabBarViewController.h"
 #import "YLPluseTabBar.h"
 #import "YLhomeTableViewController.h"
+#import "YLdiscoverController.h"
 #import "YLNavigationController.h"
 @interface YLTabBarViewController ()<YLPluseTabBarDelegate>
 
@@ -26,7 +27,7 @@
     [self addChildViewController:homeController imageName:@"tabbar_home" title:@"首页"];
     UITableViewController *messageController = [[UITableViewController alloc]init];
     [self addChildViewController:messageController imageName:@"tabbar_message_center" title:@"消息"];
-    UITableViewController *discoverController = [[UITableViewController alloc]init];
+    YLdiscoverController *discoverController = [[YLdiscoverController alloc]init];
     [self addChildViewController:discoverController imageName:@"tabbar_discover" title:@"发现"];
     UITableViewController *profileController = [[UITableViewController alloc]init];
     [self addChildViewController:profileController imageName:@"tabbar_profile" title:@"我"];

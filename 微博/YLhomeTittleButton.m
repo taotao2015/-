@@ -13,10 +13,10 @@
 -(void)layoutSubviews{
     [super layoutSubviews];
     self.titleLabel.x = 0;
-    self.imageView.x = CGRectGetMaxX(self.titleLabel.frame);
-    [self sizeToFit];
+    self.imageView.x = CGRectGetMaxX(self.titleLabel.frame) + 5;
     self.width = CGRectGetMaxX(self.imageView.frame);
-    self.center = self.superview.center;
+    self.centerX = self.superview.centerX;
+    //self.centerY = self.superview.centerY;
 }
 
 @end

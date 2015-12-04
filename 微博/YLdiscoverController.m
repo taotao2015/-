@@ -1,74 +1,42 @@
 //
-//  YLhomeTableViewController.m
+//  YLdiscoverController.m
 //  微博
 //
 //  Created by tao on 15/12/3.
 //  Copyright © 2015年 tao. All rights reserved.
 //
 
-#import "YLhomeTableViewController.h"
-#import "YLtemp2ViewController.h"
-#import "YLpopButton.h"
-@interface YLhomeTableViewController ()
-@property (strong, nonatomic)UIButton *btn;
+#import "YLdiscoverController.h"
+#import "YLsearchView.h"
+@interface YLdiscoverController ()
+
 @end
 
-@implementation YLhomeTableViewController
+@implementation YLdiscoverController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //设置导航栏内容
-    [self setNav];
+    self.view.backgroundColor = [UIColor whiteColor];
+    YLsearchView *searchView = [YLsearchView searchView];
+    searchView.width = [UIScreen mainScreen].bounds.size.width;
+    searchView.height = 35;
+    self.navigationItem.titleView = searchView;
+ 
 }
 
-- (void)setNav{
-    YLhomeTittleButton *button = [[YLhomeTittleButton alloc]init];
-  
-    [button setImage:[UIImage imageNamed:@"navigationbar_arrow_down"] forState:(UIControlStateNormal)];
-    [button setTitle:@"首页" forState:(UIControlStateNormal)];
-    [button setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-    [button sizeToFit];
-    [button addTarget:self action:@selector(homeTitleButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-      self.btn = button;
-    self.navigationItem.titleView = button;
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImageName:@"navigationbar_friendsearch" addTarget:self action:@selector(friendsearch)];
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImageName:@"navigationbar_pop" addTarget:self action:@selector(pop)];
-}
 
-- (void)homeTitleButtonClicked{
-    UIView *redView = [[UIView alloc]init];
-    redView.backgroundColor = [UIColor redColor];
-    redView.width = 100;
-    redView.height = 100;
-    
-    YLpopButton *popButton = [[YLpopButton alloc]initWithCustomView:redView showView:self.btn];
-    popButton.backgroundColor = [UIColor clearColor];
-    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
-    [window addSubview:popButton];
-}
-
-- (void)friendsearch{
-    YLtemp2ViewController *temp2 = [[YLtemp2ViewController alloc]init];
-    
-    [self.navigationController pushViewController:temp2 animated:YES];
-}
-
-- (void)pop{
-    
-    NSLog(@"%s",__func__);
-}
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
-    return 0;
-}
-
+//#pragma mark - Table view data source
+//
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//#warning Incomplete implementation, return the number of sections
+//    return 0;
+//}
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//#warning Incomplete implementation, return the number of rows
+//    return 0;
+//}
+//
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
