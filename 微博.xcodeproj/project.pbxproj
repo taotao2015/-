@@ -25,6 +25,7 @@
 		2BDF1E9F1C107ADA0074AE18 /* YLdiscoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF1E9E1C107ADA0074AE18 /* YLdiscoverController.m */; };
 		2BDF1EA21C107B8E0074AE18 /* YLsearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDF1EA11C107B8E0074AE18 /* YLsearchView.m */; };
 		2BDF1EA81C109E6F0074AE18 /* YLsearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BDF1EA71C109E6F0074AE18 /* YLsearchView.xib */; };
+		2BE1317B1C1322370046D56E /* YLOauthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE1317A1C1322370046D56E /* YLOauthViewController.m */; };
 		2BE3E4FB1C11E71E0091A5E7 /* YLFearcherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE3E4FA1C11E71E0091A5E7 /* YLFearcherViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,9 @@
 		2BDF1EA01C107B8E0074AE18 /* YLsearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLsearchView.h; sourceTree = "<group>"; };
 		2BDF1EA11C107B8E0074AE18 /* YLsearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLsearchView.m; sourceTree = "<group>"; };
 		2BDF1EA71C109E6F0074AE18 /* YLsearchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLsearchView.xib; sourceTree = "<group>"; };
+		2BE131761C13216A0046D56E /* ReadMe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReadMe.m; path = "../16iPhone项目/ReadMe.m"; sourceTree = "<group>"; };
+		2BE131791C1322370046D56E /* YLOauthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLOauthViewController.h; sourceTree = "<group>"; };
+		2BE1317A1C1322370046D56E /* YLOauthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLOauthViewController.m; sourceTree = "<group>"; };
 		2BE3E4F91C11E71E0091A5E7 /* YLFearcherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLFearcherViewController.h; sourceTree = "<group>"; };
 		2BE3E4FA1C11E71E0091A5E7 /* YLFearcherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLFearcherViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,6 +120,7 @@
 		2BBB22B01C113AD100F75BDC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2BE131781C13221B0046D56E /* Oauth */,
 				2BE3E4F81C11E6290091A5E7 /* Fearcher */,
 				2BBB22B11C113AE400F75BDC /* Home */,
 				2BBB22B21C113AF900F75BDC /* Message */,
@@ -341,6 +346,7 @@
 		2BD005261C0F3CDC0009BBEC = {
 			isa = PBXGroup;
 			children = (
+				2BE131761C13216A0046D56E /* ReadMe.m */,
 				2BD005311C0F3CDC0009BBEC /* 微博 */,
 				2BD0054B1C0F3CDC0009BBEC /* 微博Tests */,
 				2BD005561C0F3CDD0009BBEC /* 微博UITests */,
@@ -396,6 +402,15 @@
 				2BD005591C0F3CDD0009BBEC /* Info.plist */,
 			);
 			path = "微博UITests";
+			sourceTree = "<group>";
+		};
+		2BE131781C13221B0046D56E /* Oauth */ = {
+			isa = PBXGroup;
+			children = (
+				2BE131791C1322370046D56E /* YLOauthViewController.h */,
+				2BE1317A1C1322370046D56E /* YLOauthViewController.m */,
+			);
+			name = Oauth;
 			sourceTree = "<group>";
 		};
 		2BE3E4F81C11E6290091A5E7 /* Fearcher */ = {
@@ -544,6 +559,7 @@
 				2BD005341C0F3CDC0009BBEC /* main.m in Sources */,
 				2BDF1E871C10033E0074AE18 /* YLhomeTableViewController.m in Sources */,
 				2BDF1E931C1016F00074AE18 /* UIBarButtonItem+Extention.m in Sources */,
+				2BE1317B1C1322370046D56E /* YLOauthViewController.m in Sources */,
 				2BDF1E7B1C0FC3710074AE18 /* UIView+YLView.m in Sources */,
 				2BDF1EA21C107B8E0074AE18 /* YLsearchView.m in Sources */,
 				2BDF1E961C102F090074AE18 /* YLNavigationController.m in Sources */,

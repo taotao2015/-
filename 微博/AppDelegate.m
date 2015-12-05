@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "YLTabBarViewController.h"
 #import "YLFearcherViewController.h"
+#import "YLOauthViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -18,20 +19,23 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-   YLTabBarViewController *tableViewController = [[YLTabBarViewController alloc]init];
-    YLFearcherViewController *fearcherViewController = [[YLFearcherViewController alloc]init];
+//   YLTabBarViewController *tableViewController = [[YLTabBarViewController alloc]init];
+//    YLFearcherViewController *fearcherViewController = [[YLFearcherViewController alloc]init];
+//    
+//    NSDictionary *infoDic = [NSBundle mainBundle].infoDictionary;
+//    NSString *currentVersion = infoDic[@"CFBundleShortVersionString"];
+//    
+//    NSString *saveVersion = [[NSUserDefaults standardUserDefaults] valueForKey:KCFBundleShortVersionString];
+//   NSComparisonResult result = [currentVersion compare:saveVersion];
+//    if (!saveVersion || result == NSOrderedDescending) {
+//        self.window.rootViewController = fearcherViewController;
+//        [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:KCFBundleShortVersionString];
+//    } else{
+//        self.window.rootViewController = tableViewController;
+//    }
     
-    NSDictionary *infoDic = [NSBundle mainBundle].infoDictionary;
-    NSString *currentVersion = infoDic[@"CFBundleShortVersionString"];
-    
-    NSString *saveVersion = [[NSUserDefaults standardUserDefaults] valueForKey:KCFBundleShortVersionString];
-   NSComparisonResult result = [currentVersion compare:saveVersion];
-    if (!saveVersion || result == NSOrderedDescending) {
-        self.window.rootViewController = fearcherViewController;
-        [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:KCFBundleShortVersionString];
-    } else{
-        self.window.rootViewController = tableViewController;
-    }
+    YLOauthViewController *oauth = [[YLOauthViewController alloc]init];
+    self.window.rootViewController = oauth;
     [self.window makeKeyAndVisible];
     
     return YES;
