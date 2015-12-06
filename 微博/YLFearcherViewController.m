@@ -8,6 +8,8 @@
 
 #import "YLFearcherViewController.h"
 #import "YLTabBarViewController.h"
+#import "YLOauthViewController.h"
+#import "YLAccount.h"
 @interface YLFearcherViewController ()<UIScrollViewDelegate>
 @property (weak, nonatomic)UIPageControl *pageControl;
 @end
@@ -62,7 +64,7 @@
     button.centerY = SCREENH - 100;
     [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [imageView addSubview:button];
-
+    
 }
 
 // 添加分享按钮
@@ -86,8 +88,22 @@
 - (void)buttonClicked:(UIButton *)btn{
 
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    YLTabBarViewController *tabBarController = [[YLTabBarViewController alloc]init];
-    window.rootViewController = tabBarController;
+//    YLTabBarViewController *tabBarController = [[YLTabBarViewController alloc]init];
+//    window.rootViewController = tabBarController;
+//    NSString *filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+//    filePath =  [filePath stringByAppendingPathComponent:@"account.achiver"];
+//    YLAccount *account = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+//    
+//    if (!account) {
+//        YLOauthViewController *oauth = [[YLOauthViewController alloc]init];
+//        window.rootViewController = oauth;
+//    } else{
+//        YLTabBarViewController *tableViewController = [[YLTabBarViewController alloc]init];
+//        
+//        window.rootViewController = tableViewController;
+    
+  //  }
+[window switchRootController];
 }
 
 - (void)shareBtnClicked:(UIButton *)btn{

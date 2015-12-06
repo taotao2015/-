@@ -10,6 +10,7 @@
 #import "YLTabBarViewController.h"
 #import "YLFearcherViewController.h"
 #import "YLOauthViewController.h"
+#import "YLAccount.h"
 @interface AppDelegate ()
 
 @end
@@ -19,23 +20,39 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-//   YLTabBarViewController *tableViewController = [[YLTabBarViewController alloc]init];
-//    YLFearcherViewController *fearcherViewController = [[YLFearcherViewController alloc]init];
-//    
-//    NSDictionary *infoDic = [NSBundle mainBundle].infoDictionary;
-//    NSString *currentVersion = infoDic[@"CFBundleShortVersionString"];
-//    
-//    NSString *saveVersion = [[NSUserDefaults standardUserDefaults] valueForKey:KCFBundleShortVersionString];
-//   NSComparisonResult result = [currentVersion compare:saveVersion];
-//    if (!saveVersion || result == NSOrderedDescending) {
-//        self.window.rootViewController = fearcherViewController;
-//        [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:KCFBundleShortVersionString];
-//    } else{
-//        self.window.rootViewController = tableViewController;
-//    }
+    // 版本更新首先进入新特性，判断有没登录，没有登录，进入登录，有就进入主页
     
-    YLOauthViewController *oauth = [[YLOauthViewController alloc]init];
-    self.window.rootViewController = oauth;
+    
+   YLTabBarViewController *tableViewController = [[YLTabBarViewController alloc]init];
+    YLFearcherViewController *fearcherViewController = [[YLFearcherViewController alloc]init];
+    
+    NSDictionary *infoDic = [NSBundle mainBundle].infoDictionary;
+    NSString *currentVersion = infoDic[@"CFBundleShortVersionString"];
+    
+    NSString *saveVersion = [[NSUserDefaults standardUserDefaults] valueForKey:KCFBundleShortVersionString];
+   NSComparisonResult result = [currentVersion compare:saveVersion];
+    if (!saveVersion || result == NSOrderedDescending) {
+        self.window.rootViewController = fearcherViewController;
+        [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:KCFBundleShortVersionString];
+    } else{
+        
+//        NSString *filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+//        filePath =  [filePath stringByAppendingPathComponent:@"account.achiver"];
+//        
+//        YLAccount *account = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+//        
+//        if (!account) {
+//            YLOauthViewController *oauth = [[YLOauthViewController alloc]init];
+//            self.window.rootViewController = oauth;
+//        } else{
+//             self.window.rootViewController = tableViewController;
+//        }
+        [self.window switchRootController];
+        
+    }
+    
+//    YLOauthViewController *oauth = [[YLOauthViewController alloc]init];
+//    self.window.rootViewController = oauth;
     [self.window makeKeyAndVisible];
     
     return YES;
