@@ -38,6 +38,7 @@
 		2BE131A31C1357E00046D56E /* YLAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE131A21C1357E00046D56E /* YLAccount.m */; };
 		2BE3E4FB1C11E71E0091A5E7 /* YLFearcherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE3E4FA1C11E71E0091A5E7 /* YLFearcherViewController.m */; };
 		2BEA5EE11C13CF660001540E /* UIWindow+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEA5EE01C13CF660001540E /* UIWindow+Extension.m */; };
+		2BEA5EE51C13F11A0001540E /* YLAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEA5EE41C13F11A0001540E /* YLAccountTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +125,8 @@
 		2BE3E4FA1C11E71E0091A5E7 /* YLFearcherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLFearcherViewController.m; sourceTree = "<group>"; };
 		2BEA5EDF1C13CF660001540E /* UIWindow+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+Extension.h"; sourceTree = "<group>"; };
 		2BEA5EE01C13CF660001540E /* UIWindow+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+Extension.m"; sourceTree = "<group>"; };
+		2BEA5EE31C13F11A0001540E /* YLAccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLAccountTool.h; sourceTree = "<group>"; };
+		2BEA5EE41C13F11A0001540E /* YLAccountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLAccountTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -505,6 +508,7 @@
 		2BE131A01C1357620046D56E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2BEA5EE21C13F0E00001540E /* AccountTools */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -525,6 +529,15 @@
 				2BEA5EE01C13CF660001540E /* UIWindow+Extension.m */,
 			);
 			name = Extension;
+			sourceTree = "<group>";
+		};
+		2BEA5EE21C13F0E00001540E /* AccountTools */ = {
+			isa = PBXGroup;
+			children = (
+				2BEA5EE31C13F11A0001540E /* YLAccountTool.h */,
+				2BEA5EE41C13F11A0001540E /* YLAccountTool.m */,
+			);
+			name = AccountTools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -671,6 +684,7 @@
 				2BDF1E931C1016F00074AE18 /* UIBarButtonItem+Extention.m in Sources */,
 				2BE1317B1C1322370046D56E /* YLOauthViewController.m in Sources */,
 				2BEA5EE11C13CF660001540E /* UIWindow+Extension.m in Sources */,
+				2BEA5EE51C13F11A0001540E /* YLAccountTool.m in Sources */,
 				2BE131961C1352D10046D56E /* AFHTTPRequestOperationManager.m in Sources */,
 				2BE131A31C1357E00046D56E /* YLAccount.m in Sources */,
 				2BDF1E7B1C0FC3710074AE18 /* UIView+YLView.m in Sources */,

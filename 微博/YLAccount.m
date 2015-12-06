@@ -10,14 +10,19 @@
 
 @implementation YLAccount
 
+- (void)setExpires_in:(NSInteger)expires_in{
+    _expires_in = expires_in;
+    self.creat_time = [NSDate date];
+
+}
+
 -(void)encodeWithCoder:(NSCoder *)aCoder{
     
     [aCoder encodeObject:self.access_token forKey:@"access_token"];
     [aCoder encodeInteger:self.expires_in forKey:@"expires_in"];
     [aCoder encodeInteger:self.remind_in forKey:@"remind_in"];
     [aCoder encodeInteger:self.uid forKey:@"uid"];
-    
-    
+    [aCoder encodeObject:self.creat_time forKey:@"creat_time"];
 
 }
 
@@ -30,6 +35,7 @@
         self.remind_in = [coder decodeIntegerForKey:@"remind_in"];
         self.uid = [coder decodeIntegerForKey:@"uid"];
         self.expires_in = [coder decodeIntegerForKey:@"expires_in"];
+        self.creat_time = [coder decodeObjectForKey:@"creat_time"];
         
     }
     return self;

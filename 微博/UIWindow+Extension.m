@@ -10,22 +10,42 @@
 #import "YLOauthViewController.h"
 #import "YLAccount.h"
 #import "YLTabBarViewController.h"
+#import "YLAccountTool.h"
 @implementation UIWindow (Extension)
 
 - (void)switchRootController{
 
-    NSString *filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    filePath =  [filePath stringByAppendingPathComponent:@"account.achiver"];
-    YLAccount *account = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+//    NSString *filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+//    filePath =  [filePath stringByAppendingPathComponent:@"account.achiver"];
+//    YLAccount *account = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+//    // 判断token是否过期,创建的时间＋有效期是否大于当前时间
+//   NSDate *expiresTime = [account.creat_time dateByAddingTimeInterval:account.expires_in];
+//    
+//    NSDate *currentTime = [NSDate date];
+//    
+//    NSComparisonResult result = [currentTime compare:expiresTime];
     
-    if (!account) {
-        YLOauthViewController *oauth = [[YLOauthViewController alloc]init];
-        self.rootViewController = oauth;
-    } else{
+    
+    YLAccount *account = [YLAccountTool account];
+    
+    if (account) {
         YLTabBarViewController *tableViewController = [[YLTabBarViewController alloc]init];
         
         self.rootViewController = tableViewController;
+    }else {
+        YLOauthViewController *oauth = [[YLOauthViewController alloc]init];
+        self.rootViewController = oauth;
+    
     }
+    
+//    if (!account) {
+//        YLOauthViewController *oauth = [[YLOauthViewController alloc]init];
+//        self.rootViewController = oauth;
+//    } else{
+//        YLTabBarViewController *tableViewController = [[YLTabBarViewController alloc]init];
+//        
+//        self.rootViewController = tableViewController;
+//    }
 
 
 }
