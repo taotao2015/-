@@ -21,7 +21,7 @@
     [aCoder encodeObject:self.access_token forKey:@"access_token"];
     [aCoder encodeInteger:self.expires_in forKey:@"expires_in"];
     [aCoder encodeInteger:self.remind_in forKey:@"remind_in"];
-    [aCoder encodeInteger:self.uid forKey:@"uid"];
+    [aCoder encodeObject:self.uid forKey:@"uid"];
     [aCoder encodeObject:self.creat_time forKey:@"creat_time"];
 
 }
@@ -33,7 +33,7 @@
         self.access_token = [coder decodeObjectForKey:@"access_token"];
         
         self.remind_in = [coder decodeIntegerForKey:@"remind_in"];
-        self.uid = [coder decodeIntegerForKey:@"uid"];
+        self.uid = [coder decodeObjectForKey:@"uid"];
         self.expires_in = [coder decodeIntegerForKey:@"expires_in"];
         self.creat_time = [coder decodeObjectForKey:@"creat_time"];
         

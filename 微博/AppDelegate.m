@@ -22,8 +22,7 @@
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     // 版本更新首先进入新特性，判断有没登录，没有登录，进入登录，有就进入主页
     
-    
-   YLTabBarViewController *tableViewController = [[YLTabBarViewController alloc]init];
+   
     YLFearcherViewController *fearcherViewController = [[YLFearcherViewController alloc]init];
     
     NSDictionary *infoDic = [NSBundle mainBundle].infoDictionary;

@@ -16,6 +16,6 @@
 @property(copy,nonatomic)NSString *access_token;
 @property(assign,nonatomic)NSInteger expires_in;
 @property(assign,nonatomic)NSInteger remind_in;
-@property(assign,nonatomic)NSInteger uid;
-@property(strong,nonatomic)NSDate* creat_time;
+@property(copy,nonatomic)NSString *uid;
+@property(strong,nonatomic)NSDate *creat_time;
 @end

@@ -9,6 +9,9 @@
 #import "YLhomeTableViewController.h"
 #import "YLtemp2ViewController.h"
 #import "YLpopButton.h"
+#import "YLAccountTool.h"
+#import "YLAccount.h"
+#import "YLUser.h"
 @interface YLhomeTableViewController ()
 @property (strong, nonatomic)UIButton *btn;
 @end
@@ -19,6 +22,9 @@
     [super viewDidLoad];
     //设置导航栏内容
     [self setNav];
+    
+    
+    [self userInfoDictionary];
 }
 
 - (void)setNav{
@@ -57,6 +63,29 @@
     
     NSLog(@"%s",__func__);
 }
+
+- (void)userInfoDictionary{
+    NSString *urlString = @"https://api.weibo.com/2/users/show.json";
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    YLAccount *account = [YLAccountTool account];
+    parameter[@"access_token"] = account.access_token;
+    parameter[@"uid"] = account.uid;
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    [manager GET:urlString parameters:parameter success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        YLUser *user = [[YLUser alloc]init];
+        [user setKeyValues:responseObject];
+        YLhomeTittleButton *button = (YLhomeTittleButton *)self.navigationItem.titleView;
+        [button setTitle:user.screen_name forState:UIControlStateNormal];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"错误信息：%@",error);
+    }];
+
+
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
