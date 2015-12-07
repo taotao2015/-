@@ -16,27 +16,30 @@
 #import "YLLoadMoreView.h"
 #import "IWUnReadCount.h"
 #import <objc/runtime.h>
+#import "YLStatusseCell.h"
+#import "YLStatueFrame.h"
+
 #define LOAD_COUNT 20
 @interface YLhomeTableViewController ()
 @property (strong, nonatomic)UIButton *btn;
 
-@property (strong, nonatomic)NSMutableArray *statusArray;
+@property (strong, nonatomic)NSMutableArray *statusFrames;
 @end
 
 @implementation YLhomeTableViewController
 
-- (NSMutableArray *)statusArray{
-    if (_statusArray==nil) {
+- (NSMutableArray *)statusFrames{
+    if (_statusFrames==nil) {
         
-        _statusArray = [NSMutableArray array];
+        _statusFrames = [NSMutableArray array];
     }
 
-    return _statusArray;
+    return _statusFrames;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self.tableView registerClass:[YLStatusseCell class] forCellReuseIdentifier:Identifier];
     //设置导航栏内容
     [self setNav];
     
@@ -134,8 +137,10 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     parameters[@"access_token"] = account.access_token;
     parameters[@"count"] = @(LOAD_COUNT);
-    if ([self.statusArray firstObject]) {
-        parameters[@"since_id"] = @([[self.statusArray firstObject] id]);
+    if ([self.statusFrames firstObject]) {
+        YLStatueFrame *statusFrame = [self.statusFrames firstObject];
+        
+        parameters[@"since_id"] = @([statusFrame.statuses id]);
     }
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -145,8 +150,10 @@
         
         NSArray *status = [YLLoadNewStatus objectArrayWithKeyValuesArray:array];
         
+        NSArray *statusFrame = [self convertStatusFrames:status];
+        
         NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, status.count)];
-        [self.statusArray insertObjects:status atIndexes:indexSet];
+        [self.statusFrames insertObjects:statusFrame atIndexes:indexSet];
         [self.tableView reloadData];
       //  self.tabBarItem.badgeValue = nil;
         
@@ -168,8 +175,10 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     parameters[@"access_token"] = account.access_token;
     parameters[@"count"] = @(LOAD_COUNT);
-    if ([self.statusArray firstObject]) {
-        parameters[@"max_id"] = @([[self.statusArray lastObject] id] - 1);
+    if ([self.statusFrames firstObject]) {
+        YLStatueFrame *statusFrame = [self.statusFrames firstObject];
+        
+        parameters[@"max_id"] = @([statusFrame.statuses id] - 1);
     }
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -179,11 +188,13 @@
         
         NSArray *status = [YLLoadNewStatus objectArrayWithKeyValuesArray:array];
         
-
-        [self.statusArray addObjectsFromArray:status];
-        [self.tableView reloadData];
+        NSArray *statusFrame = [self convertStatusFrames:status];
         
+        [self.statusFrames addObjectsFromArray:statusFrame];
+        [self.tableView reloadData];
         self.tableView.tableFooterView.hidden = YES;
+        [self performSelector:@selector(method) withObject:nil afterDelay:3.0];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         NSLog(@"错误是:%@",error);
@@ -191,10 +202,13 @@
     }];
 
 }
+- (void)method{
+ self.tableView.tableFooterView.hidden = YES;
+}
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
 
-    if (self.statusArray.count == 0 || self.tableView.tableFooterView.hidden == NO) {
+    if (self.statusFrames.count == 0 || self.tableView.tableFooterView.hidden == NO) {
         return ;
     }
     
@@ -265,6 +279,17 @@
     
 
 }
+
+- (NSArray *)convertStatusFrames:(NSArray *)status{
+    NSMutableArray *statusFrameArray = [NSMutableArray array];
+    for (YLLoadNewStatus *statu in status) {
+        YLStatueFrame *statusFrame = [[YLStatueFrame alloc]init];
+        statusFrame.statuses = statu;
+        [statusFrameArray addObject:statusFrame];
+    }
+    return [statusFrameArray copy];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -273,19 +298,22 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return self.statusArray.count;
+    return self.statusFrames.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *reuseIdentifier = @"cell";
+    //static NSString *reuseIdentifier = @"cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    //YLStatusseCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    YLStatusseCell *cell = [YLStatusseCell cellWithTableView:tableView];
     
-    if (cell==nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
-    }
-    cell.textLabel.text = [self.statusArray[indexPath.row] text];
+//    if (cell==nil) {
+//        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+//    }
+    YLStatueFrame *statueFrame = self.statusFrames[indexPath.row];
+    
+    [cell setStatueFrame:statueFrame];
     
     return cell;
 }

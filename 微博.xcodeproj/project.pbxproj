@@ -26,6 +26,8 @@
 		2BDF1EA81C109E6F0074AE18 /* YLsearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BDF1EA71C109E6F0074AE18 /* YLsearchView.xib */; };
 		2BE0A7C71C15126100769FE9 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BE0A7C61C15126100769FE9 /* Images-2.xcassets */; };
 		2BE0A7CA1C15169700769FE9 /* YLtabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE0A7C91C15169700769FE9 /* YLtabBarItem.m */; };
+		2BE0A7CE1C155BB200769FE9 /* YLStatusseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE0A7CD1C155BB200769FE9 /* YLStatusseCell.m */; };
+		2BE0A7D11C155BF000769FE9 /* YLStatueFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE0A7D01C155BF000769FE9 /* YLStatueFrame.m */; };
 		2BE1317B1C1322370046D56E /* YLOauthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE1317A1C1322370046D56E /* YLOauthViewController.m */; };
 		2BE131951C1352D10046D56E /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE131831C1352D10046D56E /* AFHTTPRequestOperation.m */; };
 		2BE131961C1352D10046D56E /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE131851C1352D10046D56E /* AFHTTPRequestOperationManager.m */; };
@@ -112,6 +114,10 @@
 		2BE0A7C61C15126100769FE9 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
 		2BE0A7C81C15169700769FE9 /* YLtabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLtabBarItem.h; sourceTree = "<group>"; };
 		2BE0A7C91C15169700769FE9 /* YLtabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLtabBarItem.m; sourceTree = "<group>"; };
+		2BE0A7CC1C155BB200769FE9 /* YLStatusseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLStatusseCell.h; sourceTree = "<group>"; };
+		2BE0A7CD1C155BB200769FE9 /* YLStatusseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLStatusseCell.m; sourceTree = "<group>"; };
+		2BE0A7CF1C155BF000769FE9 /* YLStatueFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLStatueFrame.h; sourceTree = "<group>"; };
+		2BE0A7D01C155BF000769FE9 /* YLStatueFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLStatueFrame.m; sourceTree = "<group>"; };
 		2BE131761C13216A0046D56E /* ReadMe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReadMe.m; path = "../16iPhone项目/ReadMe.m"; sourceTree = "<group>"; };
 		2BE131791C1322370046D56E /* YLOauthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLOauthViewController.h; sourceTree = "<group>"; };
 		2BE1317A1C1322370046D56E /* YLOauthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLOauthViewController.m; sourceTree = "<group>"; };
@@ -258,6 +264,8 @@
 				2BEA5F011C1421480001540E /* YLLoadNewStatus.m */,
 				2BEA5F081C14A4460001540E /* IWUnReadCount.h */,
 				2BEA5F091C14A4460001540E /* IWUnReadCount.m */,
+				2BE0A7CF1C155BF000769FE9 /* YLStatueFrame.h */,
+				2BE0A7D01C155BF000769FE9 /* YLStatueFrame.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -265,6 +273,7 @@
 		2BBB22B61C113B5900F75BDC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2BE0A7CB1C155B7500769FE9 /* Cell */,
 				2BBB22C91C113DE600F75BDC /* YLpopButton.h */,
 				2BBB22CA1C113DE600F75BDC /* YLpopButton.m */,
 				2BDF1E8E1C100FE10074AE18 /* YLhomeTittleButton.h */,
@@ -491,6 +500,15 @@
 				2BD005591C0F3CDD0009BBEC /* Info.plist */,
 			);
 			path = "微博UITests";
+			sourceTree = "<group>";
+		};
+		2BE0A7CB1C155B7500769FE9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2BE0A7CC1C155BB200769FE9 /* YLStatusseCell.h */,
+				2BE0A7CD1C155BB200769FE9 /* YLStatusseCell.m */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		2BE131781C13221B0046D56E /* Oauth */ = {
@@ -756,6 +774,7 @@
 				2BE131981C1352D10046D56E /* AFNetworkReachabilityManager.m in Sources */,
 				2BE3E4FB1C11E71E0091A5E7 /* YLFearcherViewController.m in Sources */,
 				2BBB22CB1C113DE600F75BDC /* YLpopButton.m in Sources */,
+				2BE0A7CE1C155BB200769FE9 /* YLStatusseCell.m in Sources */,
 				2BDF1E991C102F6B0074AE18 /* YLtemp2ViewController.m in Sources */,
 				2BD005341C0F3CDC0009BBEC /* main.m in Sources */,
 				2BE131991C1352D10046D56E /* AFSecurityPolicy.m in Sources */,
@@ -774,6 +793,7 @@
 				2BE131A31C1357E00046D56E /* YLAccount.m in Sources */,
 				2BDF1E7B1C0FC3710074AE18 /* UIView+YLView.m in Sources */,
 				2BEA5EE81C1407700001540E /* YLUser.m in Sources */,
+				2BE0A7D11C155BF000769FE9 /* YLStatueFrame.m in Sources */,
 				2BDF1EA21C107B8E0074AE18 /* YLsearchView.m in Sources */,
 				2BDF1E961C102F090074AE18 /* YLNavigationController.m in Sources */,
 				2BDF1E7E1C0FCA030074AE18 /* YLPluseTabBar.m in Sources */,
