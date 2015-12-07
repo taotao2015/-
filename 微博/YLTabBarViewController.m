@@ -11,6 +11,7 @@
 #import "YLhomeTableViewController.h"
 #import "YLdiscoverController.h"
 #import "YLNavigationController.h"
+#import "YLtabBarItem.h"
 @interface YLTabBarViewController ()<YLPluseTabBarDelegate>
 
 @end
@@ -32,12 +33,14 @@
     UITableViewController *profileController = [[UITableViewController alloc]init];
     [self addChildViewController:profileController imageName:@"tabbar_profile" title:@"我"];
    // NSLog(@"%@",self.tabBar);
-   
+       
 }
 
 
 - (void)addChildViewController:(UIViewController *)childController imageName:(NSString *)imageName title:(NSString *)title{
     
+    YLtabBarItem *tabBarItem = [[YLtabBarItem alloc]init];
+    childController.tabBarItem = tabBarItem;
     childController.title = title;
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];

@@ -17,6 +17,7 @@
 @implementation YLFearcherViewController
 
 - (void)viewDidLoad {
+
     [super viewDidLoad];
      NSUInteger count = 4;
     UIPageControl *pageControl = [[UIPageControl alloc]init];

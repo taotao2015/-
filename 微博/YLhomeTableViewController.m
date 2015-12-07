@@ -12,19 +12,89 @@
 #import "YLAccountTool.h"
 #import "YLAccount.h"
 #import "YLUser.h"
+#import "YLLoadNewStatus.h"
+#import "YLLoadMoreView.h"
+#import "IWUnReadCount.h"
+#import <objc/runtime.h>
+#define LOAD_COUNT 20
 @interface YLhomeTableViewController ()
 @property (strong, nonatomic)UIButton *btn;
+
+@property (strong, nonatomic)NSMutableArray *statusArray;
 @end
 
 @implementation YLhomeTableViewController
 
+- (NSMutableArray *)statusArray{
+    if (_statusArray==nil) {
+        
+        _statusArray = [NSMutableArray array];
+    }
+
+    return _statusArray;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     //设置导航栏内容
     [self setNav];
     
-    
+    // 设置用户信息
     [self userInfoDictionary];
+    YLLoadMoreView *loadView = [YLLoadMoreView loadMoreView];
+    
+    self.tableView.tableFooterView = loadView;
+    loadView.hidden = YES;
+    // 刷新微博
+    
+    [self setRefreshView];
+    self.tabBarItem.badgeValue = [NSString stringWithFormat:@"呵护"];
+//    
+//    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:8.0 target:self selector:@selector(showUnReadNumbers) userInfo:nil repeats:YES];
+//    [timer fire];
+//    
+//    NSRunLoop *runloop = [NSRunLoop mainRunLoop];
+//    
+//    [runloop addTimer:timer forMode:NSRunLoopCommonModes];
+    
+//    for (UIView *childTabBarButton in self.tabBarController.tabBar.subviews) {
+//        if ([childTabBarButton isKindOfClass:[NSClassFromString(@"UITabBarButton") class]]) {
+//            for (UIView *childBadgeView in childTabBarButton.subviews) {
+//                
+//                if ([childBadgeView isKindOfClass:[NSClassFromString(@"_UIBadgeView") class]]) {
+//                    
+//                    for (UIView *childBadgeBackGround in childBadgeView.subviews) {
+//                        
+//                        if ([childBadgeBackGround isKindOfClass:[NSClassFromString(@"_UIBadgeBackground") class]] ) {
+//                            
+//                            //NSLog(@"%@",childBadgeBackGround);
+//                            unsigned int count;
+//                            Ivar * ivars = class_copyIvarList([childBadgeBackGround class], &count);
+//                            for (int i = 0; i < count; i++) {
+//                                
+//                                Ivar ivar =ivars[i];
+//                                //获取属性的名字
+//                                NSString *ivarName = [NSString stringWithCString:ivar_getName(ivar) encoding:NSUTF8StringEncoding];
+//                                NSLog(@"%@",ivarName);
+//                                // 判断是不是这个属性
+//                                if ([ivarName isEqualToString:@"_image"]) {
+//                                    UIImage *imageName = [UIImage imageNamed:@"main_badge"];
+//                                    //利用kvc赋值
+//                                    [childBadgeBackGround setValue:imageName forKeyPath:@"_image"];
+//                                }
+//                                
+//                            }
+//                            
+//                        }
+//                    }
+//                    
+//                }
+//            }
+//        }
+//    }
+    
+    
 }
 
 - (void)setNav{
@@ -86,27 +156,144 @@
 
 }
 
+- (void)setRefreshView{
+
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc]init];
+    //这行代码比较重要，不要忘记添加控件
+    [self.view addSubview:refreshControl];
+       [refreshControl addTarget:self action:@selector(loadNewStatuses:) forControlEvents:UIControlEventValueChanged];
+    
+    [self loadNewStatuses:refreshControl];
+    
+}
+
+
+- (void)loadNewStatuses:(UIRefreshControl *)refreshControl{
+    
+    NSString *urlString = @"https://api.weibo.com/2/statuses/friends_timeline.json";
+    YLAccount *account = [YLAccountTool account];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"access_token"] = account.access_token;
+    parameters[@"count"] = @(LOAD_COUNT);
+    if ([self.statusArray firstObject]) {
+        parameters[@"since_id"] = @([[self.statusArray firstObject] id]);
+    }
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        // NSLog(@"%@",responseObject);
+        [refreshControl endRefreshing];
+        NSArray *array= responseObject[@"statuses"];
+        
+        NSArray *status = [YLLoadNewStatus objectArrayWithKeyValuesArray:array];
+        
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, status.count)];
+        [self.statusArray insertObjects:status atIndexes:indexSet];
+        [self.tableView reloadData];
+      //  self.tabBarItem.badgeValue = nil;
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"错误是:%@",error);
+        [refreshControl endRefreshing];
+    }];
+
+}
+
+
+- (void)loadMoreStatuses{
+
+    NSString *urlString = @"https://api.weibo.com/2/statuses/friends_timeline.json";
+    YLAccount *account = [YLAccountTool account];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"access_token"] = account.access_token;
+    parameters[@"count"] = @(LOAD_COUNT);
+    if ([self.statusArray firstObject]) {
+        parameters[@"max_id"] = @([[self.statusArray lastObject] id] - 1);
+    }
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        // NSLog(@"%@",responseObject);
+        
+        NSArray *array= responseObject[@"statuses"];
+        
+        NSArray *status = [YLLoadNewStatus objectArrayWithKeyValuesArray:array];
+        
+
+        [self.statusArray addObjectsFromArray:status];
+        [self.tableView reloadData];
+        
+        self.tableView.tableFooterView.hidden = YES;
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"错误是:%@",error);
+        self.tableView.tableFooterView.hidden = YES;
+    }];
+
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+
+    if (self.statusArray.count == 0 || self.tableView.tableFooterView.hidden == NO) {
+        return ;
+    }
+    
+    float result = scrollView.contentSize.height - SCREENH;
+    if (result <= (scrollView.contentOffset.y - self.tabBarController.tabBar.height)) {
+        self.tableView.tableFooterView.hidden = NO;
+        [self loadMoreStatuses];
+    }
+
+}
+
+- (void)showUnReadNumbers{
+    
+    NSString *urlString = @"https://rm.api.weibo.com/2/remind/unread_count.json";
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    YLAccount *account = [YLAccountTool account];
+    parameters[@"access_token"] = account.access_token;
+    parameters[@"uid"] = account.uid;
+
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        IWUnReadCount *unRead = [IWUnReadCount objectWithKeyValues:responseObject];
+        if (unRead.status) {
+           self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%zd",unRead.status];
+        }else{
+            self.tabBarItem.badgeValue = [NSString stringWithFormat:@"哈哈"];;
+        }
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+
+}
+
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-
-    return 0;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 0;
+    return self.statusArray.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    static NSString *reuseIdentifier = @"cell";
     
-    // Configure the cell...
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    
+    if (cell==nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+    }
+    cell.textLabel.text = [self.statusArray[indexPath.row] text];
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
