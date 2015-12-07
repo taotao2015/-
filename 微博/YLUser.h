@@ -10,4 +10,6 @@
 
 @interface YLUser : NSObject
 @property(copy,nonatomic)NSString *screen_name;
+// 用户头像地址
+@property(copy,nonatomic)NSString *profile_image_url;
 @end

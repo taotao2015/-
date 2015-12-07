@@ -8,7 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import "YLLoadNewStatus.h"
+#import "YLUser.h"
 @interface YLStatueFrame : NSObject
 
 @property(strong,nonatomic)YLLoadNewStatus *statuses;
+//头像
+@property(assign,nonatomic)CGRect headImageF;
+//昵称
+@property(assign,nonatomic)CGRect nameLabelF;
+//内容
+@property(assign,nonatomic)CGRect contentLabelF;
+
+@property(assign,nonatomic)CGFloat cellHeight;
+
 @end

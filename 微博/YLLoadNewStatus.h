@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "YLUser.h"
 @interface YLLoadNewStatus : NSObject
 @property(copy,nonatomic)NSString *text;
+
+@property(strong,nonatomic)YLUser *user;
 @property(assign,nonatomic)long long id;
 @end
