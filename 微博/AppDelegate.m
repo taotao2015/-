@@ -19,6 +19,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    if ([[UIDevice currentDevice].systemVersion doubleValue] >= 8.0) {
+        
+        UIUserNotificationSettings *setting = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
+        [application registerUserNotificationSettings:setting];
+    }
+    
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     // 版本更新首先进入新特性，判断有没登录，没有登录，进入登录，有就进入主页
     
@@ -63,8 +69,12 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    
+ __block UIBackgroundTaskIdentifier identify = [application beginBackgroundTaskWithExpirationHandler:^{
+      [application endBackgroundTask:identify];
+      
+    }];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {

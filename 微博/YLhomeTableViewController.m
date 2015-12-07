@@ -258,6 +258,7 @@
         IWUnReadCount *unRead = [IWUnReadCount objectWithKeyValues:responseObject];
         if (unRead.status) {
            self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%zd",unRead.status];
+            [UIApplication sharedApplication].applicationIconBadgeNumber = unRead.status;
         }else{
             self.tabBarItem.badgeValue = [NSString stringWithFormat:@"哈哈"];;
         }
