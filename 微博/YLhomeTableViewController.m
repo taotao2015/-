@@ -50,49 +50,6 @@
     
     [self setRefreshView];
     self.tabBarItem.badgeValue = [NSString stringWithFormat:@"呵护"];
-//    
-//    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:8.0 target:self selector:@selector(showUnReadNumbers) userInfo:nil repeats:YES];
-//    [timer fire];
-//    
-//    NSRunLoop *runloop = [NSRunLoop mainRunLoop];
-//    
-//    [runloop addTimer:timer forMode:NSRunLoopCommonModes];
-    
-//    for (UIView *childTabBarButton in self.tabBarController.tabBar.subviews) {
-//        if ([childTabBarButton isKindOfClass:[NSClassFromString(@"UITabBarButton") class]]) {
-//            for (UIView *childBadgeView in childTabBarButton.subviews) {
-//                
-//                if ([childBadgeView isKindOfClass:[NSClassFromString(@"_UIBadgeView") class]]) {
-//                    
-//                    for (UIView *childBadgeBackGround in childBadgeView.subviews) {
-//                        
-//                        if ([childBadgeBackGround isKindOfClass:[NSClassFromString(@"_UIBadgeBackground") class]] ) {
-//                            
-//                            //NSLog(@"%@",childBadgeBackGround);
-//                            unsigned int count;
-//                            Ivar * ivars = class_copyIvarList([childBadgeBackGround class], &count);
-//                            for (int i = 0; i < count; i++) {
-//                                
-//                                Ivar ivar =ivars[i];
-//                                //获取属性的名字
-//                                NSString *ivarName = [NSString stringWithCString:ivar_getName(ivar) encoding:NSUTF8StringEncoding];
-//                                NSLog(@"%@",ivarName);
-//                                // 判断是不是这个属性
-//                                if ([ivarName isEqualToString:@"_image"]) {
-//                                    UIImage *imageName = [UIImage imageNamed:@"main_badge"];
-//                                    //利用kvc赋值
-//                                    [childBadgeBackGround setValue:imageName forKeyPath:@"_image"];
-//                                }
-//                                
-//                            }
-//                            
-//                        }
-//                    }
-//                    
-//                }
-//            }
-//        }
-//    }
     
     
 }
@@ -170,6 +127,8 @@
 
 - (void)loadNewStatuses:(UIRefreshControl *)refreshControl{
     
+    
+    
     NSString *urlString = @"https://api.weibo.com/2/statuses/friends_timeline.json";
     YLAccount *account = [YLAccountTool account];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
@@ -190,6 +149,8 @@
         [self.statusArray insertObjects:status atIndexes:indexSet];
         [self.tableView reloadData];
       //  self.tabBarItem.badgeValue = nil;
+        
+        [self loadLabelCountWithCount:status.count];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -270,6 +231,40 @@
 
 }
 
+- (void)loadLabelCountWithCount:(NSInteger)count{
+
+    UILabel *loadCount = [[UILabel alloc]init];
+    
+    if (count) {
+        loadCount.text = [NSString stringWithFormat:@"加载出%zd条微博",count];
+    }else{
+    
+    loadCount.text = @"没有新的微博数据了";
+    }
+    
+    loadCount.textColor = [UIColor whiteColor];
+    loadCount.backgroundColor = [UIColor orangeColor];
+    loadCount.textAlignment = NSTextAlignmentCenter;
+    loadCount.size = CGSizeMake(SCREENW, 35);
+    loadCount.font = [UIFont systemFontOfSize:14];
+    loadCount.y = 64 - loadCount.height;
+    [self.navigationController.view insertSubview:loadCount belowSubview:self.navigationController.navigationBar];
+    [UIView animateWithDuration:2.0 animations:^{
+        loadCount.y = 64;
+        
+    } completion:^(BOOL finished) {
+        [UIView animateKeyframesWithDuration:2.0 delay:1.0 options:0 animations:^{
+            loadCount.y = 64 - loadCount.height;
+        } completion:^(BOOL finished) {
+            
+            loadCount.hidden = YES;
+            [loadCount removeFromSuperview];
+        }];
+        
+    }];
+    
+
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
