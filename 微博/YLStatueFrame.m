@@ -27,6 +27,24 @@
     CGSize contenLabelSize = [statuses.text sizeWithFont:FONT(13) constrainedToSize:CGSizeMake(SCREENW - 2 * MARGIN, MAXFLOAT)];
     self.contentLabelF = CGRectMake(headImageFX, contentLabelY, contenLabelSize.width, contenLabelSize.height);
     
-    self.cellHeight = CGRectGetMaxY(self.contentLabelF);
+    CGFloat creatTimeLabelX = CGRectGetMaxX(self.headImageF) + MARGIN;
+    CGFloat creatTimeLabelY = CGRectGetMaxY(self.nameLabelF) + MARGIN * 0.5;
+    CGSize creatTimeLabelSize = [statuses.created_at sizeWithFont:FONT(10)];
+    self.createdTimeLabelF = CGRectMake(creatTimeLabelX, creatTimeLabelY, creatTimeLabelSize.width, creatTimeLabelSize.height);
+    CGFloat sourceX = CGRectGetMaxX(self.createdTimeLabelF) + MARGIN * 0.5;
+    CGSize sourceSize = [statuses.source sizeWithFont:FONT(10)];
+    self.sourceF = CGRectMake(sourceX, creatTimeLabelY, sourceSize.width, sourceSize.height);
+    
+    
+    
+    self.cellHeight = CGRectGetMaxY(self.contentLabelF) + MARGIN * 0.5;
+    
+    if (statuses.thumbnail_pic) {
+        CGFloat thumbnail_picX = headImageFX;
+        CGFloat thumbnail_picY = CGRectGetMaxY(self.contentLabelF) + MARGIN;
+        CGSize thumbnail_picSize = CGSizeMake(70, 70);
+        self.thumbnail_pic = CGRectMake(thumbnail_picX, thumbnail_picY, thumbnail_picSize.width, thumbnail_picSize.height);
+        self.cellHeight = CGRectGetMaxY(self.thumbnail_pic) + MARGIN * 0.5;
+    }
 }
 @end

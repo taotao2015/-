@@ -18,7 +18,12 @@
 @property(assign,nonatomic)CGRect nameLabelF;
 //内容
 @property(assign,nonatomic)CGRect contentLabelF;
-
+//行高
 @property(assign,nonatomic)CGFloat cellHeight;
-
+//创建时间
+@property(assign,nonatomic)CGRect createdTimeLabelF;
+//来源
+@property(assign,nonatomic)CGRect sourceF;
+// 缩略图
+@property(assign,nonatomic)CGRect thumbnail_pic;
 @end

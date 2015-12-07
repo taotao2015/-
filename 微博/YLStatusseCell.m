@@ -11,6 +11,9 @@
 @property(weak,nonatomic)UIImageView *headImage;
 @property(weak,nonatomic)UILabel *nameLabel;
 @property(weak,nonatomic)UILabel *contentLabel;
+@property(weak,nonatomic)UILabel *creatTimeLabel;
+@property(weak,nonatomic)UILabel *sourceLabel;
+@property(weak,nonatomic)UIImageView *thumbnail_pic;
 
 @end
 
@@ -24,11 +27,26 @@
     
     NSString *imageUrl = statueFrame.statuses.user.profile_image_url;
     [self.headImage sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
-    
     self.nameLabel.frame = statueFrame.nameLabelF;
     self.nameLabel.text = statueFrame.statuses.user.screen_name;
     self.contentLabel.frame = statueFrame.contentLabelF;
     self.contentLabel.text = statueFrame.statuses.text;
+    
+    self.creatTimeLabel.frame = statueFrame.createdTimeLabelF;
+    self.creatTimeLabel.text = statueFrame.statuses.created_at;
+    self.sourceLabel.frame = statueFrame.sourceF;
+    self.sourceLabel.text = statueFrame.statuses.source;
+    self.thumbnail_pic.frame = statueFrame.thumbnail_pic;
+    
+    if (self.thumbnail_pic) {
+        self.thumbnail_pic.hidden = NO;
+        NSString *imageUrl = [NSString stringWithFormat:@"%@",statueFrame.statuses.thumbnail_pic];
+        [self.thumbnail_pic sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
+        
+    }else{
+    
+        self.thumbnail_pic.hidden = YES;
+    }
 }
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
@@ -50,6 +68,21 @@
         contentLabel.numberOfLines = 0;
         contentLabel.font = FONT(13);
         [self.contentView addSubview:contentLabel];
+        UILabel *creatTimeLabel = [[UILabel alloc]init];
+        self.creatTimeLabel = creatTimeLabel;
+        creatTimeLabel.textColor = [UIColor grayColor];
+        creatTimeLabel.font = FONT(10);
+        [self.contentView addSubview:creatTimeLabel];
+        
+        UILabel *sourceLabel = [[UILabel alloc]init];
+        self.sourceLabel = sourceLabel;
+        sourceLabel.textColor = [UIColor grayColor];
+        sourceLabel.font = FONT(10);
+        [self.contentView addSubview:sourceLabel];
+        UIImageView *thumbnail_pic = [[UIImageView alloc]init];
+        self.thumbnail_pic = thumbnail_pic;
+        [self.contentView addSubview:thumbnail_pic];
+        
         
     }
     return self;
