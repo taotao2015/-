@@ -25,6 +25,8 @@
 @property(assign,nonatomic)NSInteger comments_count;
 // 赞数
 @property(assign,nonatomic)NSInteger attitudes_count;
+// 图片地址列表
+@property(strong,nonatomic)NSArray *pic_urls;
 
 @property(assign,nonatomic)long long id;
 @end

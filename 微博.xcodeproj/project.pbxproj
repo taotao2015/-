@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B7E9A591C16E7A80012FB2F /* YLStatuePhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7E9A581C16E7A80012FB2F /* YLStatuePhoto.m */; };
+		2B7E9A5C1C16FD4E0012FB2F /* YLPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7E9A5B1C16FD4E0012FB2F /* YLPhoto.m */; };
 		2BBB22CB1C113DE600F75BDC /* YLpopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBB22CA1C113DE600F75BDC /* YLpopButton.m */; };
 		2BD005341C0F3CDC0009BBEC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD005331C0F3CDC0009BBEC /* main.m */; };
 		2BD005371C0F3CDC0009BBEC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD005361C0F3CDC0009BBEC /* AppDelegate.m */; };
@@ -56,6 +58,7 @@
 		2BE1319C1C1352D10046D56E /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE131921C1352D10046D56E /* AFURLResponseSerialization.m */; };
 		2BE1319D1C1352D10046D56E /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE131941C1352D10046D56E /* AFURLSessionManager.m */; };
 		2BE131A31C1357E00046D56E /* YLAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE131A21C1357E00046D56E /* YLAccount.m */; };
+		2BE281101C16C61C002C3201 /* YLStatuePhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE2810F1C16C61C002C3201 /* YLStatuePhotos.m */; };
 		2BE3E4FB1C11E71E0091A5E7 /* YLFearcherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE3E4FA1C11E71E0091A5E7 /* YLFearcherViewController.m */; };
 		2BEA5EE11C13CF660001540E /* UIWindow+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEA5EE01C13CF660001540E /* UIWindow+Extension.m */; };
 		2BEA5EE51C13F11A0001540E /* YLAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEA5EE41C13F11A0001540E /* YLAccountTool.m */; };
@@ -91,6 +94,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B7E9A571C16E7A80012FB2F /* YLStatuePhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLStatuePhoto.h; sourceTree = "<group>"; };
+		2B7E9A581C16E7A80012FB2F /* YLStatuePhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLStatuePhoto.m; sourceTree = "<group>"; };
+		2B7E9A5A1C16FD4E0012FB2F /* YLPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLPhoto.h; sourceTree = "<group>"; };
+		2B7E9A5B1C16FD4E0012FB2F /* YLPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLPhoto.m; sourceTree = "<group>"; };
 		2BBB22C91C113DE600F75BDC /* YLpopButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLpopButton.h; sourceTree = "<group>"; };
 		2BBB22CA1C113DE600F75BDC /* YLpopButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLpopButton.m; sourceTree = "<group>"; };
 		2BD0052F1C0F3CDC0009BBEC /* 微博.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "微博.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,6 +201,8 @@
 		2BE131941C1352D10046D56E /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 		2BE131A11C1357E00046D56E /* YLAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLAccount.h; sourceTree = "<group>"; };
 		2BE131A21C1357E00046D56E /* YLAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLAccount.m; sourceTree = "<group>"; };
+		2BE2810E1C16C61C002C3201 /* YLStatuePhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLStatuePhotos.h; sourceTree = "<group>"; };
+		2BE2810F1C16C61C002C3201 /* YLStatuePhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLStatuePhotos.m; sourceTree = "<group>"; };
 		2BE3E4F91C11E71E0091A5E7 /* YLFearcherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLFearcherViewController.h; sourceTree = "<group>"; };
 		2BE3E4FA1C11E71E0091A5E7 /* YLFearcherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLFearcherViewController.m; sourceTree = "<group>"; };
 		2BEA5EDF1C13CF660001540E /* UIWindow+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+Extension.h"; sourceTree = "<group>"; };
@@ -312,6 +321,8 @@
 			children = (
 				2BEA5EE61C1407700001540E /* YLUser.h */,
 				2BEA5EE71C1407700001540E /* YLUser.m */,
+				2B7E9A5A1C16FD4E0012FB2F /* YLPhoto.h */,
+				2B7E9A5B1C16FD4E0012FB2F /* YLPhoto.m */,
 				2BEA5F001C1421480001540E /* YLLoadNewStatus.h */,
 				2BEA5F011C1421480001540E /* YLLoadNewStatus.m */,
 				2BEA5F081C14A4460001540E /* IWUnReadCount.h */,
@@ -561,6 +572,10 @@
 				2BE0A7CD1C155BB200769FE9 /* YLStatusseCell.m */,
 				2BE0A8041C15E31A00769FE9 /* YLhomeCellTabBarView.h */,
 				2BE0A8051C15E31A00769FE9 /* YLhomeCellTabBarView.m */,
+				2BE2810E1C16C61C002C3201 /* YLStatuePhotos.h */,
+				2BE2810F1C16C61C002C3201 /* YLStatuePhotos.m */,
+				2B7E9A571C16E7A80012FB2F /* YLStatuePhoto.h */,
+				2B7E9A581C16E7A80012FB2F /* YLStatuePhoto.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -795,6 +810,7 @@
 				TargetAttributes = {
 					2BD0052E1C0F3CDC0009BBEC = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = Q6B9U45E92;
 					};
 					2BD005471C0F3CDC0009BBEC = {
 						CreatedOnToolsVersion = 7.1.1;
@@ -881,6 +897,7 @@
 				2BE0A7F41C15A13300769FE9 /* MKAnnotationView+WebCache.m in Sources */,
 				2BEA5EFB1C140E190001540E /* MJIvar.m in Sources */,
 				2BE0A7F71C15A13300769FE9 /* SDWebImageCompat.m in Sources */,
+				2BE281101C16C61C002C3201 /* YLStatuePhotos.m in Sources */,
 				2BE0A7F61C15A13300769FE9 /* SDImageCache.m in Sources */,
 				2BEA5F0A1C14A4460001540E /* IWUnReadCount.m in Sources */,
 				2BE0A7FC1C15A13300769FE9 /* SDWebImagePrefetcher.m in Sources */,
@@ -898,6 +915,7 @@
 				2BE0A7FF1C15A13300769FE9 /* UIImage+MultiFormat.m in Sources */,
 				2BE0A7FE1C15A13300769FE9 /* UIImage+GIF.m in Sources */,
 				2BE131961C1352D10046D56E /* AFHTTPRequestOperationManager.m in Sources */,
+				2B7E9A5C1C16FD4E0012FB2F /* YLPhoto.m in Sources */,
 				2BE131A31C1357E00046D56E /* YLAccount.m in Sources */,
 				2BDF1E7B1C0FC3710074AE18 /* UIView+YLView.m in Sources */,
 				2BEA5EE81C1407700001540E /* YLUser.m in Sources */,
@@ -909,6 +927,7 @@
 				2BEA5F021C1421480001540E /* YLLoadNewStatus.m in Sources */,
 				2BE0A7F91C15A13300769FE9 /* SDWebImageDownloader.m in Sources */,
 				2BD005671C0F3D0F0009BBEC /* YLTabBarViewController.m in Sources */,
+				2B7E9A591C16E7A80012FB2F /* YLStatuePhoto.m in Sources */,
 				2BDF1E9F1C107ADA0074AE18 /* YLdiscoverController.m in Sources */,
 				2BDF1E901C100FE10074AE18 /* YLhomeTittleButton.m in Sources */,
 				2BE1319B1C1352D10046D56E /* AFURLRequestSerialization.m in Sources */,
@@ -1037,12 +1056,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "/Users/tao/Desktop/微博/微博/PrefixHeader.pch";
 				INFOPLIST_FILE = "微博/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "none.--";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1051,12 +1073,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "/Users/tao/Desktop/微博/微博/PrefixHeader.pch";
 				INFOPLIST_FILE = "微博/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "none.--";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

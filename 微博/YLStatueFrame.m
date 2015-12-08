@@ -7,7 +7,9 @@
 //
 
 #import "YLStatueFrame.h"
+#import "YLStatuePhotos.h"
 #define MARGIN 10
+
 @implementation YLStatueFrame
 
 - (void)setStatuses:(YLLoadNewStatus *)statuses{
@@ -40,12 +42,18 @@
    
     CGFloat YLhomeCellTabBarViewY = CGRectGetMaxY(self.contentLabelF) + MARGIN;
     if (statuses.thumbnail_pic) {
-        CGFloat thumbnail_picX = headImageFX;
-        CGFloat thumbnail_picY = CGRectGetMaxY(self.contentLabelF) + MARGIN;
-        CGSize thumbnail_picSize = CGSizeMake(70, 70);
-        self.thumbnail_pic = CGRectMake(thumbnail_picX, thumbnail_picY, thumbnail_picSize.width, thumbnail_picSize.height);
-        
-        YLhomeCellTabBarViewY = CGRectGetMaxY(self.thumbnail_pic) + MARGIN;
+        //计算相册框的大小
+        CGFloat photoViewX = headImageFX;
+        CGFloat photoViewY = CGRectGetMaxY(self.contentLabelF) + MARGIN;
+       
+        CGSize photoSize = [YLStatuePhotos sizeWithPhotoCount:statuses.pic_urls.count];
+        self.photoViewF = CGRectMake(photoViewX, photoViewY, photoSize.width, photoSize.height);
+//        CGFloat thumbnail_picX = headImageFX;
+//        CGFloat thumbnail_picY = CGRectGetMaxY(self.contentLabelF) + MARGIN;
+//        CGSize thumbnail_picSize = CGSizeMake(70, 70);
+//        self.thumbnail_pic = CGRectMake(thumbnail_picX, thumbnail_picY, thumbnail_picSize.width, thumbnail_picSize.height);
+//        
+        YLhomeCellTabBarViewY = CGRectGetMaxY(self.photoViewF) + MARGIN;
     }
     
     

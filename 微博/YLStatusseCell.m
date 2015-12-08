@@ -8,6 +8,7 @@
 
 #import "YLStatusseCell.h"
 #import "YLhomeCellTabBarView.h"
+#import "YLStatuePhotos.h"
 @interface YLStatusseCell()
 @property(weak,nonatomic)UIImageView *headImage;
 @property(weak,nonatomic)UILabel *nameLabel;
@@ -16,6 +17,7 @@
 @property(weak,nonatomic)UILabel *sourceLabel;
 @property(weak,nonatomic)UIImageView *thumbnail_pic;
 @property(weak,nonatomic)YLhomeCellTabBarView *homeCellTabBarView;
+@property(weak,nonatomic)YLStatuePhotos *statusPhotos;
 @end
 
 @implementation YLStatusseCell
@@ -37,12 +39,15 @@
     self.creatTimeLabel.text = statueFrame.statuses.created_at;
     self.sourceLabel.frame = statueFrame.sourceF;
     self.sourceLabel.text = statueFrame.statuses.source;
-    self.thumbnail_pic.frame = statueFrame.thumbnail_pic;
+   // self.thumbnail_pic.frame = statueFrame.thumbnail_pic;
+    
     
     if (self.thumbnail_pic) {
         self.thumbnail_pic.hidden = NO;
-        NSString *imageUrl = [NSString stringWithFormat:@"%@",statueFrame.statuses.thumbnail_pic];
-        [self.thumbnail_pic sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
+//        NSString *imageUrl = [NSString stringWithFormat:@"%@",statueFrame.statuses.thumbnail_pic];
+//        [self.thumbnail_pic sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
+        self.statusPhotos.frame = statueFrame.photoViewF;
+        self.statusPhotos.pic_urls = statueFrame.statuses.pic_urls;
         
     }else{
     
@@ -91,6 +96,10 @@
         self.homeCellTabBarView = homeCellTabBarView;
         //homeCellTabBarView.backgroundColor = [UIColor redColor];
         [self.contentView addSubview:homeCellTabBarView];
+        
+        YLStatuePhotos *statusPhoto = [[YLStatuePhotos alloc]init];
+        self.statusPhotos = statusPhoto;
+        [self.contentView addSubview:statusPhoto];
     }
     return self;
 }

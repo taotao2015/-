@@ -25,7 +25,7 @@
 //来源
 @property(assign,nonatomic)CGRect sourceF;
 // 缩略图
-@property(assign,nonatomic)CGRect thumbnail_pic;
+@property(assign,nonatomic)CGRect photoViewF;
 //底部自定义视图
 @property(assign,nonatomic)CGRect YLhomeCellTabBarView;
 @end
