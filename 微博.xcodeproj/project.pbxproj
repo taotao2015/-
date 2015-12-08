@@ -44,6 +44,7 @@
 		2BE0A8011C15A13300769FE9 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE0A7EF1C15A13300769FE9 /* UIImageView+HighlightedWebCache.m */; };
 		2BE0A8021C15A13300769FE9 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE0A7F11C15A13300769FE9 /* UIImageView+WebCache.m */; };
 		2BE0A8031C15A13300769FE9 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE0A7F31C15A13300769FE9 /* UIView+WebCacheOperation.m */; };
+		2BE0A8061C15E31A00769FE9 /* YLhomeCellTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE0A8051C15E31A00769FE9 /* YLhomeCellTabBarView.m */; };
 		2BE1317B1C1322370046D56E /* YLOauthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE1317A1C1322370046D56E /* YLOauthViewController.m */; };
 		2BE131951C1352D10046D56E /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE131831C1352D10046D56E /* AFHTTPRequestOperation.m */; };
 		2BE131961C1352D10046D56E /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE131851C1352D10046D56E /* AFHTTPRequestOperationManager.m */; };
@@ -167,6 +168,8 @@
 		2BE0A7F11C15A13300769FE9 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		2BE0A7F21C15A13300769FE9 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		2BE0A7F31C15A13300769FE9 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		2BE0A8041C15E31A00769FE9 /* YLhomeCellTabBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLhomeCellTabBarView.h; sourceTree = "<group>"; };
+		2BE0A8051C15E31A00769FE9 /* YLhomeCellTabBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLhomeCellTabBarView.m; sourceTree = "<group>"; };
 		2BE131761C13216A0046D56E /* ReadMe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReadMe.m; path = "../16iPhone项目/ReadMe.m"; sourceTree = "<group>"; };
 		2BE131791C1322370046D56E /* YLOauthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLOauthViewController.h; sourceTree = "<group>"; };
 		2BE1317A1C1322370046D56E /* YLOauthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLOauthViewController.m; sourceTree = "<group>"; };
@@ -556,6 +559,8 @@
 			children = (
 				2BE0A7CC1C155BB200769FE9 /* YLStatusseCell.h */,
 				2BE0A7CD1C155BB200769FE9 /* YLStatusseCell.m */,
+				2BE0A8041C15E31A00769FE9 /* YLhomeCellTabBarView.h */,
+				2BE0A8051C15E31A00769FE9 /* YLhomeCellTabBarView.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -907,6 +912,7 @@
 				2BDF1E9F1C107ADA0074AE18 /* YLdiscoverController.m in Sources */,
 				2BDF1E901C100FE10074AE18 /* YLhomeTittleButton.m in Sources */,
 				2BE1319B1C1352D10046D56E /* AFURLRequestSerialization.m in Sources */,
+				2BE0A8061C15E31A00769FE9 /* YLhomeCellTabBarView.m in Sources */,
 				2BE131951C1352D10046D56E /* AFHTTPRequestOperation.m in Sources */,
 				2BE1319C1C1352D10046D56E /* AFURLResponseSerialization.m in Sources */,
 				2BE0A8031C15A13300769FE9 /* UIView+WebCacheOperation.m in Sources */,

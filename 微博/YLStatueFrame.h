@@ -26,4 +26,6 @@
 @property(assign,nonatomic)CGRect sourceF;
 // 缩略图
 @property(assign,nonatomic)CGRect thumbnail_pic;
+//底部自定义视图
+@property(assign,nonatomic)CGRect YLhomeCellTabBarView;
 @end

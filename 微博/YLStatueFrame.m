@@ -37,14 +37,19 @@
     
     
     
-    self.cellHeight = CGRectGetMaxY(self.contentLabelF) + MARGIN * 0.5;
-    
+   
+    CGFloat YLhomeCellTabBarViewY = CGRectGetMaxY(self.contentLabelF) + MARGIN;
     if (statuses.thumbnail_pic) {
         CGFloat thumbnail_picX = headImageFX;
         CGFloat thumbnail_picY = CGRectGetMaxY(self.contentLabelF) + MARGIN;
         CGSize thumbnail_picSize = CGSizeMake(70, 70);
         self.thumbnail_pic = CGRectMake(thumbnail_picX, thumbnail_picY, thumbnail_picSize.width, thumbnail_picSize.height);
-        self.cellHeight = CGRectGetMaxY(self.thumbnail_pic) + MARGIN * 0.5;
+        
+        YLhomeCellTabBarViewY = CGRectGetMaxY(self.thumbnail_pic) + MARGIN;
     }
+    
+    
+    self.YLhomeCellTabBarView = CGRectMake(0, YLhomeCellTabBarViewY, SCREENW, 35);
+     self.cellHeight = CGRectGetMaxY(self.YLhomeCellTabBarView) + MARGIN * 0.5;
 }
 @end

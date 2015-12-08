@@ -7,6 +7,7 @@
 //
 
 #import "YLStatusseCell.h"
+#import "YLhomeCellTabBarView.h"
 @interface YLStatusseCell()
 @property(weak,nonatomic)UIImageView *headImage;
 @property(weak,nonatomic)UILabel *nameLabel;
@@ -14,7 +15,7 @@
 @property(weak,nonatomic)UILabel *creatTimeLabel;
 @property(weak,nonatomic)UILabel *sourceLabel;
 @property(weak,nonatomic)UIImageView *thumbnail_pic;
-
+@property(weak,nonatomic)YLhomeCellTabBarView *homeCellTabBarView;
 @end
 
 @implementation YLStatusseCell
@@ -47,6 +48,8 @@
     
         self.thumbnail_pic.hidden = YES;
     }
+    self.homeCellTabBarView.frame = statueFrame.YLhomeCellTabBarView;
+    
 }
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
@@ -83,7 +86,10 @@
         self.thumbnail_pic = thumbnail_pic;
         [self.contentView addSubview:thumbnail_pic];
         
-        
+        YLhomeCellTabBarView *homeCellTabBarView = [[YLhomeCellTabBarView alloc]init];
+        self.homeCellTabBarView = homeCellTabBarView;
+        //homeCellTabBarView.backgroundColor = [UIColor redColor];
+        [self.contentView addSubview:homeCellTabBarView];
     }
     return self;
 }
