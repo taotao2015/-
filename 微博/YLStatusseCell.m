@@ -49,6 +49,7 @@
         self.thumbnail_pic.hidden = YES;
     }
     self.homeCellTabBarView.frame = statueFrame.YLhomeCellTabBarView;
+    self.homeCellTabBarView.status = statueFrame.statuses;
     
 }
 

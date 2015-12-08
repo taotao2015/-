@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "YLLoadNewStatus.h"
 @interface YLhomeCellTabBarView : UIView
 
+@property(strong,nonatomic)YLLoadNewStatus *status;
 @end

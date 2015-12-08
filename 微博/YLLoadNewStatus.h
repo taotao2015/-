@@ -19,5 +19,12 @@
 @property(copy,nonatomic)NSString *source;
 // 缩略图
 @property(copy,nonatomic)NSString *thumbnail_pic;
+// 转发数
+@property(assign,nonatomic)NSInteger reposts_count;
+//评论数
+@property(assign,nonatomic)NSInteger comments_count;
+// 赞数
+@property(assign,nonatomic)NSInteger attitudes_count;
+
 @property(assign,nonatomic)long long id;
 @end
