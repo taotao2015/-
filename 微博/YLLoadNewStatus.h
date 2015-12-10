@@ -28,5 +28,8 @@
 // 图片地址列表
 @property(strong,nonatomic)NSArray *pic_urls;
 
+// 转发微博
+@property(strong,nonatomic)YLLoadNewStatus *retweeted_status;
+
 @property(assign,nonatomic)long long id;
 @end

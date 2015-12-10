@@ -22,6 +22,7 @@
 #import "AFNetworking.h"
 #import "MJExtension.h"
 #import "UIImageView+WebCache.h"
+#import "NSString+Extension.h"
 #define FONT(x) [UIFont systemFontOfSize:x]
 #define RGB(r,g,b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1];
 #define RGBN(r,g,b,n) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:n];

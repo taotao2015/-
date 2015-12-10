@@ -10,4 +10,10 @@
 
 @implementation YLUser
 
+- (void)setMbtype:(NSInteger)mbtype{
+    _mbrank = mbtype;
+    _vip = mbtype > 2 ;
+
+}
+
 @end

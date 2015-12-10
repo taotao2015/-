@@ -13,7 +13,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-//        self.backgroundColor = [UIColor redColor];
+        self.backgroundColor = RGBN(239, 239, 243, 0.5);
+         //self.backgroundColor = [UIColor yellowColor];
         for (int i = 0; i < 9; i++) {
             YLStatuePhoto *photoView = [[YLStatuePhoto alloc]init];
 //            photoView.contentMode = UIViewContentModeScaleAspectFill;
@@ -59,7 +60,7 @@
 
     NSInteger maxCol = (count==4 ? 2 : 3);
     NSInteger col = count > (maxCol - 1) ? maxCol : count;
-    NSInteger row = (count + (maxCol - 1) )/ 3;
+    NSInteger row = (count + (maxCol - 1) )/ maxCol;
     CGFloat photoViewW = PHOTOWH * col + MARGIN * (col - 1);
     CGFloat photoViewH = PHOTOWH * row + MARGIN * (row - 1);
 

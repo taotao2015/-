@@ -15,14 +15,25 @@
 - (void)setStatuses:(YLLoadNewStatus *)statuses{
 
     _statuses = statuses;
+
+    CGFloat separateViewW = SCREENW;
+    CGFloat separateViewH = MARGIN;
+    self.separateViewF = CGRectMake(0, 0, separateViewW, separateViewH);
     CGFloat headImageFX = MARGIN;
-    CGFloat headImageFY = MARGIN;
+    CGFloat headImageFY = MARGIN * 2;
     CGFloat headImageW = 30;
     
     self.headImageF = CGRectMake(headImageFX, headImageFY, headImageW, headImageW);
     CGFloat nameLabelX = CGRectGetMaxX(self.headImageF) + MARGIN;
     CGSize nameLabelSize = [statuses.user.screen_name sizeWithFont:FONT(12)];
     self.nameLabelF = CGRectMake(nameLabelX, headImageFY, nameLabelSize.width, nameLabelSize.height);
+    // 设置会员frame
+    if (statuses.user.isVip) {
+        CGFloat memberX = CGRectGetMaxX(self.nameLabelF) + MARGIN;
+        CGFloat memberY = headImageFY;
+        self.memberViewF = CGRectMake(memberX, memberY, nameLabelSize.height, nameLabelSize.height);
+        
+    }
     
     //CGSize contenLabelSize = [statuses.text sizeWithFont:[UIFont systemFontOfSize:14]];
     CGFloat contentLabelY = CGRectGetMaxY(self.headImageF) + MARGIN;
@@ -57,7 +68,37 @@
     }
     
     
+    if (statuses.retweeted_status) {
+        
+        // 首先要计算转发微博正文
+        CGFloat retweetContentX = MARGIN;
+        CGFloat retweetContentY = MARGIN;
+        NSString *contentText = [NSString stringWithFormat:@"@%@:%@",statuses.retweeted_status.user.screen_name,statuses.retweeted_status.text];
+        CGSize retweetContentSize = [contentText sizeWithFont:FONT(10) constrainedToSize:CGSizeMake(SCREENW - 2 * MARGIN, MAXFLOAT)];
+        self.retweetContentF = CGRectMake(retweetContentX, retweetContentY, retweetContentSize.width, retweetContentSize.height);
+        
+        CGFloat retweetViewH = CGRectGetMaxY(self.retweetContentF) + MARGIN;
+        // 计算转发微博相册frame
+        
+        if (statuses.retweeted_status.pic_urls.count) {
+            CGFloat retweetPhotoX = MARGIN;
+            CGFloat retweetPhotoY = CGRectGetMaxY(self.retweetContentF) + MARGIN;
+            
+            CGSize retweetPhotoSize = [YLStatuePhotos sizeWithPhotoCount:statuses.retweeted_status.pic_urls.count];
+            self.retweetPhotoF = CGRectMake(retweetPhotoX, retweetPhotoY, retweetPhotoSize.width, retweetPhotoSize.height);
+            retweetViewH = CGRectGetMaxY(self.retweetPhotoF) + MARGIN;
+            
+        }
+        
+        // 计算转发微博整体的frame
+        
+        CGFloat retweetViewX = 0;
+        CGFloat retweetViewY = CGRectGetMaxY(self.contentLabelF) + MARGIN;
+        self.retweetViewF = CGRectMake(retweetViewX, retweetViewY, SCREENW, retweetViewH);
+        YLhomeCellTabBarViewY = CGRectGetMaxY(self.retweetViewF) + MARGIN;
+    }
+    
     self.YLhomeCellTabBarView = CGRectMake(0, YLhomeCellTabBarViewY, SCREENW, 35);
-     self.cellHeight = CGRectGetMaxY(self.YLhomeCellTabBarView) + MARGIN * 0.5;
+     self.cellHeight = CGRectGetMaxY(self.YLhomeCellTabBarView);
 }
 @end

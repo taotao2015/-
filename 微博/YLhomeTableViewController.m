@@ -42,7 +42,7 @@
     [self.tableView registerClass:[YLStatusseCell class] forCellReuseIdentifier:Identifier];
     //设置导航栏内容
     [self setNav];
-    
+   
     // 设置用户信息
     [self userInfoDictionary];
     YLLoadMoreView *loadView = [YLLoadMoreView loadMoreView];
@@ -144,7 +144,7 @@
     }
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        // NSLog(@"%@",responseObject);
+         //NSLog(@"%@",responseObject);
         [refreshControl endRefreshing];
         NSArray *array= responseObject[@"statuses"];
         
@@ -315,7 +315,8 @@
     
     [cell setStatueFrame:statueFrame];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+//    cell.contentView.backgroundColor = [UIColor clearColor];
+//    cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
 

@@ -12,4 +12,11 @@
 @property(copy,nonatomic)NSString *screen_name;
 // 用户头像地址
 @property(copy,nonatomic)NSString *profile_image_url;
+// 会员类型
+@property(assign,nonatomic)NSInteger mbtype;
+// 会员等级
+@property(assign,nonatomic)NSInteger mbrank;
+
+@property(assign,nonatomic,getter=isVip)BOOL vip;
+
 @end

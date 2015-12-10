@@ -28,4 +28,14 @@
 @property(assign,nonatomic)CGRect photoViewF;
 //底部自定义视图
 @property(assign,nonatomic)CGRect YLhomeCellTabBarView;
+
+@property(assign,nonatomic)CGRect retweetViewF;
+
+@property(assign,nonatomic)CGRect retweetContentF;
+
+@property(assign,nonatomic)CGRect retweetPhotoF;
+
+@property(assign,nonatomic)CGRect separateViewF;
+
+@property(assign,nonatomic)CGRect memberViewF;
 @end
