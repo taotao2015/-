@@ -62,6 +62,10 @@
 		2BE3E4FB1C11E71E0091A5E7 /* YLFearcherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE3E4FA1C11E71E0091A5E7 /* YLFearcherViewController.m */; };
 		2BE638C41C17FF80004CD6F5 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE638C31C17FF80004CD6F5 /* NSString+Extension.m */; };
 		2BE638C61C183797004CD6F5 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE638C51C183797004CD6F5 /* Foundation+Log.m */; };
+		2BE80C631C19A0120047C768 /* YLHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE80C621C19A0120047C768 /* YLHttpTool.m */; };
+		2BE80C661C19AD4F0047C768 /* YLBaseTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE80C651C19AD4F0047C768 /* YLBaseTool.m */; };
+		2BE80C691C19B2110047C768 /* YLLoadNewStatusRP.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE80C681C19B2110047C768 /* YLLoadNewStatusRP.m */; };
+		2BE80C6D1C19BDDD0047C768 /* YLhomeDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE80C6C1C19BDDD0047C768 /* YLhomeDataTool.m */; };
 		2BEA5EE11C13CF660001540E /* UIWindow+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEA5EE01C13CF660001540E /* UIWindow+Extension.m */; };
 		2BEA5EE51C13F11A0001540E /* YLAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEA5EE41C13F11A0001540E /* YLAccountTool.m */; };
 		2BEA5EE81C1407700001540E /* YLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEA5EE71C1407700001540E /* YLUser.m */; };
@@ -210,6 +214,14 @@
 		2BE638C21C17FF80004CD6F5 /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
 		2BE638C31C17FF80004CD6F5 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		2BE638C51C183797004CD6F5 /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
+		2BE80C611C19A0120047C768 /* YLHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLHttpTool.h; sourceTree = "<group>"; };
+		2BE80C621C19A0120047C768 /* YLHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLHttpTool.m; sourceTree = "<group>"; };
+		2BE80C641C19AD4F0047C768 /* YLBaseTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLBaseTool.h; sourceTree = "<group>"; };
+		2BE80C651C19AD4F0047C768 /* YLBaseTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLBaseTool.m; sourceTree = "<group>"; };
+		2BE80C671C19B2110047C768 /* YLLoadNewStatusRP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLLoadNewStatusRP.h; sourceTree = "<group>"; };
+		2BE80C681C19B2110047C768 /* YLLoadNewStatusRP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLLoadNewStatusRP.m; sourceTree = "<group>"; };
+		2BE80C6B1C19BDDD0047C768 /* YLhomeDataTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLhomeDataTool.h; sourceTree = "<group>"; };
+		2BE80C6C1C19BDDD0047C768 /* YLhomeDataTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLhomeDataTool.m; sourceTree = "<group>"; };
 		2BEA5EDF1C13CF660001540E /* UIWindow+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+Extension.h"; sourceTree = "<group>"; };
 		2BEA5EE01C13CF660001540E /* UIWindow+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+Extension.m"; sourceTree = "<group>"; };
 		2BEA5EE31C13F11A0001540E /* YLAccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLAccountTool.h; sourceTree = "<group>"; };
@@ -330,6 +342,8 @@
 				2B7E9A5B1C16FD4E0012FB2F /* YLPhoto.m */,
 				2BEA5F001C1421480001540E /* YLLoadNewStatus.h */,
 				2BEA5F011C1421480001540E /* YLLoadNewStatus.m */,
+				2BE80C671C19B2110047C768 /* YLLoadNewStatusRP.h */,
+				2BE80C681C19B2110047C768 /* YLLoadNewStatusRP.m */,
 				2BEA5F081C14A4460001540E /* IWUnReadCount.h */,
 				2BEA5F091C14A4460001540E /* IWUnReadCount.m */,
 				2BE0A7CF1C155BF000769FE9 /* YLStatueFrame.h */,
@@ -433,6 +447,7 @@
 		2BBB22C11C113C1A00F75BDC /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				2BE80C601C199F9C0047C768 /* NetWork */,
 				2BEA5EDE1C13CEFB0001540E /* Extension */,
 				2BBB22C41C113C4600F75BDC /* Controller */,
 				2BBB22C31C113C3F00F75BDC /* View */,
@@ -708,6 +723,27 @@
 			name = Fearcher;
 			sourceTree = "<group>";
 		};
+		2BE80C601C199F9C0047C768 /* NetWork */ = {
+			isa = PBXGroup;
+			children = (
+				2BE80C6A1C19BDA60047C768 /* HomeDataTool */,
+				2BE80C611C19A0120047C768 /* YLHttpTool.h */,
+				2BE80C621C19A0120047C768 /* YLHttpTool.m */,
+				2BE80C641C19AD4F0047C768 /* YLBaseTool.h */,
+				2BE80C651C19AD4F0047C768 /* YLBaseTool.m */,
+			);
+			name = NetWork;
+			sourceTree = "<group>";
+		};
+		2BE80C6A1C19BDA60047C768 /* HomeDataTool */ = {
+			isa = PBXGroup;
+			children = (
+				2BE80C6B1C19BDDD0047C768 /* YLhomeDataTool.h */,
+				2BE80C6C1C19BDDD0047C768 /* YLhomeDataTool.m */,
+			);
+			name = HomeDataTool;
+			sourceTree = "<group>";
+		};
 		2BEA5EDE1C13CEFB0001540E /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -910,6 +946,7 @@
 				2BE0A7F61C15A13300769FE9 /* SDImageCache.m in Sources */,
 				2BEA5F0A1C14A4460001540E /* IWUnReadCount.m in Sources */,
 				2BE0A7FC1C15A13300769FE9 /* SDWebImagePrefetcher.m in Sources */,
+				2BE80C631C19A0120047C768 /* YLHttpTool.m in Sources */,
 				2BE0A8011C15A13300769FE9 /* UIImageView+HighlightedWebCache.m in Sources */,
 				2BE0A7CA1C15169700769FE9 /* YLtabBarItem.m in Sources */,
 				2BEA5F051C14788D0001540E /* YLLoadMoreView.m in Sources */,
@@ -930,6 +967,8 @@
 				2BDF1E7B1C0FC3710074AE18 /* UIView+YLView.m in Sources */,
 				2BEA5EE81C1407700001540E /* YLUser.m in Sources */,
 				2BE0A7D11C155BF000769FE9 /* YLStatueFrame.m in Sources */,
+				2BE80C6D1C19BDDD0047C768 /* YLhomeDataTool.m in Sources */,
+				2BE80C661C19AD4F0047C768 /* YLBaseTool.m in Sources */,
 				2BDF1EA21C107B8E0074AE18 /* YLsearchView.m in Sources */,
 				2BDF1E961C102F090074AE18 /* YLNavigationController.m in Sources */,
 				2BDF1E7E1C0FCA030074AE18 /* YLPluseTabBar.m in Sources */,
@@ -945,6 +984,7 @@
 				2BE131951C1352D10046D56E /* AFHTTPRequestOperation.m in Sources */,
 				2BE1319C1C1352D10046D56E /* AFURLResponseSerialization.m in Sources */,
 				2BE0A8031C15A13300769FE9 /* UIView+WebCacheOperation.m in Sources */,
+				2BE80C691C19B2110047C768 /* YLLoadNewStatusRP.m in Sources */,
 				2BDF1E9C1C102F7A0074AE18 /* YLtemp3ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

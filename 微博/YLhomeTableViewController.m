@@ -18,7 +18,10 @@
 #import <objc/runtime.h>
 #import "YLStatusseCell.h"
 #import "YLStatueFrame.h"
-
+#import "YLHttpTool.h"
+#import "YLBaseTool.h"
+#import "YLLoadNewStatusRP.h"
+#import "YLhomeDataTool.h"
 #define LOAD_COUNT 20
 @interface YLhomeTableViewController ()
 @property (strong, nonatomic)UIButton *btn;
@@ -132,75 +135,163 @@
     
     
     
-    NSString *urlString = @"https://api.weibo.com/2/statuses/friends_timeline.json";
-    YLAccount *account = [YLAccountTool account];
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    parameters[@"access_token"] = account.access_token;
-    parameters[@"count"] = @(LOAD_COUNT);
+//    NSString *urlString = @"https://api.weibo.com/2/statuses/friends_timeline.json";
+//    YLAccount *account = [YLAccountTool account];
+   // NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+//    parameters[@"access_token"] = account.access_token;
+//    parameters[@"count"] = @(LOAD_COUNT);
+    long long since_id = 0;
     if ([self.statusFrames firstObject]) {
         YLStatueFrame *statusFrame = [self.statusFrames firstObject];
         
-        parameters[@"since_id"] = @([statusFrame.statuses id]);
+        since_id = [statusFrame.statuses id];
     }
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-         //NSLog(@"%@",responseObject);
-        [refreshControl endRefreshing];
-        NSArray *array= responseObject[@"statuses"];
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    [manager GET:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//         //NSLog(@"%@",responseObject);
+//        [refreshControl endRefreshing];
+//        NSArray *array= responseObject[@"statuses"];
+//        
+//        NSArray *status = [YLLoadNewStatus objectArrayWithKeyValuesArray:array];
+//        
+//        NSArray *statusFrame = [self convertStatusFrames:status];
+//        
+//        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, status.count)];
+//        [self.statusFrames insertObjects:statusFrame atIndexes:indexSet];
+//        [self.tableView reloadData];
+//      //  self.tabBarItem.badgeValue = nil;
+//        
+//        [self loadLabelCountWithCount:status.count];
+//        
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        
+//        NSLog(@"错误是:%@",error);
+//        [refreshControl endRefreshing];
+//    }];
+//    [YLHttpTool getWithUrl:urlString param:parameters success:^(id responseObject) {
+//            [refreshControl endRefreshing];
+//            NSArray *array= responseObject[@"statuses"];
+//    
+//            NSArray *status = [YLLoadNewStatus objectArrayWithKeyValuesArray:array];
+//    
+//            NSArray *statusFrame = [self convertStatusFrames:status];
+//    
+//            NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, status.count)];
+//            [self.statusFrames insertObjects:statusFrame atIndexes:indexSet];
+//            [self.tableView reloadData];
+//          //  self.tabBarItem.badgeValue = nil;
+//    
+//            [self loadLabelCountWithCount:status.count];
+//
+//        } faile:^(NSError *error) {
+//             NSLog(@"错误是:%@",error);
+//            [refreshControl endRefreshing];
+//        }];
+//    [YLBaseTool getWithUrl:urlString param:parameters class:[YLLoadNewStatusRP class] success:^(YLLoadNewStatusRP *respos) {
+//        NSArray *statusFrame = [self convertStatusFrames:respos.statuses];
+//        
+//        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, respos.statuses.count)];
+//        [self.statusFrames insertObjects:statusFrame atIndexes:indexSet];
+//        [self.tableView reloadData];
+//      //  self.tabBarItem.badgeValue = nil;
+//
+//        [self loadLabelCountWithCount:respos.statuses.count];
+//
+//    } faile:^(NSError *error) {
+//        NSLog(@"错误是:%@",error);
+//        [refreshControl endRefreshing];
+//        
+//    }];
+    [YLhomeDataTool getStauseWithSinceId:since_id maxId:0 count:LOAD_COUNT success:^(YLLoadNewStatusRP *resp) {
+        NSArray *statusFrame = [self convertStatusFrames:resp.statuses];
         
-        NSArray *status = [YLLoadNewStatus objectArrayWithKeyValuesArray:array];
-        
-        NSArray *statusFrame = [self convertStatusFrames:status];
-        
-        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, status.count)];
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, resp.statuses.count)];
         [self.statusFrames insertObjects:statusFrame atIndexes:indexSet];
         [self.tableView reloadData];
       //  self.tabBarItem.badgeValue = nil;
-        
-        [self loadLabelCountWithCount:status.count];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-        NSLog(@"错误是:%@",error);
         [refreshControl endRefreshing];
+        [self loadLabelCountWithCount:resp.statuses.count];
+        
+    } faile:^(NSError *error) {
+        
     }];
-
+    
 }
 
 
 - (void)loadMoreStatuses{
 
-    NSString *urlString = @"https://api.weibo.com/2/statuses/friends_timeline.json";
-    YLAccount *account = [YLAccountTool account];
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    parameters[@"access_token"] = account.access_token;
-    parameters[@"count"] = @(LOAD_COUNT);
+//    NSString *urlString = @"https://api.weibo.com/2/statuses/friends_timeline.json";
+//    YLAccount *account = [YLAccountTool account];
+//    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+//    parameters[@"access_token"] = account.access_token;
+//    parameters[@"count"] = @(LOAD_COUNT);
+    long long max_id = 0;
     if ([self.statusFrames firstObject]) {
         YLStatueFrame *statusFrame = [self.statusFrames firstObject];
         
-        parameters[@"max_id"] = @([statusFrame.statuses id] - 1);
+        max_id = [statusFrame.statuses id] - 1;
     }
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        // NSLog(@"%@",responseObject);
-        
-        NSArray *array= responseObject[@"statuses"];
-        
-        NSArray *status = [YLLoadNewStatus objectArrayWithKeyValuesArray:array];
-        
-        NSArray *statusFrame = [self convertStatusFrames:status];
-        
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    [manager GET:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        // NSLog(@"%@",responseObject);
+//        
+//        NSArray *array= responseObject[@"statuses"];
+//        
+//        NSArray *status = [YLLoadNewStatus objectArrayWithKeyValuesArray:array];
+//        
+//        NSArray *statusFrame = [self convertStatusFrames:status];
+//        
+//        [self.statusFrames addObjectsFromArray:statusFrame];
+//        [self.tableView reloadData];
+//        self.tableView.tableFooterView.hidden = YES;
+//        [self performSelector:@selector(method) withObject:nil afterDelay:3.0];
+//        
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        
+//        NSLog(@"错误是:%@",error);
+//        self.tableView.tableFooterView.hidden = YES;
+//    }];
+//        [YLHttpTool getWithUrl:urlString param:parameters success:^(id responseObject) {
+//            // NSLog(@"%@",responseObject);
+//            
+//            NSArray *array= responseObject[@"statuses"];
+//    
+//            NSArray *status = [YLLoadNewStatus objectArrayWithKeyValuesArray:array];
+//    
+//            NSArray *statusFrame = [self convertStatusFrames:status];
+//    
+//            [self.statusFrames addObjectsFromArray:statusFrame];
+//            [self.tableView reloadData];
+//            self.tableView.tableFooterView.hidden = YES;
+//            [self performSelector:@selector(method) withObject:nil afterDelay:3.0];
+//            
+//
+//        } faile:^(NSError *error) {
+//            
+//        }];
+//    [YLBaseTool getWithUrl:urlString param:parameters class:[YLLoadNewStatusRP class] success:^(YLLoadNewStatusRP *resp) {
+//        
+//        NSArray *statusFrame = [self convertStatusFrames:resp.statuses];
+//
+//        [self.statusFrames addObjectsFromArray:statusFrame];
+//        [self.tableView reloadData];
+//        self.tableView.tableFooterView.hidden = YES;
+//        [self performSelector:@selector(method) withObject:nil afterDelay:3.0];
+//
+//    } faile:^(NSError *error) {
+//        
+ //   }];
+    [YLhomeDataTool getStauseWithSinceId:0 maxId:max_id count:LOAD_COUNT success:^(YLLoadNewStatusRP *resp) {
+        NSArray *statusFrame = [self convertStatusFrames:resp.statuses];
         [self.statusFrames addObjectsFromArray:statusFrame];
         [self.tableView reloadData];
         self.tableView.tableFooterView.hidden = YES;
         [self performSelector:@selector(method) withObject:nil afterDelay:3.0];
+    } faile:^(NSError *error) {
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-        NSLog(@"错误是:%@",error);
-        self.tableView.tableFooterView.hidden = YES;
     }];
-
+    
 }
 - (void)method{
  self.tableView.tableFooterView.hidden = YES;
@@ -222,24 +313,60 @@
 
 - (void)showUnReadNumbers{
     
-    NSString *urlString = @"https://rm.api.weibo.com/2/remind/unread_count.json";
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    YLAccount *account = [YLAccountTool account];
-    parameters[@"access_token"] = account.access_token;
-    parameters[@"uid"] = account.uid;
+//    NSString *urlString = @"https://rm.api.weibo.com/2/remind/unread_count.json";
+//    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+//    YLAccount *account = [YLAccountTool account];
+//    parameters[@"access_token"] = account.access_token;
+//    parameters[@"uid"] = account.uid;
 
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        IWUnReadCount *unRead = [IWUnReadCount objectWithKeyValues:responseObject];
-        if (unRead.status) {
-           self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%zd",unRead.status];
-            [UIApplication sharedApplication].applicationIconBadgeNumber = unRead.status;
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    [manager GET:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        IWUnReadCount *unRead = [IWUnReadCount objectWithKeyValues:responseObject];
+//        if (unRead.status) {
+//           self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%zd",unRead.status];
+//            [UIApplication sharedApplication].applicationIconBadgeNumber = unRead.status;
+//        }else{
+//            self.tabBarItem.badgeValue = [NSString stringWithFormat:@"哈哈"];;
+//        }
+//        
+//        
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        
+//    }];
+//    [YLHttpTool getWithUrl:urlString param:parameters success:^(id responseObject) {
+//        IWUnReadCount *unRead = [IWUnReadCount objectWithKeyValues:responseObject];
+//        if (unRead.status) {
+//           self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%zd",unRead.status];
+//            [UIApplication sharedApplication].applicationIconBadgeNumber = unRead.status;
+//        }else{
+//            self.tabBarItem.badgeValue = [NSString stringWithFormat:@"哈哈"];;
+//        }
+//        
+//    } faile:^(NSError *error) {
+//        
+//    }];
+//    [YLBaseTool getWithUrl:urlString param:parameters class:[IWUnReadCount class] success:^(IWUnReadCount *resp) {
+//        //IWUnReadCount *unRead = [IWUnReadCount objectWithKeyValues:resp];
+//        if (resp.status) {
+//           self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%zd",resp.status];
+//            [UIApplication sharedApplication].applicationIconBadgeNumber = resp.status;
+//        }else{
+//            self.tabBarItem.badgeValue = [NSString stringWithFormat:@"哈哈"];;
+//        }
+//
+//        
+//    } faile:^(NSError *error) {
+//        
+//    }];
+    [YLhomeDataTool getUnreadWithSuccess:^(IWUnReadCount *resp) {
+        if (resp.status) {
+        self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%zd",resp.status];
+            [UIApplication sharedApplication].applicationIconBadgeNumber = resp.status;
         }else{
             self.tabBarItem.badgeValue = [NSString stringWithFormat:@"哈哈"];;
         }
-        
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+    } faile:^(NSError *error) {
         
     }];
 
