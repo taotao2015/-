@@ -16,4 +16,5 @@
 
 @interface YLPluseTabBar : UITabBar
 @property(weak, nonatomic)id<YLPluseTabBarDelegate> delegate;
+@property(copy, nonatomic)void (^pluseBlock)();
 @end

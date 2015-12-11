@@ -61,8 +61,12 @@
 
 -(void)pluseBtnClicked{
 
-    if ([self.delegate respondsToSelector:@selector(tabBar:pluseBtnClicked:)]) {
-        [self.delegate tabBar:self pluseBtnClicked:self.pluseBtn];
+//    if ([self.delegate respondsToSelector:@selector(tabBar:pluseBtnClicked:)]) {
+//        [self.delegate tabBar:self pluseBtnClicked:self.pluseBtn];
+//    }
+    
+    if (self.pluseBlock) {
+        self.pluseBlock();
     }
 }
 

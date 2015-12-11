@@ -12,6 +12,7 @@
 #import "YLdiscoverController.h"
 #import "YLNavigationController.h"
 #import "YLtabBarItem.h"
+#import "YLComposeView.h"
 @interface YLTabBarViewController ()<YLPluseTabBarDelegate>
 
 @end
@@ -21,7 +22,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     YLPluseTabBar *tabBar = [[YLPluseTabBar alloc]init];
-    tabBar.delegate = self;
+    //tabBar.delegate = self;
+    [tabBar setPluseBlock:^{
+        [self addComposeView];
+    }];
+    
     [self setValue:tabBar forKeyPath:@"tabBar"];
     
     YLhomeTableViewController *homeController = [[YLhomeTableViewController alloc]init];
@@ -59,4 +64,13 @@
 
     NSLog(@"%s",__func__);
 }
+
+- (void)addComposeView{
+    YLComposeView *compose = [[YLComposeView alloc]init];
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    [window addSubview:compose];
+
+}
+
+
 @end
