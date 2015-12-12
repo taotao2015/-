@@ -14,8 +14,14 @@
 //"remind_in" = 157679999;
 //uid = 2481076747;
 @property(copy,nonatomic)NSString *access_token;
+
 @property(assign,nonatomic)NSInteger expires_in;
+
 @property(assign,nonatomic)NSInteger remind_in;
+
 @property(copy,nonatomic)NSString *uid;
+
 @property(strong,nonatomic)NSDate *creat_time;
+
+@property(copy,nonatomic)NSString *screen_name;
 @end

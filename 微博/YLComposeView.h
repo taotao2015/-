@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface YLComposeView : UIView
-
+- (void)startAnimaion;
+- (instancetype)initWithTarget:(UIViewController *)target;
+- (void)show;
 @end

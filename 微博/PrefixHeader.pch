@@ -9,6 +9,11 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
+#endif /* PrefixHeader_pch */
+
+
+#if __OBJC__
+
 #ifdef DEBUG
 #define NSLog(...)  NSLog(__VA_ARGS__)
 #else
@@ -32,4 +37,6 @@
 #define KCFBundleShortVersionString @"KCFBundleShortVersionString"
 #define PHOTOWH 70
 #define MARGIN 10
-#endif /* PrefixHeader_pch */
+
+
+#endif

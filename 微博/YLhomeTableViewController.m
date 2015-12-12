@@ -111,6 +111,8 @@
         [user setKeyValues:responseObject];
         YLhomeTittleButton *button = (YLhomeTittleButton *)self.navigationItem.titleView;
         [button setTitle:user.screen_name forState:UIControlStateNormal];
+        account.screen_name = user.screen_name;
+        [YLAccountTool setAccount:account];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"错误信息：%@",error);

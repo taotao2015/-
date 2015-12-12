@@ -15,6 +15,8 @@
     [button setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
     [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_highlighted",imageName]] forState:UIControlStateHighlighted];
     button.size = button.currentImage.size;
+    [button setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
     [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     return [[UIBarButtonItem alloc]initWithCustomView:button];
     
@@ -36,4 +38,23 @@
     return [[UIBarButtonItem alloc]initWithCustomView:button];
 
 }
+
++ (instancetype)itemWithTitle:(NSString *)title target:(id)target action:(SEL)action{
+    
+    UIButton *button = [[UIButton alloc] init];
+    [button setTitle:title forState:UIControlStateNormal];
+    //设置不同状态下的文字颜色
+    [button setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+    [button sizeToFit];
+    
+    button.titleLabel.font = [UIFont systemFontOfSize:16];
+    
+    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    return [[UIBarButtonItem alloc] initWithCustomView:button];
+}
+
+
 @end

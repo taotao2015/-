@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "POP.h"
+typedef NS_ENUM(NSUInteger, YLComposeViewButtonType){
+    YLComposeViewButtonTypeUp,
+    YLComposeViewButtonTypeDown,
+};
 @interface YLComposeViewButton : UIButton
-
+- (void)animationWithType:(YLComposeViewButtonType)type count:(NSInteger)count;
 @end

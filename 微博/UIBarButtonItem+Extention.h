@@ -12,4 +12,5 @@
 
 +(instancetype)itemWithImageName:(NSString *)imageName addTarget:(id)target action:(SEL)action;
 +(instancetype)itemWithImageName:(NSString *)imageName addTarget:(id)target action:(SEL)action title:(NSString *)title;
++ (instancetype)itemWithTitle:(NSString *)title target:(id)target action:(SEL)action;
 @end

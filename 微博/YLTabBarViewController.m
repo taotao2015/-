@@ -66,9 +66,12 @@
 }
 
 - (void)addComposeView{
-    YLComposeView *compose = [[YLComposeView alloc]init];
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    [window addSubview:compose];
+    YLComposeView *compose = [[YLComposeView alloc]initWithTarget:self];
+    [compose show];
+//    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+//    [window addSubview:compose];
+    
+    //[compose startAnimaion];
 
 }
 

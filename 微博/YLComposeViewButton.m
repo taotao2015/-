@@ -30,8 +30,25 @@
     self.imageView.height = 80;
     self.titleLabel.x = 0;
     self.titleLabel.y = self.imageView.height;
-    self.titleLabel.height = self.height - self.imageView.height;
-    self.titleLabel.width = self.width;
+    self.titleLabel.width = self.imageView.width;
+    self.titleLabel.height = 110 - 80;
+    NSLog(@"%f,%f",self.imageView.width,self.width);
+//    self.titleLabel.width = self.width;
+//    self.titleLabel.height = self.height - self.imageView.height;
+}
+
+
+- (void)animationWithType:(YLComposeViewButtonType)type count:(NSInteger)count{
+    POPSpringAnimation *pop = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
+    if (type==YLComposeViewButtonTypeUp) {
+        pop.toValue = [NSValue valueWithCGPoint:CGPointMake(self.centerX,self.centerY - 350 )];
+    }else{
+        pop.toValue = [NSValue valueWithCGPoint:CGPointMake(self.centerX,self.centerY + 350 )];
+    }
+    pop.springBounciness = 12;
+    pop.springSpeed = 9;
+    pop.beginTime = CACurrentMediaTime() + 0.025 * count ;
+    [self pop_addAnimation:pop forKey:nil];
 
 }
 
