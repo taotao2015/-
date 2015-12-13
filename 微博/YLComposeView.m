@@ -94,7 +94,7 @@
     
     [self.childButtons enumerateObjectsUsingBlock:^(YLComposeViewButton *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (obj==btn) {
-            obj.transform = CGAffineTransformMakeScale(1.5, 1.5);
+            obj.transform = CGAffineTransformMakeScale(2, 2);
             
         }else{
             obj.transform = CGAffineTransformMakeScale(0.3, 0.3);
@@ -108,11 +108,15 @@
         obj.transform = CGAffineTransformIdentity;
         obj.alpha = 1;
     }];
-    YLComposeViewController *composeController = [[YLComposeViewController alloc]init];
-[self.target presentViewController:[[YLNavigationController alloc]initWithRootViewController:composeController] animated:YES completion:^{
-    [self removeFromSuperview];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        YLComposeViewController *composeController = [[YLComposeViewController alloc]init];
+        [self.target presentViewController:[[YLNavigationController alloc]initWithRootViewController:composeController] animated:YES completion:^{
+            [self removeFromSuperview];
+            
+        }];
 
-}];
+    });
     
 }];
 

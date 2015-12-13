@@ -8,7 +8,8 @@
 
 #import "YLComposeViewController.h"
 #import "YLAccountTool.h"
-@interface YLComposeViewController ()
+#import "YLTextView.h"
+@interface YLComposeViewController ()<UITextViewDelegate>
 
 @end
 
@@ -19,6 +20,10 @@
     self.title = @"发微博";
     self.view.backgroundColor = [UIColor whiteColor];
     [self setNav];
+    YLTextView *textView = [[YLTextView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    textView.ploceholder = @"第一次我说爱你的时候";
+    textView.delegate = self;
+    [self.view addSubview:textView];
     
 }
 
@@ -58,7 +63,9 @@
 }
 
 
-
+- (void)textViewDidChange:(UITextView *)textView{
+    self.navigationItem.rightBarButtonItem.enabled = textView.text.length;
+}
 
 
 - (void)back{

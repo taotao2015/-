@@ -10,6 +10,7 @@
 
 @interface YLTextView : UITextView
 
-
+@property(strong,nonatomic)UILabel *placeholederLabel;
+@property(copy,nonatomic)NSString *ploceholder;
 
 @end
