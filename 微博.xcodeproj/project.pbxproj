@@ -107,6 +107,9 @@
 		2BEA5F071C1478AA0001540E /* YLLoadMoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BEA5F061C1478AA0001540E /* YLLoadMoreView.xib */; };
 		2BEA5F0A1C14A4460001540E /* IWUnReadCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEA5F091C14A4460001540E /* IWUnReadCount.m */; };
 		2BEA78241C1C83BA008CB0FE /* YLTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEA78231C1C83BA008CB0FE /* YLTextView.m */; };
+		2BF5ED301C1D36FD0027911A /* YLComposeTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF5ED2F1C1D36FD0027911A /* YLComposeTabBarView.m */; };
+		2BF5ED361C1D52440027911A /* YLComposePhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF5ED351C1D52440027911A /* YLComposePhotosView.m */; };
+		2BF5ED391C1D5E3D0027911A /* YLComposePhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF5ED381C1D5E3D0027911A /* YLComposePhotoView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -344,6 +347,12 @@
 		2BEA5F091C14A4460001540E /* IWUnReadCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IWUnReadCount.m; sourceTree = "<group>"; };
 		2BEA78221C1C83BA008CB0FE /* YLTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLTextView.h; sourceTree = "<group>"; };
 		2BEA78231C1C83BA008CB0FE /* YLTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLTextView.m; sourceTree = "<group>"; };
+		2BF5ED2E1C1D36FD0027911A /* YLComposeTabBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLComposeTabBarView.h; sourceTree = "<group>"; };
+		2BF5ED2F1C1D36FD0027911A /* YLComposeTabBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLComposeTabBarView.m; sourceTree = "<group>"; };
+		2BF5ED341C1D52440027911A /* YLComposePhotosView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLComposePhotosView.h; sourceTree = "<group>"; };
+		2BF5ED351C1D52440027911A /* YLComposePhotosView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLComposePhotosView.m; sourceTree = "<group>"; };
+		2BF5ED371C1D5E3D0027911A /* YLComposePhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLComposePhotoView.h; sourceTree = "<group>"; };
+		2BF5ED381C1D5E3D0027911A /* YLComposePhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLComposePhotoView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -839,6 +848,12 @@
 				2BE5840E1C1AE1390070DDBE /* YLComposeViewButton.m */,
 				2BEA78221C1C83BA008CB0FE /* YLTextView.h */,
 				2BEA78231C1C83BA008CB0FE /* YLTextView.m */,
+				2BF5ED2E1C1D36FD0027911A /* YLComposeTabBarView.h */,
+				2BF5ED2F1C1D36FD0027911A /* YLComposeTabBarView.m */,
+				2BF5ED341C1D52440027911A /* YLComposePhotosView.h */,
+				2BF5ED351C1D52440027911A /* YLComposePhotosView.m */,
+				2BF5ED371C1D5E3D0027911A /* YLComposePhotoView.h */,
+				2BF5ED381C1D5E3D0027911A /* YLComposePhotoView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1172,6 +1187,7 @@
 				2BEA5F0A1C14A4460001540E /* IWUnReadCount.m in Sources */,
 				2BE0A7FC1C15A13300769FE9 /* SDWebImagePrefetcher.m in Sources */,
 				2BE80C631C19A0120047C768 /* YLHttpTool.m in Sources */,
+				2BF5ED391C1D5E3D0027911A /* YLComposePhotoView.m in Sources */,
 				2BE0A8011C15A13300769FE9 /* UIImageView+HighlightedWebCache.m in Sources */,
 				2BE0A7CA1C15169700769FE9 /* YLtabBarItem.m in Sources */,
 				2BEA5F051C14788D0001540E /* YLLoadMoreView.m in Sources */,
@@ -1208,6 +1224,7 @@
 				2BEA5F021C1421480001540E /* YLLoadNewStatus.m in Sources */,
 				2BE0A7F91C15A13300769FE9 /* SDWebImageDownloader.m in Sources */,
 				2BE8BB9C1C1C14AF0069CB07 /* POPCustomAnimation.mm in Sources */,
+				2BF5ED301C1D36FD0027911A /* YLComposeTabBarView.m in Sources */,
 				2BD005671C0F3D0F0009BBEC /* YLTabBarViewController.m in Sources */,
 				2B7E9A591C16E7A80012FB2F /* YLStatuePhoto.m in Sources */,
 				2BDF1E9F1C107ADA0074AE18 /* YLdiscoverController.m in Sources */,
@@ -1216,6 +1233,7 @@
 				2BE1319B1C1352D10046D56E /* AFURLRequestSerialization.m in Sources */,
 				2BE0A8061C15E31A00769FE9 /* YLhomeCellTabBarView.m in Sources */,
 				2BE131951C1352D10046D56E /* AFHTTPRequestOperation.m in Sources */,
+				2BF5ED361C1D52440027911A /* YLComposePhotosView.m in Sources */,
 				2BE1319C1C1352D10046D56E /* AFURLResponseSerialization.m in Sources */,
 				2BE8BB941C1C14AF0069CB07 /* POPAnimation.mm in Sources */,
 				2BEA78241C1C83BA008CB0FE /* YLTextView.m in Sources */,

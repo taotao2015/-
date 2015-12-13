@@ -124,8 +124,9 @@
 };
 
 - (void)show{
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    [window addSubview:self];
+//    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+//    [window addSubview:self];
+    [self.target.view addSubview:self];
     [self startAnimaion];
 }
 

@@ -9,8 +9,11 @@
 #import "YLComposeViewController.h"
 #import "YLAccountTool.h"
 #import "YLTextView.h"
-@interface YLComposeViewController ()<UITextViewDelegate>
-
+#import "YLComposeTabBarView.h"
+#import "YLComposePhotosView.h"
+@interface YLComposeViewController ()<UITextViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@property(weak,nonatomic)YLTextView *textView;
+@property(weak,nonatomic)YLComposePhotosView *photosView;
 @end
 
 @implementation YLComposeViewController
@@ -24,6 +27,22 @@
     textView.ploceholder = @"第一次我说爱你的时候";
     textView.delegate = self;
     [self.view addSubview:textView];
+    self.textView = textView;
+    
+    YLComposeTabBarView *tabBarView = [[YLComposeTabBarView alloc]init];
+    [tabBarView setButtonChilk:^(ComposeTabBarViewButtonType type) {
+        [self composeTabBarButtonClikWithType:type];
+    }];
+    tabBarView.width = SCREENW;
+    tabBarView.height = 44;
+    tabBarView.y = SCREENH - tabBarView.height;
+    [self.view addSubview:tabBarView];
+    YLComposePhotosView *photosView = [[YLComposePhotosView alloc]init];
+    self.photosView = photosView;
+    photosView.width = SCREENW;
+    photosView.height = SCREENW;
+    photosView.y = 200;
+    [self.view addSubview:photosView];
     
 }
 
@@ -62,6 +81,57 @@
     
 }
 
+- (void)composeTabBarButtonClikWithType:(ComposeTabBarViewButtonType)type{
+    switch (type) {
+        case ComposeTabBarViewButtonTypeCamer:{
+            [self selectImageWithSourceType:UIImagePickerControllerSourceTypeCamera];
+            NSLog(@"camer");
+            break;
+        }
+        case ComposeTabBarViewButtonTypePicture:{
+            [self selectImageWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+//            NSLog(@"picture");
+//            UIImagePickerController *controller = [[UIImagePickerController alloc]init];
+//            controller.delegate = self;
+//            controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//            controller.allowsEditing = YES;
+//            [self presentViewController:controller animated:YES completion:nil];
+            break;
+        }
+        case ComposeTabBarViewButtonTypeMention:
+            NSLog(@"mention");
+            break;
+        case ComposeTabBarViewButtonTypeTrend:
+            NSLog(@"trend");
+            break;
+        case ComposeTabBarViewButtonTypeEmotion:
+            NSLog(@"emotion");
+            break;
+    }
+
+}
+
+- (void)selectImageWithSourceType:(UIImagePickerControllerSourceType )type{
+    if (![UIImagePickerController isSourceTypeAvailable:type]) {
+        NSLog(@"不可用");
+        return;
+    }
+    UIImagePickerController *controller = [[UIImagePickerController alloc]init];
+    controller.delegate = self;
+    controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    controller.allowsEditing = YES;
+    [self presentViewController:controller animated:YES completion:nil];
+
+
+}
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo{
+    //self.textView.backgroundColor = [UIColor colorWithPatternImage:image];
+    //YLComposePhotosView *photosView = [[YLComposePhotosView alloc]init];
+    //[photosView addImage:image];
+    [self.photosView addImage:image];
+    [picker dismissViewControllerAnimated:YES completion:nil];
+
+}
 
 - (void)textViewDidChange:(UITextView *)textView{
     self.navigationItem.rightBarButtonItem.enabled = textView.text.length;
