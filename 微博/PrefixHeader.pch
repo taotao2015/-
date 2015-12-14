@@ -34,6 +34,7 @@
 #define RGBN(r,g,b,n) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:n];
 #define SCREENW  [UIScreen mainScreen].bounds.size.width
 #define SCREENH  [UIScreen mainScreen].bounds.size.height
+#define randomColor [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1]
 #define KCFBundleShortVersionString @"KCFBundleShortVersionString"
 #define PHOTOWH 70
 #define MARGIN 10

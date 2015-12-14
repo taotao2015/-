@@ -11,9 +11,12 @@
 #import "YLTextView.h"
 #import "YLComposeTabBarView.h"
 #import "YLComposePhotosView.h"
+#import "YLEmotionKuyboardView.h"
 @interface YLComposeViewController ()<UITextViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property(weak,nonatomic)YLTextView *textView;
 @property(weak,nonatomic)YLComposePhotosView *photosView;
+@property(weak,nonatomic)YLComposeTabBarView *tabBarView;
+@property(assign,nonatomic)BOOL isSystermKeyboard;
 @end
 
 @implementation YLComposeViewController
@@ -22,28 +25,15 @@
     [super viewDidLoad];
     self.title = @"发微博";
     self.view.backgroundColor = [UIColor whiteColor];
+    // 设置导航栏
     [self setNav];
-    YLTextView *textView = [[YLTextView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    textView.ploceholder = @"第一次我说爱你的时候";
-    textView.delegate = self;
-    [self.view addSubview:textView];
-    self.textView = textView;
     
-    YLComposeTabBarView *tabBarView = [[YLComposeTabBarView alloc]init];
-    [tabBarView setButtonChilk:^(ComposeTabBarViewButtonType type) {
-        [self composeTabBarButtonClikWithType:type];
-    }];
-    tabBarView.width = SCREENW;
-    tabBarView.height = 44;
-    tabBarView.y = SCREENH - tabBarView.height;
-    [self.view addSubview:tabBarView];
-    YLComposePhotosView *photosView = [[YLComposePhotosView alloc]init];
-    self.photosView = photosView;
-    photosView.width = SCREENW;
-    photosView.height = SCREENW;
-    photosView.y = 200;
-    [self.view addSubview:photosView];
+    // 添加子控件
+    [self addChildView];
     
+   
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(KeyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
 }
 
 - (void)setNav{
@@ -81,6 +71,33 @@
     
 }
 
+    // 添加子控件
+- (void)addChildView{
+    YLTextView *textView = [[YLTextView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    textView.ploceholder = @"第一次我说爱你的时候";
+    textView.delegate = self;
+    [self.view addSubview:textView];
+    self.textView = textView;
+    
+    YLComposeTabBarView *tabBarView = [[YLComposeTabBarView alloc]init];
+    [tabBarView setButtonChilk:^(ComposeTabBarViewButtonType type) {
+        [self composeTabBarButtonClikWithType:type];
+    }];
+    self.tabBarView = tabBarView;
+    tabBarView.width = SCREENW;
+    tabBarView.height = 44;
+    tabBarView.y = SCREENH - tabBarView.height;
+    [self.view addSubview:tabBarView];
+    YLComposePhotosView *photosView = [[YLComposePhotosView alloc]init];
+    self.photosView = photosView;
+    photosView.width = SCREENW;
+    photosView.height = SCREENW;
+    photosView.y = 200;
+    //[self.view addSubview:photosView];
+    [self.view insertSubview:photosView belowSubview:tabBarView];
+
+}
+
 - (void)composeTabBarButtonClikWithType:(ComposeTabBarViewButtonType)type{
     switch (type) {
         case ComposeTabBarViewButtonTypeCamer:{
@@ -105,8 +122,24 @@
             NSLog(@"trend");
             break;
         case ComposeTabBarViewButtonTypeEmotion:
+        {
             NSLog(@"emotion");
+            self.isSystermKeyboard = YES;
+            [self.textView resignFirstResponder];
+            if (self.textView.inputView) {
+                self.textView.inputView = nil;
+            }else{
+                YLEmotionKuyboardView *emotionKeyboardView = [[YLEmotionKuyboardView alloc]init];
+                emotionKeyboardView.width = SCREENW;
+                emotionKeyboardView.height = 280;
+              //  emotionKeyboardView.y = SCREENH - emotionKeyboardView.height;
+                self.textView.inputView = emotionKeyboardView;
+            }
+            self.isSystermKeyboard = NO;
+            [self.textView becomeFirstResponder];
+    
             break;
+        }
     }
 
 }
@@ -130,6 +163,27 @@
     //[photosView addImage:image];
     [self.photosView addImage:image];
     [picker dismissViewControllerAnimated:YES completion:nil];
+
+}
+
+// 通知
+- (void)KeyboardWillChangeFrame:(NSNotification *)noti{
+   // NSLog(@"%@",noti);
+//        NSConcreteNotification 0x7f8bdbe54290 {name = UIKeyboardWillChangeFrameNotification; userInfo = {
+//        UIKeyboardFrameBeginUserInfoKey = NSRect: {{0, 568}, {320, 253}},
+//        UIKeyboardCenterEndUserInfoKey = NSPoint: {160, 441.5},
+//        UIKeyboardBoundsUserInfoKey = NSRect: {{0, 0}, {320, 253}},
+//        UIKeyboardFrameEndUserInfoKey = NSRect: {{0, 315}, {320, 253}},
+//        UIKeyboardAnimationDurationUserInfoKey = 0.25,
+//        UIKeyboardCenterBeginUserInfoKey = NSPoint: {160, 694.5},
+//        UIKeyboardAnimationCurveUserInfoKey = 7,
+//        UIKeyboardIsLocalUserInfoKey = 1
+    if (!self.isSystermKeyboard) {
+        NSValue *value = noti.userInfo[UIKeyboardFrameEndUserInfoKey];
+        [UIView animateWithDuration:0.25 animations:^{
+           self.tabBarView.y = [value CGRectValue].origin.y - self.tabBarView.height;
+        }];
+    }
 
 }
 

@@ -32,7 +32,7 @@
     self.titleLabel.y = self.imageView.height;
     self.titleLabel.width = self.imageView.width;
     self.titleLabel.height = 110 - 80;
-    NSLog(@"%f,%f",self.imageView.width,self.width);
+   // NSLog(@"%f,%f",self.imageView.width,self.width);
 //    self.titleLabel.width = self.width;
 //    self.titleLabel.height = self.height - self.imageView.height;
 }
