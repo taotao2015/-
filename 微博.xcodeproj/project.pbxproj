@@ -13,6 +13,8 @@
 		2BAE91341C1EE5A600DCBA67 /* YLEmotionTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAE91331C1EE5A600DCBA67 /* YLEmotionTabBar.m */; };
 		2BAE91371C1EFDA700DCBA67 /* YLEmotionTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAE91361C1EFDA700DCBA67 /* YLEmotionTabBarButton.m */; };
 		2BAE913A1C1F173900DCBA67 /* YLEmotionKeyboardListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAE91391C1F173900DCBA67 /* YLEmotionKeyboardListView.m */; };
+		2BAE913C1C1F23FA00DCBA67 /* EmotionIcons in Resources */ = {isa = PBXBuildFile; fileRef = 2BAE913B1C1F23FA00DCBA67 /* EmotionIcons */; };
+		2BAE913F1C1F2B9600DCBA67 /* YLEmotions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAE913E1C1F2B9600DCBA67 /* YLEmotions.m */; };
 		2BBB22CB1C113DE600F75BDC /* YLpopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBB22CA1C113DE600F75BDC /* YLpopButton.m */; };
 		2BD005341C0F3CDC0009BBEC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD005331C0F3CDC0009BBEC /* main.m */; };
 		2BD005371C0F3CDC0009BBEC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD005361C0F3CDC0009BBEC /* AppDelegate.m */; };
@@ -146,6 +148,9 @@
 		2BAE91361C1EFDA700DCBA67 /* YLEmotionTabBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLEmotionTabBarButton.m; sourceTree = "<group>"; };
 		2BAE91381C1F173900DCBA67 /* YLEmotionKeyboardListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLEmotionKeyboardListView.h; sourceTree = "<group>"; };
 		2BAE91391C1F173900DCBA67 /* YLEmotionKeyboardListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLEmotionKeyboardListView.m; sourceTree = "<group>"; };
+		2BAE913B1C1F23FA00DCBA67 /* EmotionIcons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = EmotionIcons; sourceTree = "<group>"; };
+		2BAE913D1C1F2B9600DCBA67 /* YLEmotions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLEmotions.h; sourceTree = "<group>"; };
+		2BAE913E1C1F2B9600DCBA67 /* YLEmotions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLEmotions.m; sourceTree = "<group>"; };
 		2BBB22C91C113DE600F75BDC /* YLpopButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLpopButton.h; sourceTree = "<group>"; };
 		2BBB22CA1C113DE600F75BDC /* YLpopButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLpopButton.m; sourceTree = "<group>"; };
 		2BD0052F1C0F3CDC0009BBEC /* 微博.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "微博.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -418,7 +423,6 @@
 				2BBB22B31C113B0800F75BDC /* Discover */,
 				2BBB22B41C113B1500F75BDC /* Profile */,
 				2BBB22C11C113C1A00F75BDC /* Public */,
-				2BE0A7C61C15126100769FE9 /* Images-2.xcassets */,
 				2BBB22C51C113CA800F75BDC /* Temp */,
 			);
 			name = Classes;
@@ -680,6 +684,7 @@
 			isa = PBXGroup;
 			children = (
 				2BBB22B01C113AD100F75BDC /* Classes */,
+				2BE0A7C61C15126100769FE9 /* Images-2.xcassets */,
 				2BD005351C0F3CDC0009BBEC /* AppDelegate.h */,
 				2BD005361C0F3CDC0009BBEC /* AppDelegate.m */,
 				2BE1317C1C1352610046D56E /* Lib */,
@@ -691,6 +696,7 @@
 		2BD005321C0F3CDC0009BBEC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2BAE913B1C1F23FA00DCBA67 /* EmotionIcons */,
 				2BE584101C1AFBA20070DDBE /* compose.plist */,
 				2BE638C51C183797004CD6F5 /* Foundation+Log.m */,
 				2BD005431C0F3CDC0009BBEC /* Info.plist */,
@@ -891,6 +897,8 @@
 			children = (
 				2BE584121C1AFF530070DDBE /* YLComposeButtonInfo.h */,
 				2BE584131C1AFF530070DDBE /* YLComposeButtonInfo.m */,
+				2BAE913D1C1F2B9600DCBA67 /* YLEmotions.h */,
+				2BAE913E1C1F2B9600DCBA67 /* YLEmotions.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1147,6 +1155,7 @@
 				2BE0A7C71C15126100769FE9 /* Images-2.xcassets in Resources */,
 				2BE584111C1AFBA20070DDBE /* compose.plist in Resources */,
 				2BEA5F071C1478AA0001540E /* YLLoadMoreView.xib in Resources */,
+				2BAE913C1C1F23FA00DCBA67 /* EmotionIcons in Resources */,
 				2BDF1EA81C109E6F0074AE18 /* YLsearchView.xib in Resources */,
 				2BE8BB911C1C14AF0069CB07 /* InfoPlist.strings in Resources */,
 			);
@@ -1259,6 +1268,7 @@
 				2BAE91371C1EFDA700DCBA67 /* YLEmotionTabBarButton.m in Sources */,
 				2BD005671C0F3D0F0009BBEC /* YLTabBarViewController.m in Sources */,
 				2B7E9A591C16E7A80012FB2F /* YLStatuePhoto.m in Sources */,
+				2BAE913F1C1F2B9600DCBA67 /* YLEmotions.m in Sources */,
 				2BDF1E9F1C107ADA0074AE18 /* YLdiscoverController.m in Sources */,
 				2BDF1E901C100FE10074AE18 /* YLhomeTittleButton.m in Sources */,
 				2BE8BBA21C1C14AF0069CB07 /* POPSpringAnimation.mm in Sources */,

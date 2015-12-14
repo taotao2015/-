@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface YLEmotionKeyboardListView : UIView
-
+@property(strong,nonatomic)NSArray *emotions;
 @end

@@ -24,9 +24,9 @@
         [self addChildButtonWithTitle:@"Emoji" bgImageName:@"compose_emotion_table_mid" type:YLEmotionTabBarButtonTypeEmoji];
         //[self addChildButtonWithTitle:@"浪小花" bgImageName:@"compose_emotion_table_right" type:];
         [self addChildButtonWithTitle:@"浪小花" bgImageName:@"compose_emotion_table_right" type:YLEmotionTabBarButtonTypeLxh];
-       YLEmotionTabBarButton *button = [self viewWithTag:YLEmotionTabBarButtonTypeDefault];
-        button.enabled = NO;
-        self.currentButton = button;
+//       YLEmotionTabBarButton *button = [self viewWithTag:YLEmotionTabBarButtonTypeDefault];
+//        button.enabled = NO;
+//        self.currentButton = button;
     }
     return self;
 }
@@ -47,8 +47,11 @@
 
 - (void)setTabBarButtonClicked:(void (^)(YLEmotionTabBarButtonType))tabBarButtonClicked{
     _tabBarButtonClicked = tabBarButtonClicked;
+    YLEmotionTabBarButton *button = [self viewWithTag:YLEmotionTabBarButtonTypeDefault];
+    button.enabled = NO;
+    self.currentButton = button;
+    [self buttonClicked:button];
     
-
 }
 
 - (void)layoutSubviews{

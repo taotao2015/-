@@ -9,6 +9,7 @@
 #import "YLEmotionKuyboardView.h"
 #import "YLEmotionTabBar.h"
 #import "YLEmotionKeyboardListView.h"
+#import "YLEmotions.h"
 @interface YLEmotionKuyboardView()
 @property(strong,nonatomic)YLEmotionKeyboardListView *recentListView;
 @property(strong,nonatomic)YLEmotionKeyboardListView *defaultListView;
@@ -70,9 +71,15 @@
             [self addSubview:self.recentListView];
             break;
         case YLEmotionTabBarButtonTypeDefault:
+        {
             NSLog(@"default");
+           NSString *file = [[NSBundle mainBundle]pathForResource:@"EmotionIcons/default/info.plist" ofType:@""];
+            NSArray *emotions = [YLEmotions objectArrayWithFile:file];
+            self.defaultListView.emotions = emotions;
+            
             [self addSubview:self.defaultListView];
             break;
+        }
         case YLEmotionTabBarButtonTypeEmoji:
             NSLog(@"emoji");
             [self addSubview:self.emojiListView];
