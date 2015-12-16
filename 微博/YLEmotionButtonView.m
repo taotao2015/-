@@ -16,6 +16,8 @@
 @property(weak,nonatomic)UIButton *deleteBtn;
 
 @property(copy,nonatomic)NSMutableArray *emotionButtons;
+
+@property(weak,nonatomic)YLPopView *popView;
 @end
 
 @implementation YLEmotionButtonView
@@ -29,6 +31,14 @@
     return _emotionButtons;
 
 }
+- (YLPopView *)popView{
+
+    if (!_popView) {
+        _popView = [YLPopView popView];
+        
+    }
+    return _popView;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -40,10 +50,56 @@
         [self addSubview:deleteBtn];
         self.deleteBtn = deleteBtn;
         
+        // 给当前的view添加一个长按手势
+        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]init];
+        [longPress addTarget:self action:@selector(longPress:)];
+        [self addGestureRecognizer:longPress];
+        
     }
     return self;
 }
 
+
+- (void)longPress:(UILongPressGestureRecognizer *)longPress{
+    
+    NSLog(@"打出来了吗");
+    if (longPress.state == UIGestureRecognizerStateBegan || longPress.state == UIGestureRecognizerStateChanged ) {
+        CGPoint point = [longPress locationInView:self];
+        
+        __block YLEmotionButton *resultButton = nil;
+        [self.emotionButtons enumerateObjectsUsingBlock:^(YLEmotionButton *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+          BOOL result = CGRectContainsPoint(obj.frame, point);
+            if (result) {
+                resultButton = obj;
+                *stop = YES;
+            }
+            
+        }];
+        
+        if (resultButton) {
+            UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
+            // 这是一次着了较长时间的bug，今后必须注意，只有懒加载才只有一个视图view ,产生相应效果
+            
+//            YLPopView *popView = [YLPopView popView];
+//            self.popView = popView;
+            self.popView.emotionButton.emotion = resultButton.emotion;
+            [self.popView.emotionButton.titleLabel setFont:FONT(35)];
+            CGRect rect = [resultButton convertRect:resultButton.bounds toView:window];
+            self.popView.centerX = CGRectGetMidX(rect);
+            self.popView.y = CGRectGetMidY(rect) - self.popView.height;
+            [window addSubview:self.popView];
+            
+            
+        }
+        
+        
+    }else {
+        
+        [self.popView removeFromSuperview];
+        
+    }
+
+}
 
 - (void)setEmotions:(NSArray *)emotions{
 
