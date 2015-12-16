@@ -12,6 +12,7 @@
 		2B5F6FE31C21C58D006FDA7C /* SDBrowserImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5F6FDD1C21C58D006FDA7C /* SDBrowserImageView.m */; };
 		2B5F6FE41C21C58D006FDA7C /* SDPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5F6FDF1C21C58D006FDA7C /* SDPhotoBrowser.m */; };
 		2B5F6FE51C21C58D006FDA7C /* SDWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5F6FE21C21C58D006FDA7C /* SDWaitingView.m */; };
+		2B5F6FE81C21DC13006FDA7C /* UIButton+RemoveHighlightEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5F6FE71C21DC13006FDA7C /* UIButton+RemoveHighlightEffect.m */; };
 		2B7E9A591C16E7A80012FB2F /* YLStatuePhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7E9A581C16E7A80012FB2F /* YLStatuePhoto.m */; };
 		2B7E9A5C1C16FD4E0012FB2F /* YLPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7E9A5B1C16FD4E0012FB2F /* YLPhoto.m */; };
 		2BAE91311C1EC81E00DCBA67 /* YLEmotionKuyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAE91301C1EC81E00DCBA67 /* YLEmotionKuyboardView.m */; };
@@ -152,6 +153,8 @@
 		2B5F6FE01C21C58D006FDA7C /* SDPhotoBrowserConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowserConfig.h; sourceTree = "<group>"; };
 		2B5F6FE11C21C58D006FDA7C /* SDWaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWaitingView.h; sourceTree = "<group>"; };
 		2B5F6FE21C21C58D006FDA7C /* SDWaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWaitingView.m; sourceTree = "<group>"; };
+		2B5F6FE61C21DC13006FDA7C /* UIButton+RemoveHighlightEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+RemoveHighlightEffect.h"; sourceTree = "<group>"; };
+		2B5F6FE71C21DC13006FDA7C /* UIButton+RemoveHighlightEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+RemoveHighlightEffect.m"; sourceTree = "<group>"; };
 		2B7E9A571C16E7A80012FB2F /* YLStatuePhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLStatuePhoto.h; sourceTree = "<group>"; };
 		2B7E9A581C16E7A80012FB2F /* YLStatuePhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLStatuePhoto.m; sourceTree = "<group>"; };
 		2B7E9A5A1C16FD4E0012FB2F /* YLPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLPhoto.h; sourceTree = "<group>"; };
@@ -1038,6 +1041,8 @@
 		2BEA5EDE1C13CEFB0001540E /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				2B5F6FE61C21DC13006FDA7C /* UIButton+RemoveHighlightEffect.h */,
+				2B5F6FE71C21DC13006FDA7C /* UIButton+RemoveHighlightEffect.m */,
 				2B5F6FD81C21B94A006FDA7C /* NSString+Emoji.h */,
 				2B5F6FD91C21B94A006FDA7C /* NSString+Emoji.m */,
 				2BEA5EDF1C13CF660001540E /* UIWindow+Extension.h */,
@@ -1217,6 +1222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B5F6FE81C21DC13006FDA7C /* UIButton+RemoveHighlightEffect.m in Sources */,
 				2BEA5EFD1C140E190001540E /* NSObject+MJCoding.m in Sources */,
 				2BE8BB971C1C14AF0069CB07 /* POPAnimationRuntime.mm in Sources */,
 				2BE8BB9F1C1C14AF0069CB07 /* POPLayerExtras.mm in Sources */,

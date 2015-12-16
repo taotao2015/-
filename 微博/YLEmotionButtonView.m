@@ -9,12 +9,14 @@
 #import "YLEmotionButtonView.h"
 #import "YLEmotions.h"
 #import "NSString+Emoji.h"
+#import "UIButton+RemoveHighlightEffect.h"
 @implementation YLEmotionButtonView
 - (void)setEmotions:(NSArray *)emotions{
 
     _emotions = emotions;
     for (int i = 0; i < emotions.count; i++) {
         UIButton *button = [[UIButton alloc]init];
+        button.removeHighlightEffect = YES;
         //button.backgroundColor = randomColor;
         [button.titleLabel setFont:FONT(35)];
         YLEmotions *emotion = emotions[i];
