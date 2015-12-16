@@ -8,19 +8,30 @@
 //
 
 #import "YLEmotionKeyboardListView.h"
-@interface YLEmotionKeyboardListView()
+#import "YLEmotionButtonView.h"
+@interface YLEmotionKeyboardListView()<UIScrollViewDelegate>
 
 @property(weak,nonatomic)UIPageControl *pageControl;
 @property(weak,nonatomic)UIScrollView *scrollView;
+@property(copy,nonatomic)NSMutableArray *scrollChildView;
+
 @end
 
 @implementation YLEmotionKeyboardListView
+
+- (NSMutableArray *)scrollChildView{
+
+    if (!_scrollChildView) {
+        _scrollChildView = [NSMutableArray array];
+    }
+    return _scrollChildView;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = randomColor;
+        //self.backgroundColor = randomColor;
         UIPageControl *pageControl = [[UIPageControl alloc]init];
         pageControl.backgroundColor = randomColor;
         self.pageControl = pageControl;
@@ -30,7 +41,11 @@
         [self addSubview:pageControl];
         
         UIScrollView *scrollView = [[UIScrollView alloc]init];
-        scrollView.backgroundColor = randomColor;
+        scrollView.delegate = self;
+       // scrollView.backgroundColor = randomColor;
+        scrollView.showsHorizontalScrollIndicator = NO;
+        scrollView.pagingEnabled = YES;
+        scrollView.bounces = NO;
         self.scrollView = scrollView;
         [self addSubview:scrollView];
         
@@ -40,8 +55,26 @@
 
 - (void)setEmotions:(NSArray *)emotions{
     _emotions = emotions;
-    self.pageControl.numberOfPages = (emotions.count + 20 - 1) / 20;
-
+    
+    NSUInteger page = (emotions.count + MAX_EMOTION - 1) / MAX_EMOTION;
+    
+    for (int i = 0; i < page; i++) {
+        NSRange range;
+        range.location = i * MAX_EMOTION;
+        range.length = MAX_EMOTION;
+        if ((range.location + range.length) > emotions.count) {
+            range.length = emotions.count - range.location;
+        }
+        
+        NSArray *subEmotions = [emotions subarrayWithRange:range];
+        
+        YLEmotionButtonView *childView = [[YLEmotionButtonView alloc]init];
+       // childView.backgroundColor = randomColor;
+        childView.emotions = subEmotions;
+        [self.scrollView addSubview:childView];
+        [self.scrollChildView addObject:childView];
+    }
+    self.pageControl.numberOfPages = page;
 }
 
 - (void)layoutSubviews{
@@ -52,6 +85,19 @@
     self.pageControl.y = self.height - self.pageControl.height;
     self.scrollView.width = self.width;
     self.scrollView.height = self.pageControl.y;
+    for (int i = 0; i < self.scrollChildView.count; i++) {
+        UIView *childView = self.scrollChildView[i];
+        childView.size = self.scrollView.size;
+        childView.x = i * self.scrollView.width;
+    }
+    
+    self.scrollView.contentSize = CGSizeMake(self.scrollChildView.count * self.width, 0);
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+
+self.pageControl.currentPage = scrollView.contentOffset.x / self.width;
+
 }
 
 @end

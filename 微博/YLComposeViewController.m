@@ -131,7 +131,7 @@
             }else{
                 YLEmotionKuyboardView *emotionKeyboardView = [[YLEmotionKuyboardView alloc]init];
                 emotionKeyboardView.width = SCREENW;
-                emotionKeyboardView.height = 280;
+                emotionKeyboardView.height = 216;
               //  emotionKeyboardView.y = SCREENH - emotionKeyboardView.height;
                 self.textView.inputView = emotionKeyboardView;
             }

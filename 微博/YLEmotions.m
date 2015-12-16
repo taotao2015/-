@@ -11,4 +11,16 @@
 
 @implementation YLEmotions
 
+- (void)setPath:(NSString *)path{
+    _path = path;
+    self.fullPath = [NSString stringWithFormat:@"%@%@",self.path,self.png];
+
+}
+
+- (void)setType:(NSString *)type{
+    _type = type;
+    self.emoji = [type isEqualToString:@"1"];
+
+}
+
 @end

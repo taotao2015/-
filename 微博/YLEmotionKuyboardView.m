@@ -52,6 +52,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         //self.backgroundColor = [UIColor yellowColor];
+        self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"emoticon_keyboard_background"]];
         YLEmotionTabBar *tabBar = [[YLEmotionTabBar alloc]init];
         [tabBar setTabBarButtonClicked:^(YLEmotionTabBarButtonType type) {
             [self selectImageViewWithType:type];
@@ -75,17 +76,29 @@
             NSLog(@"default");
            NSString *file = [[NSBundle mainBundle]pathForResource:@"EmotionIcons/default/info.plist" ofType:@""];
             NSArray *emotions = [YLEmotions objectArrayWithFile:file];
+            [emotions makeObjectsPerformSelector:@selector(setPath:) withObject:@"EmotionIcons/default/"];
+            
             self.defaultListView.emotions = emotions;
             
             [self addSubview:self.defaultListView];
             break;
         }
         case YLEmotionTabBarButtonTypeEmoji:
+        {
             NSLog(@"emoji");
+            NSString *file = [[NSBundle mainBundle]pathForResource:@"EmotionIcons/emoji/info.plist" ofType:@""];
+            NSArray *emotions = [YLEmotions objectArrayWithFile:file];
+            [emotions makeObjectsPerformSelector:@selector(setPath:) withObject:@"EmotionIcons/emoji/"];
+            self.emojiListView.emotions = emotions;
             [self addSubview:self.emojiListView];
             break;
+        }
         case YLEmotionTabBarButtonTypeLxh:
             NSLog(@"lax");
+            NSString *file = [[NSBundle mainBundle]pathForResource:@"EmotionIcons/lxh/info.plist" ofType:@""];
+            NSArray *emotions = [YLEmotions objectArrayWithFile:file];
+            [emotions makeObjectsPerformSelector:@selector(setPath:) withObject:@"EmotionIcons/lxh/"];
+            self.lxhListView.emotions = emotions;
             [self addSubview:self.lxhListView];
             break;
     }
