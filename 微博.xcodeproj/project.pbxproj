@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2B5F6FD71C21A698006FDA7C /* YLEmotionButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5F6FD61C21A698006FDA7C /* YLEmotionButtonView.m */; };
 		2B5F6FDA1C21B94A006FDA7C /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5F6FD91C21B94A006FDA7C /* NSString+Emoji.m */; };
+		2B5F6FE31C21C58D006FDA7C /* SDBrowserImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5F6FDD1C21C58D006FDA7C /* SDBrowserImageView.m */; };
+		2B5F6FE41C21C58D006FDA7C /* SDPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5F6FDF1C21C58D006FDA7C /* SDPhotoBrowser.m */; };
+		2B5F6FE51C21C58D006FDA7C /* SDWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5F6FE21C21C58D006FDA7C /* SDWaitingView.m */; };
 		2B7E9A591C16E7A80012FB2F /* YLStatuePhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7E9A581C16E7A80012FB2F /* YLStatuePhoto.m */; };
 		2B7E9A5C1C16FD4E0012FB2F /* YLPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7E9A5B1C16FD4E0012FB2F /* YLPhoto.m */; };
 		2BAE91311C1EC81E00DCBA67 /* YLEmotionKuyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAE91301C1EC81E00DCBA67 /* YLEmotionKuyboardView.m */; };
@@ -142,6 +145,13 @@
 		2B5F6FD61C21A698006FDA7C /* YLEmotionButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLEmotionButtonView.m; sourceTree = "<group>"; };
 		2B5F6FD81C21B94A006FDA7C /* NSString+Emoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Emoji.h"; sourceTree = "<group>"; };
 		2B5F6FD91C21B94A006FDA7C /* NSString+Emoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Emoji.m"; sourceTree = "<group>"; };
+		2B5F6FDC1C21C58D006FDA7C /* SDBrowserImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBrowserImageView.h; sourceTree = "<group>"; };
+		2B5F6FDD1C21C58D006FDA7C /* SDBrowserImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDBrowserImageView.m; sourceTree = "<group>"; };
+		2B5F6FDE1C21C58D006FDA7C /* SDPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowser.h; sourceTree = "<group>"; };
+		2B5F6FDF1C21C58D006FDA7C /* SDPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDPhotoBrowser.m; sourceTree = "<group>"; };
+		2B5F6FE01C21C58D006FDA7C /* SDPhotoBrowserConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowserConfig.h; sourceTree = "<group>"; };
+		2B5F6FE11C21C58D006FDA7C /* SDWaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWaitingView.h; sourceTree = "<group>"; };
+		2B5F6FE21C21C58D006FDA7C /* SDWaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWaitingView.m; sourceTree = "<group>"; };
 		2B7E9A571C16E7A80012FB2F /* YLStatuePhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLStatuePhoto.h; sourceTree = "<group>"; };
 		2B7E9A581C16E7A80012FB2F /* YLStatuePhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLStatuePhoto.m; sourceTree = "<group>"; };
 		2B7E9A5A1C16FD4E0012FB2F /* YLPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLPhoto.h; sourceTree = "<group>"; };
@@ -403,6 +413,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B5F6FDB1C21C58D006FDA7C /* SDPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				2B5F6FDC1C21C58D006FDA7C /* SDBrowserImageView.h */,
+				2B5F6FDD1C21C58D006FDA7C /* SDBrowserImageView.m */,
+				2B5F6FDE1C21C58D006FDA7C /* SDPhotoBrowser.h */,
+				2B5F6FDF1C21C58D006FDA7C /* SDPhotoBrowser.m */,
+				2B5F6FE01C21C58D006FDA7C /* SDPhotoBrowserConfig.h */,
+				2B5F6FE11C21C58D006FDA7C /* SDWaitingView.h */,
+				2B5F6FE21C21C58D006FDA7C /* SDWaitingView.m */,
+			);
+			path = SDPhotoBrowser;
+			sourceTree = "<group>";
+		};
 		2BAE912E1C1EC7CE00DCBA67 /* EmotionKeyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -800,6 +824,7 @@
 		2BE1317C1C1352610046D56E /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				2B5F6FDB1C21C58D006FDA7C /* SDPhotoBrowser */,
 				2BE8BB591C1C14AF0069CB07 /* pop */,
 				2BE0A7D21C15A13300769FE9 /* SDWebImage */,
 				2BEA5EE91C140E190001540E /* MJExtension */,
@@ -1200,12 +1225,14 @@
 				2BEA5EFE1C140E190001540E /* NSObject+MJIvar.m in Sources */,
 				2BEA5EFF1C140E190001540E /* NSObject+MJKeyValue.m in Sources */,
 				2BD005371C0F3CDC0009BBEC /* AppDelegate.m in Sources */,
+				2B5F6FE41C21C58D006FDA7C /* SDPhotoBrowser.m in Sources */,
 				2B5F6FD71C21A698006FDA7C /* YLEmotionButtonView.m in Sources */,
 				2BE8BBA11C1C14AF0069CB07 /* POPPropertyAnimation.mm in Sources */,
 				2BE131971C1352D10046D56E /* AFHTTPSessionManager.m in Sources */,
 				2BE8BB961C1C14AF0069CB07 /* POPAnimationExtras.mm in Sources */,
 				2BEA5EF91C140E190001540E /* MJConst.m in Sources */,
 				2BE131981C1352D10046D56E /* AFNetworkReachabilityManager.m in Sources */,
+				2B5F6FE31C21C58D006FDA7C /* SDBrowserImageView.m in Sources */,
 				2BE0A7FD1C15A13300769FE9 /* UIButton+WebCache.m in Sources */,
 				2BE3E4FB1C11E71E0091A5E7 /* YLFearcherViewController.m in Sources */,
 				2BE584141C1AFF530070DDBE /* YLComposeButtonInfo.m in Sources */,
@@ -1285,6 +1312,7 @@
 				2BDF1E901C100FE10074AE18 /* YLhomeTittleButton.m in Sources */,
 				2BE8BBA21C1C14AF0069CB07 /* POPSpringAnimation.mm in Sources */,
 				2BE1319B1C1352D10046D56E /* AFURLRequestSerialization.m in Sources */,
+				2B5F6FE51C21C58D006FDA7C /* SDWaitingView.m in Sources */,
 				2BE0A8061C15E31A00769FE9 /* YLhomeCellTabBarView.m in Sources */,
 				2BE131951C1352D10046D56E /* AFHTTPRequestOperation.m in Sources */,
 				2BF5ED361C1D52440027911A /* YLComposePhotosView.m in Sources */,

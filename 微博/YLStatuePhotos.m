@@ -7,6 +7,10 @@
 //
 
 #import "YLStatuePhotos.h"
+#import "SDPhotoBrowser.h"
+@interface YLStatuePhotos()<SDPhotoBrowserDelegate>
+@end
+
 @implementation YLStatuePhotos
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -19,11 +23,30 @@
             YLStatuePhoto *photoView = [[YLStatuePhoto alloc]init];
 //            photoView.contentMode = UIViewContentModeScaleAspectFill;
 //            photoView.clipsToBounds = YES;
+            photoView.userInteractionEnabled = YES;
+            
+            photoView.tag = i;
+            UITapGestureRecognizer *tapImage = [[UITapGestureRecognizer alloc]init];
+            [tapImage addTarget:self action:@selector(imageClicked:)];
+            [photoView addGestureRecognizer:tapImage];
             [self addSubview:photoView];
+            
         }
     }
     return self;
 }
+
+- (void)imageClicked:(UITapGestureRecognizer *)tap{
+
+    SDPhotoBrowser *photoBrowser = [[SDPhotoBrowser alloc]init];
+    photoBrowser.sourceImagesContainerView = self;
+    photoBrowser.imageCount = self.pic_urls.count;
+    photoBrowser.currentImageIndex = tap.view.tag;
+    photoBrowser.delegate = self;
+    [photoBrowser show];
+
+}
+
 
 - (void)setPic_urls:(NSArray *)pic_urls{
     _pic_urls = pic_urls;
@@ -66,4 +89,20 @@
 
     return CGSizeMake(photoViewW, photoViewH);
 }
+
+
+// 返回临时占位图片（即原来的小图）
+- (UIImage *)photoBrowser:(SDPhotoBrowser *)browser placeholderImageForIndex:(NSInteger)index
+{
+    return [self.subviews[index] image];
+}
+
+
+// 返回高质量图片的url
+- (NSURL *)photoBrowser:(SDPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index
+{
+    NSString *urlStr = [[self.pic_urls[index] thumbnail_pic] stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
+    return [NSURL URLWithString:urlStr];
+}
+
 @end
