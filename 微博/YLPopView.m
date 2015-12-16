@@ -16,4 +16,18 @@
 
 }
 
+- (void)showWithButton:(YLEmotionButton *)emotionButton{
+
+    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
+    
+    self.emotionButton.emotion = emotionButton.emotion;
+    [self.emotionButton.titleLabel setFont:FONT(35)];
+    CGRect rect = [emotionButton convertRect:emotionButton.bounds toView:window];
+    self.centerX = CGRectGetMidX(rect);
+    self.y = CGRectGetMidY(rect) - self.height;
+    [window addSubview:self];
+
+
+}
+
 @end

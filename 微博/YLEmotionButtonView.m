@@ -66,28 +66,32 @@
     if (longPress.state == UIGestureRecognizerStateBegan || longPress.state == UIGestureRecognizerStateChanged ) {
         CGPoint point = [longPress locationInView:self];
         
-        __block YLEmotionButton *resultButton = nil;
-        [self.emotionButtons enumerateObjectsUsingBlock:^(YLEmotionButton *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-          BOOL result = CGRectContainsPoint(obj.frame, point);
-            if (result) {
-                resultButton = obj;
-                *stop = YES;
-            }
-            
-        }];
+//        __block YLEmotionButton *resultButton = nil;
+//        [self.emotionButtons enumerateObjectsUsingBlock:^(YLEmotionButton *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//          BOOL result = CGRectContainsPoint(obj.frame, point);
+//            if (result) {
+//                resultButton = obj;
+//                *stop = YES;
+//            }
+//            
+//        }];
+        
+        YLEmotionButton *resultButton = [self buttonWithPoint:point];
         
         if (resultButton) {
-            UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
-            // 这是一次着了较长时间的bug，今后必须注意，只有懒加载才只有一个视图view ,产生相应效果
+//            UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
+//            // 这是一次着了较长时间的bug，今后必须注意，只有懒加载才只有一个视图view ,产生相应效果
+//            
+////            YLPopView *popView = [YLPopView popView];
+////            self.popView = popView;
+//            self.popView.emotionButton.emotion = resultButton.emotion;
+//            [self.popView.emotionButton.titleLabel setFont:FONT(35)];
+//            CGRect rect = [resultButton convertRect:resultButton.bounds toView:window];
+//            self.popView.centerX = CGRectGetMidX(rect);
+//            self.popView.y = CGRectGetMidY(rect) - self.popView.height;
+//            [window addSubview:self.popView];
             
-//            YLPopView *popView = [YLPopView popView];
-//            self.popView = popView;
-            self.popView.emotionButton.emotion = resultButton.emotion;
-            [self.popView.emotionButton.titleLabel setFont:FONT(35)];
-            CGRect rect = [resultButton convertRect:resultButton.bounds toView:window];
-            self.popView.centerX = CGRectGetMidX(rect);
-            self.popView.y = CGRectGetMidY(rect) - self.popView.height;
-            [window addSubview:self.popView];
+            [self.popView showWithButton:resultButton];
             
             
         }
@@ -100,6 +104,25 @@
     }
 
 }
+
+
+- (YLEmotionButton *)buttonWithPoint:(CGPoint)point{
+
+
+    __block YLEmotionButton *resultButton = nil;
+    [self.emotionButtons enumerateObjectsUsingBlock:^(YLEmotionButton *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        BOOL result = CGRectContainsPoint(obj.frame, point);
+        if (result) {
+            resultButton = obj;
+            *stop = YES;
+        }
+        
+    }];
+    
+    return resultButton;
+
+}
+
 
 - (void)setEmotions:(NSArray *)emotions{
 
@@ -141,14 +164,15 @@
 }
 
 - (void)selectEmotion:(YLEmotionButton *)btn{
-    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
+    //UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
     YLPopView *popView = [YLPopView popView];
-    popView.emotionButton.emotion = btn.emotion;
-    [popView.emotionButton.titleLabel setFont:FONT(35)];
-   CGRect rect = [btn convertRect:btn.bounds toView:window];
-    popView.centerX = CGRectGetMidX(rect);
-    popView.y = CGRectGetMidY(rect) - popView.height;
-    [window addSubview:popView];
+//    popView.emotionButton.emotion = btn.emotion;
+//    [popView.emotionButton.titleLabel setFont:FONT(35)];
+//   CGRect rect = [btn convertRect:btn.bounds toView:window];
+//    popView.centerX = CGRectGetMidX(rect);
+//    popView.y = CGRectGetMidY(rect) - popView.height;
+//    [window addSubview:popView];
+    [popView showWithButton:btn];
     
     //移除
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

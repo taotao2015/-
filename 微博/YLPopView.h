@@ -11,4 +11,6 @@
 @interface YLPopView : UIView
 @property (weak, nonatomic) IBOutlet YLEmotionButton *emotionButton;
 + (instancetype)popView;
+
+- (void)showWithButton:(YLEmotionButton *)emotionButton;
 @end
