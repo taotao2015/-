@@ -55,12 +55,6 @@
         //button.backgroundColor = randomColor;
         [button.titleLabel setFont:FONT(35)];
         button.emotion = emotions[i];
- //       YLEmotions *emotion = emotions[i];
-//        if (emotion.isEmoji) {
-//            [button setTitle:[emotion.code emoji] forState:UIControlStateNormal];
-//        }else{
-//            [button setImage:[UIImage imageNamed:emotion.fullPath] forState:UIControlStateNormal];
-//        }
         
         [self addSubview:button];
         [self.emotionButtons addObject:button];
