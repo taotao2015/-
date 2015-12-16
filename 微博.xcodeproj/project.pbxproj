@@ -13,6 +13,9 @@
 		2B5F6FE41C21C58D006FDA7C /* SDPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5F6FDF1C21C58D006FDA7C /* SDPhotoBrowser.m */; };
 		2B5F6FE51C21C58D006FDA7C /* SDWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5F6FE21C21C58D006FDA7C /* SDWaitingView.m */; };
 		2B5F6FE81C21DC13006FDA7C /* UIButton+RemoveHighlightEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5F6FE71C21DC13006FDA7C /* UIButton+RemoveHighlightEffect.m */; };
+		2B5F6FEB1C21E062006FDA7C /* YLEmotionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5F6FEA1C21E062006FDA7C /* YLEmotionButton.m */; };
+		2B5F6FEE1C21E379006FDA7C /* YLPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5F6FED1C21E379006FDA7C /* YLPopView.m */; };
+		2B5F6FF01C21E39B006FDA7C /* YLPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B5F6FEF1C21E39B006FDA7C /* YLPopView.xib */; };
 		2B7E9A591C16E7A80012FB2F /* YLStatuePhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7E9A581C16E7A80012FB2F /* YLStatuePhoto.m */; };
 		2B7E9A5C1C16FD4E0012FB2F /* YLPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7E9A5B1C16FD4E0012FB2F /* YLPhoto.m */; };
 		2BAE91311C1EC81E00DCBA67 /* YLEmotionKuyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAE91301C1EC81E00DCBA67 /* YLEmotionKuyboardView.m */; };
@@ -155,6 +158,11 @@
 		2B5F6FE21C21C58D006FDA7C /* SDWaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWaitingView.m; sourceTree = "<group>"; };
 		2B5F6FE61C21DC13006FDA7C /* UIButton+RemoveHighlightEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+RemoveHighlightEffect.h"; sourceTree = "<group>"; };
 		2B5F6FE71C21DC13006FDA7C /* UIButton+RemoveHighlightEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+RemoveHighlightEffect.m"; sourceTree = "<group>"; };
+		2B5F6FE91C21E062006FDA7C /* YLEmotionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLEmotionButton.h; sourceTree = "<group>"; };
+		2B5F6FEA1C21E062006FDA7C /* YLEmotionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLEmotionButton.m; sourceTree = "<group>"; };
+		2B5F6FEC1C21E379006FDA7C /* YLPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLPopView.h; sourceTree = "<group>"; };
+		2B5F6FED1C21E379006FDA7C /* YLPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLPopView.m; sourceTree = "<group>"; };
+		2B5F6FEF1C21E39B006FDA7C /* YLPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YLPopView.xib; sourceTree = "<group>"; };
 		2B7E9A571C16E7A80012FB2F /* YLStatuePhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLStatuePhoto.h; sourceTree = "<group>"; };
 		2B7E9A581C16E7A80012FB2F /* YLStatuePhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLStatuePhoto.m; sourceTree = "<group>"; };
 		2B7E9A5A1C16FD4E0012FB2F /* YLPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLPhoto.h; sourceTree = "<group>"; };
@@ -443,6 +451,11 @@
 				2BAE91391C1F173900DCBA67 /* YLEmotionKeyboardListView.m */,
 				2B5F6FD51C21A697006FDA7C /* YLEmotionButtonView.h */,
 				2B5F6FD61C21A698006FDA7C /* YLEmotionButtonView.m */,
+				2B5F6FE91C21E062006FDA7C /* YLEmotionButton.h */,
+				2B5F6FEA1C21E062006FDA7C /* YLEmotionButton.m */,
+				2B5F6FEC1C21E379006FDA7C /* YLPopView.h */,
+				2B5F6FED1C21E379006FDA7C /* YLPopView.m */,
+				2B5F6FEF1C21E39B006FDA7C /* YLPopView.xib */,
 			);
 			name = EmotionKeyboard;
 			sourceTree = "<group>";
@@ -1196,6 +1209,7 @@
 				2BE584111C1AFBA20070DDBE /* compose.plist in Resources */,
 				2BEA5F071C1478AA0001540E /* YLLoadMoreView.xib in Resources */,
 				2BAE913C1C1F23FA00DCBA67 /* EmotionIcons in Resources */,
+				2B5F6FF01C21E39B006FDA7C /* YLPopView.xib in Resources */,
 				2BDF1EA81C109E6F0074AE18 /* YLsearchView.xib in Resources */,
 				2BE8BB911C1C14AF0069CB07 /* InfoPlist.strings in Resources */,
 			);
@@ -1263,6 +1277,7 @@
 				2BDF1E871C10033E0074AE18 /* YLhomeTableViewController.m in Sources */,
 				2BE0A7F41C15A13300769FE9 /* MKAnnotationView+WebCache.m in Sources */,
 				2BEA5EFB1C140E190001540E /* MJIvar.m in Sources */,
+				2B5F6FEE1C21E379006FDA7C /* YLPopView.m in Sources */,
 				2BE0A7F71C15A13300769FE9 /* SDWebImageCompat.m in Sources */,
 				2BE281101C16C61C002C3201 /* YLStatuePhotos.m in Sources */,
 				2BE0A7F61C15A13300769FE9 /* SDImageCache.m in Sources */,
@@ -1311,6 +1326,7 @@
 				2BE8BB9C1C1C14AF0069CB07 /* POPCustomAnimation.mm in Sources */,
 				2BF5ED301C1D36FD0027911A /* YLComposeTabBarView.m in Sources */,
 				2BAE91371C1EFDA700DCBA67 /* YLEmotionTabBarButton.m in Sources */,
+				2B5F6FEB1C21E062006FDA7C /* YLEmotionButton.m in Sources */,
 				2BD005671C0F3D0F0009BBEC /* YLTabBarViewController.m in Sources */,
 				2B7E9A591C16E7A80012FB2F /* YLStatuePhoto.m in Sources */,
 				2BAE913F1C1F2B9600DCBA67 /* YLEmotions.m in Sources */,
