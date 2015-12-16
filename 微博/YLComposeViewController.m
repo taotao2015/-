@@ -136,6 +136,7 @@
                 self.textView.inputView = emotionKeyboardView;
             }
             self.isSystermKeyboard = NO;
+            self.tabBarView.isSystermKeyboard = !self.textView.inputView;
             [self.textView becomeFirstResponder];
     
             break;

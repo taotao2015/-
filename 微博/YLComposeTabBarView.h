@@ -17,4 +17,5 @@ typedef NS_ENUM(NSUInteger ,ComposeTabBarViewButtonType){
 };
 @interface YLComposeTabBarView : UIView
 @property(copy,nonatomic)void (^buttonChilk)(ComposeTabBarViewButtonType type);
+@property(assign,nonatomic)BOOL isSystermKeyboard;
 @end

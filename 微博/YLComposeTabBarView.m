@@ -42,6 +42,21 @@
 
 }
 
+- (void)setIsSystermKeyboard:(BOOL)isSystermKeyboard{
+    _isSystermKeyboard = isSystermKeyboard;
+    UIButton *button = [self viewWithTag:ComposeTabBarViewButtonTypeEmotion];
+    if (isSystermKeyboard) {
+        
+        [button setImage:[UIImage imageNamed:@"compose_emoticonbutton_background"] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"compose_emoticonbutton_background_highlighted"] forState:UIControlStateHighlighted];
+    }else{
+        [button setImage:[UIImage imageNamed:@"compose_keyboardbutton_background"] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"compose_keyboardbutton_background_highlighted"] forState:UIControlStateHighlighted];
+    
+    }
+
+}
+
 - (void)layoutSubviews{
     [super layoutSubviews];
     NSInteger count = self.subviews.count;
