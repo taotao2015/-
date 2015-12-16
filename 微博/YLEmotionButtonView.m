@@ -178,6 +178,12 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [popView removeFromSuperview];
     });
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    dic[@"emotion"] = btn.emotion;
+    
+    //发一个表情点击的通知，并将表情按钮对应的模型信息，传递出去
+    [[NSNotificationCenter defaultCenter]postNotificationName:emotionDidSelected object:nil userInfo:dic];
 
 }
 

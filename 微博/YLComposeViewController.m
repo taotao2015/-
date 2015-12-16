@@ -31,9 +31,12 @@
     // 添加子控件
     [self addChildView];
     
-   
-    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(KeyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    
+    //注册监听表情按钮点击的通知
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(emotionButtonClicked:) name:emotionDidSelected object:nil];
+    
+    
 }
 
 - (void)setNav{
@@ -185,6 +188,12 @@
            self.tabBarView.y = [value CGRectValue].origin.y - self.tabBarView.height;
         }];
     }
+
+}
+
+- (void)emotionButtonClicked:(NSNotification *)noti{
+
+    NSLog(@"%@",noti.userInfo[@"emotion"]);
 
 }
 
