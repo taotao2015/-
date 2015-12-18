@@ -25,6 +25,7 @@
 - (YLEmotionKeyboardListView *)recentListView{
     if (!_recentListView) {
         _recentListView = [[YLEmotionKeyboardListView alloc]init];
+        _recentListView.backgroundColor = randomColor;
         _recentListView.emotions = [YLEmotionsTool recentEmotions];
     }
     return _recentListView;
@@ -75,6 +76,8 @@
         [self addSubview:tabBar];
         self.tabBar = tabBar;
         self.currentView = self.defaultListView;
+        
+       [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(emotionButtonClicked:) name:emotionDidSelected object:nil];
     }
     return self;
 }
@@ -83,14 +86,20 @@
     [self.currentView removeFromSuperview];
     switch (type) {
         case YLEmotionTabBarButtonTypeRecent:
-            NSLog(@"recent");
+        {
+//            NSLog(@"recent");
+            //[self.recentListView removeFromSuperview];
+           // self.recentListView = [[YLEmotionKeyboardListView alloc]init];
+            //self.recentListView.backgroundColor = randomColor;
             self.recentListView.emotions = [YLEmotionsTool recentEmotions];
+            
             [self addSubview:self.recentListView];
             
             break;
+        }
         case YLEmotionTabBarButtonTypeDefault:
         {
-            NSLog(@"default");
+//            NSLog(@"default");
           
             
             [self addSubview:self.defaultListView];
@@ -98,19 +107,27 @@
         }
         case YLEmotionTabBarButtonTypeEmoji:
         {
-            NSLog(@"emoji");
+//            NSLog(@"emoji");
             
             [self addSubview:self.emojiListView];
             break;
         }
         case YLEmotionTabBarButtonTypeLxh:
-            NSLog(@"lax");
+//            NSLog(@"lax");
            
             [self addSubview:self.lxhListView];
             break;
     }
     self.currentView = [self.subviews lastObject];
     
+}
+
+- (void)emotionButtonClicked:(NSNotification *)noti{
+   // self.recentListView = [[YLEmotionKeyboardListView alloc]init];
+  self.recentListView.emotions = [YLEmotionsTool recentEmotions];
+  //  [self addSubview:self.recentListView];
+   
+
 }
 
 - (void)layoutSubviews{

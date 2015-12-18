@@ -186,6 +186,8 @@
     [YLEmotionsTool addRecentEmotions:btn.emotion];
        //发一个表情点击的通知，并将表情按钮对应的模型信息，传递出去
     [[NSNotificationCenter defaultCenter]postNotificationName:emotionDidSelected object:nil userInfo:dic];
+    [[NSNotificationCenter defaultCenter]postNotificationName:UITextViewTextDidChangeNotification object:nil];
+    
 
 }
 

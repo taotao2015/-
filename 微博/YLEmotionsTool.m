@@ -7,20 +7,38 @@
 //
 
 #import "YLEmotionsTool.h"
-#define recentEmotionsFile  [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject] stringByAppendingString:@"recentEmotions.archiver"]
+#define recentEmotionsFile  [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject] stringByAppendingPathComponent:@"recentEmotion"]
+
+static NSMutableArray *_recentEmotions;
+
 @implementation YLEmotionsTool
+
+
++ (void)initialize
+{
+    
+    NSArray *array = [NSKeyedUnarchiver unarchiveObjectWithFile:recentEmotionsFile];
+    _recentEmotions = [NSMutableArray arrayWithArray:array];
+}
 + (void)addRecentEmotions:(YLEmotions *)emotions{
 // 取出原来表情
-    NSArray *originalRecentEmotions = [NSKeyedUnarchiver unarchiveObjectWithFile:recentEmotionsFile];
-    NSMutableArray *recentEmotions = [NSMutableArray arrayWithArray:originalRecentEmotions];
-    [recentEmotions addObject:emotions];
-    [NSKeyedArchiver archiveRootObject:recentEmotions toFile:recentEmotionsFile];
+    
+//    NSArray *originalRecentEmotions = [NSKeyedUnarchiver unarchiveObjectWithFile:recentEmotionsFile];
+//    NSMutableArray *recentEmotions = [NSMutableArray arrayWithArray:originalRecentEmotions];
+//    
+    
+    //[recentEmotions addObject:emotions];
+    [_recentEmotions removeObject:emotions];
+    [_recentEmotions insertObject:emotions atIndex:0];
+    
+    [NSKeyedArchiver archiveRootObject:_recentEmotions toFile:recentEmotionsFile];
     NSLog(@"%@",recentEmotionsFile);
     
 }
 + (NSArray *)recentEmotions{
    
-    return [NSKeyedUnarchiver unarchiveObjectWithFile:recentEmotionsFile];
+    //return [NSKeyedUnarchiver unarchiveObjectWithFile:recentEmotionsFile];
+    return  _recentEmotions;
 
 }
 @end

@@ -11,6 +11,30 @@
 #import "NSString+Emoji.h"
 @implementation YLEmotionButton
 
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setup];
+    }
+    return self;
+}
+
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self setup];
+    }
+    return self;
+}
+
+//做一些当前控件初始化的逻辑
+- (void)setup{
+    self.titleLabel.font = [UIFont systemFontOfSize:35];
+}
+
+
 - (void)setEmotion:(YLEmotions *)emotion{
     _emotion = emotion;
     

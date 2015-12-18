@@ -47,7 +47,7 @@
     selecteRange.location ++;
     selecteRange.length = 0;
     self.selectedRange = selecteRange;
-
+    [[NSNotificationCenter defaultCenter] postNotificationName:UITextViewTextDidChangeNotification object:self];
 
 }
 

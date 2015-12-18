@@ -13,5 +13,5 @@
 
 @interface YLEmotionButtonView : UIView
 
-@property(copy,nonatomic)NSArray *emotions;
+@property(strong,nonatomic)NSArray *emotions;
 @end

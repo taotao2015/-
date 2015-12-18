@@ -13,7 +13,7 @@
 
 @property(weak,nonatomic)UIPageControl *pageControl;
 @property(weak,nonatomic)UIScrollView *scrollView;
-@property(copy,nonatomic)NSMutableArray *scrollChildView;
+@property(strong,nonatomic)NSMutableArray *scrollChildView;
 
 @end
 
@@ -55,8 +55,9 @@
 
 - (void)setEmotions:(NSArray *)emotions{
     _emotions = emotions;
-    [self.scrollChildView removeAllObjects];
+  
     [self.scrollChildView makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self.scrollChildView removeAllObjects];
     NSUInteger page = (emotions.count + MAX_EMOTION - 1) / MAX_EMOTION;
     
     for (int i = 0; i < page; i++) {
@@ -96,7 +97,7 @@
         childView.x = i * self.scrollView.width;
     }
     
-    self.scrollView.contentSize = CGSizeMake(self.scrollChildView.count * self.width, 0);
+    self.scrollView.contentSize = CGSizeMake(self.scrollChildView.count * self.scrollView.width, 0);
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{

@@ -25,4 +25,11 @@
 
 MJCodingImplementation
 
+- (BOOL)isEqual:(YLEmotions *)emotion{
+    if ([emotion.chs isEqual:self.chs] || [[emotion code] isEqualToString:self.code ]) {
+        return  YES;
+    }
+    return NO;
+}
+
 @end
