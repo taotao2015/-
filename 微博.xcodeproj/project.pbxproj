@@ -122,6 +122,8 @@
 		2BEA5F071C1478AA0001540E /* YLLoadMoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BEA5F061C1478AA0001540E /* YLLoadMoreView.xib */; };
 		2BEA5F0A1C14A4460001540E /* IWUnReadCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEA5F091C14A4460001540E /* IWUnReadCount.m */; };
 		2BEA78241C1C83BA008CB0FE /* YLTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BEA78231C1C83BA008CB0FE /* YLTextView.m */; };
+		2BF304B01C23A6AA00B107D9 /* YLEmotionWithTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF304AF1C23A6AA00B107D9 /* YLEmotionWithTextView.m */; };
+		2BF304B41C23B75C00B107D9 /* YLEmotionsTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF304B31C23B75C00B107D9 /* YLEmotionsTool.m */; };
 		2BF5ED301C1D36FD0027911A /* YLComposeTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF5ED2F1C1D36FD0027911A /* YLComposeTabBarView.m */; };
 		2BF5ED361C1D52440027911A /* YLComposePhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF5ED351C1D52440027911A /* YLComposePhotosView.m */; };
 		2BF5ED391C1D5E3D0027911A /* YLComposePhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF5ED381C1D5E3D0027911A /* YLComposePhotoView.m */; };
@@ -391,6 +393,10 @@
 		2BEA5F091C14A4460001540E /* IWUnReadCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IWUnReadCount.m; sourceTree = "<group>"; };
 		2BEA78221C1C83BA008CB0FE /* YLTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLTextView.h; sourceTree = "<group>"; };
 		2BEA78231C1C83BA008CB0FE /* YLTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLTextView.m; sourceTree = "<group>"; };
+		2BF304AE1C23A6AA00B107D9 /* YLEmotionWithTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLEmotionWithTextView.h; sourceTree = "<group>"; };
+		2BF304AF1C23A6AA00B107D9 /* YLEmotionWithTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLEmotionWithTextView.m; sourceTree = "<group>"; };
+		2BF304B21C23B75C00B107D9 /* YLEmotionsTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLEmotionsTool.h; sourceTree = "<group>"; };
+		2BF304B31C23B75C00B107D9 /* YLEmotionsTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLEmotionsTool.m; sourceTree = "<group>"; };
 		2BF5ED2E1C1D36FD0027911A /* YLComposeTabBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLComposeTabBarView.h; sourceTree = "<group>"; };
 		2BF5ED2F1C1D36FD0027911A /* YLComposeTabBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLComposeTabBarView.m; sourceTree = "<group>"; };
 		2BF5ED341C1D52440027911A /* YLComposePhotosView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLComposePhotosView.h; sourceTree = "<group>"; };
@@ -456,6 +462,8 @@
 				2B5F6FEC1C21E379006FDA7C /* YLPopView.h */,
 				2B5F6FED1C21E379006FDA7C /* YLPopView.m */,
 				2B5F6FEF1C21E39B006FDA7C /* YLPopView.xib */,
+				2BF304AE1C23A6AA00B107D9 /* YLEmotionWithTextView.h */,
+				2BF304AF1C23A6AA00B107D9 /* YLEmotionWithTextView.m */,
 			);
 			name = EmotionKeyboard;
 			sourceTree = "<group>";
@@ -914,6 +922,7 @@
 		2BE584061C1ACDD40070DDBE /* Compose */ = {
 			isa = PBXGroup;
 			children = (
+				2BF304B11C23B6E300B107D9 /* Tool */,
 				2BE5840C1C1AE0380070DDBE /* Controller */,
 				2BE5840B1C1AE02C0070DDBE /* Model */,
 				2BE5840A1C1AE0210070DDBE /* View */,
@@ -1097,6 +1106,15 @@
 				2BEA5EF81C140E190001540E /* NSObject+MJKeyValue.m */,
 			);
 			path = MJExtension;
+			sourceTree = "<group>";
+		};
+		2BF304B11C23B6E300B107D9 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				2BF304B21C23B75C00B107D9 /* YLEmotionsTool.h */,
+				2BF304B31C23B75C00B107D9 /* YLEmotionsTool.m */,
+			);
+			name = Tool;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1283,6 +1301,7 @@
 				2BE0A7F61C15A13300769FE9 /* SDImageCache.m in Sources */,
 				2BEA5F0A1C14A4460001540E /* IWUnReadCount.m in Sources */,
 				2BE0A7FC1C15A13300769FE9 /* SDWebImagePrefetcher.m in Sources */,
+				2BF304B01C23A6AA00B107D9 /* YLEmotionWithTextView.m in Sources */,
 				2BE80C631C19A0120047C768 /* YLHttpTool.m in Sources */,
 				2BF5ED391C1D5E3D0027911A /* YLComposePhotoView.m in Sources */,
 				2BE0A8011C15A13300769FE9 /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -1295,6 +1314,7 @@
 				2BEA5EE11C13CF660001540E /* UIWindow+Extension.m in Sources */,
 				2BE638C41C17FF80004CD6F5 /* NSString+Extension.m in Sources */,
 				2BE8BBA41C1C14AF0069CB07 /* TransformationMatrix.cpp in Sources */,
+				2BF304B41C23B75C00B107D9 /* YLEmotionsTool.m in Sources */,
 				2BEA5EFC1C140E190001540E /* MJType.m in Sources */,
 				2BE584051C1ACD8E0070DDBE /* UIImage+ImageEffects.m in Sources */,
 				2BE8BB9A1C1C14AF0069CB07 /* POPBasicAnimation.mm in Sources */,

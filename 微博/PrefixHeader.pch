@@ -39,6 +39,6 @@
 #define PHOTOWH 70
 #define MARGIN 10
 #define emotionDidSelected @"emotionDidSelected"
-
+#define deleteBtnClicke  @"deleteBtnClicke"
 
 #endif

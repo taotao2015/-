@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface YLEmotions : NSObject
+@interface YLEmotions : NSObject<NSCoding>
 @property(copy,nonatomic)NSString *chs;
 
 @property(copy,nonatomic)NSString *cht;

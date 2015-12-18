@@ -55,7 +55,8 @@
 
 - (void)setEmotions:(NSArray *)emotions{
     _emotions = emotions;
-    
+    [self.scrollChildView removeAllObjects];
+    [self.scrollChildView makeObjectsPerformSelector:@selector(removeFromSuperview)];
     NSUInteger page = (emotions.count + MAX_EMOTION - 1) / MAX_EMOTION;
     
     for (int i = 0; i < page; i++) {
@@ -74,7 +75,11 @@
         [self.scrollView addSubview:childView];
         [self.scrollChildView addObject:childView];
     }
+    if (page==1) {
+        self.pageControl.hidesForSinglePage = YES;
+    }
     self.pageControl.numberOfPages = page;
+    [self setNeedsLayout];
 }
 
 - (void)layoutSubviews{
@@ -96,7 +101,15 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
 
-self.pageControl.currentPage = scrollView.contentOffset.x / self.width;
+//self.pageControl.currentPage = scrollView.contentOffset.x / self.width;
+    //先计算出当前偏移页数的小数
+    CGFloat page = scrollView.contentOffset.x / scrollView.width;
+    //再把小数四舍五入（加0.5转成整数）
+    NSInteger pageNum = (int)(page + 0.5);
+        if (self.pageControl.currentPage != pageNum) {
+        self.pageControl.currentPage = pageNum;
+    }
+
 
 }
 

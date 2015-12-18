@@ -8,7 +8,7 @@
 //
 
 #import "YLEmotions.h"
-
+#import "MJExtension.h"
 @implementation YLEmotions
 
 - (void)setPath:(NSString *)path{
@@ -22,5 +22,7 @@
     self.emoji = [type isEqualToString:@"1"];
 
 }
+
+MJCodingImplementation
 
 @end

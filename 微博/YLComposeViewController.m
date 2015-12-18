@@ -12,14 +12,27 @@
 #import "YLComposeTabBarView.h"
 #import "YLComposePhotosView.h"
 #import "YLEmotionKuyboardView.h"
+#import "YLEmotions.h"
+#import "NSString+Emoji.h"
+#import "YLEmotionWithTextView.h"
 @interface YLComposeViewController ()<UITextViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
-@property(weak,nonatomic)YLTextView *textView;
+@property(weak,nonatomic)YLEmotionWithTextView *textView;
 @property(weak,nonatomic)YLComposePhotosView *photosView;
 @property(weak,nonatomic)YLComposeTabBarView *tabBarView;
 @property(assign,nonatomic)BOOL isSystermKeyboard;
+@property(strong,nonatomic)YLEmotionKuyboardView *keyboard;
 @end
 
 @implementation YLComposeViewController
+- (YLEmotionKuyboardView *)keyboard{
+    if (!_keyboard) {
+        _keyboard = [[YLEmotionKuyboardView alloc] init];
+        _keyboard.height = 216;
+        _keyboard.width = SCREENW;
+    }
+    return _keyboard;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,12 +44,14 @@
     // 添加子控件
     [self addChildView];
     
+    [self.textView becomeFirstResponder];
+    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(KeyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
     
     //注册监听表情按钮点击的通知
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(emotionButtonClicked:) name:emotionDidSelected object:nil];
     
-    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(btnDeleted:) name:deleteBtnClicke object:nil];
 }
 
 - (void)setNav{
@@ -76,7 +91,7 @@
 
     // 添加子控件
 - (void)addChildView{
-    YLTextView *textView = [[YLTextView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    YLEmotionWithTextView *textView = [[YLEmotionWithTextView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     textView.ploceholder = @"第一次我说爱你的时候";
     textView.delegate = self;
     [self.view addSubview:textView];
@@ -132,11 +147,11 @@
             if (self.textView.inputView) {
                 self.textView.inputView = nil;
             }else{
-                YLEmotionKuyboardView *emotionKeyboardView = [[YLEmotionKuyboardView alloc]init];
-                emotionKeyboardView.width = SCREENW;
-                emotionKeyboardView.height = 216;
+//                YLEmotionKuyboardView *emotionKeyboardView = [[YLEmotionKuyboardView alloc]init];
+//                emotionKeyboardView.width = SCREENW;
+//                emotionKeyboardView.height = 216;
               //  emotionKeyboardView.y = SCREENH - emotionKeyboardView.height;
-                self.textView.inputView = emotionKeyboardView;
+                self.textView.inputView = self.keyboard;
             }
             self.isSystermKeyboard = NO;
             self.tabBarView.isSystermKeyboard = !self.textView.inputView;
@@ -194,9 +209,63 @@
 - (void)emotionButtonClicked:(NSNotification *)noti{
 
     NSLog(@"%@",noti.userInfo[@"emotion"]);
+    YLEmotions *emotion = noti.userInfo[@"emotion"];
+//    YLEmotionWithTextView *emotionTextView = [[YLEmotionWithTextView alloc]init];
+//    [emotionTextView insertEmotion:emotion];
+    
+    [self.textView insertEmotion:emotion];
+    
+    // 取出原有带有属性的文字
+//    NSMutableAttributedString *origialText = [[NSMutableAttributedString alloc]initWithAttributedString:self.textView.attributedText];
+//    //取出当前textView显示的位置
+//    NSRange selecteRange = self.textView.selectedRange;
+//    
+//    if (emotion.isEmoji ) {
+//        
+//        // 初始化一个不可变的属性文字
+//        NSAttributedString *emojiStr = [[NSAttributedString alloc]initWithString:[emotion.code emoji]];
+//        [origialText replaceCharactersInRange:selecteRange withAttributedString:emojiStr];
+//    }else{
+//    //初始化一个可以包含图片的文字附件
+//        NSTextAttachment *attachement = [[NSTextAttachment alloc]init];
+//        attachement.image = [UIImage imageNamed:emotion.fullPath];
+//        CGFloat imageH = self.textView.font.lineHeight;
+//        attachement.bounds = CGRectMake(0, -4, imageH, imageH);
+//    //通过文字附件初始化一个带有图片的属性文字
+//        NSAttributedString *attrString = [NSAttributedString attributedStringWithAttachment:attachement];
+//        [origialText replaceCharactersInRange:selecteRange withAttributedString:attrString];
+//    
+//    }
+//    if (self.textView.attributedText.length) {
+//        [origialText addAttribute:NSFontAttributeName value:self.textView.font range:NSMakeRange(0, origialText.length)];
+//    }else {
+//    
+//        [origialText addAttribute:NSFontAttributeName value:FONT(14) range:NSMakeRange(0, origialText.length)];
+//    }
+//    
+//    
+//    
+//    self.textView.attributedText = origialText;
+//    
+//    selecteRange.location++;
+//    selecteRange.length = 0;
+//    self.textView.selectedRange = selecteRange;
+    
+    
 
 }
 
+- (void)btnDeleted:(UIButton *)btn{
+
+    [self.textView deleteBackward];
+
+}
+
+- (void)dealloc{
+
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+
+}
 - (void)textViewDidChange:(UITextView *)textView{
     self.navigationItem.rightBarButtonItem.enabled = textView.text.length;
 }
@@ -211,5 +280,12 @@
 
 
 }
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    NSLog(@"%@",NSStringFromCGSize(scrollView.contentSize));
+    
+    [self.view endEditing:YES];
+}
+
 
 @end

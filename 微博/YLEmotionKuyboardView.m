@@ -10,6 +10,7 @@
 #import "YLEmotionTabBar.h"
 #import "YLEmotionKeyboardListView.h"
 #import "YLEmotions.h"
+#import "YLEmotionsTool.h"
 @interface YLEmotionKuyboardView()
 @property(strong,nonatomic)YLEmotionKeyboardListView *recentListView;
 @property(strong,nonatomic)YLEmotionKeyboardListView *defaultListView;
@@ -24,6 +25,7 @@
 - (YLEmotionKeyboardListView *)recentListView{
     if (!_recentListView) {
         _recentListView = [[YLEmotionKeyboardListView alloc]init];
+        _recentListView.emotions = [YLEmotionsTool recentEmotions];
     }
     return _recentListView;
 }
@@ -31,18 +33,31 @@
 - (YLEmotionKeyboardListView *)defaultListView{
     if (!_defaultListView) {
         _defaultListView = [[YLEmotionKeyboardListView alloc]init];
+        NSString *file = [[NSBundle mainBundle]pathForResource:@"EmotionIcons/default/info.plist" ofType:@""];
+        NSArray *emotions = [YLEmotions objectArrayWithFile:file];
+        [emotions makeObjectsPerformSelector:@selector(setPath:) withObject:@"EmotionIcons/default/"];
+        
+        self.defaultListView.emotions = emotions;
     }
     return _defaultListView;
 }
 - (YLEmotionKeyboardListView *)emojiListView{
     if (!_emojiListView) {
         _emojiListView = [[YLEmotionKeyboardListView alloc]init];
+        NSString *file = [[NSBundle mainBundle]pathForResource:@"EmotionIcons/emoji/info.plist" ofType:@""];
+        NSArray *emotions = [YLEmotions objectArrayWithFile:file];
+        [emotions makeObjectsPerformSelector:@selector(setPath:) withObject:@"EmotionIcons/emoji/"];
+        self.emojiListView.emotions = emotions;
     }
     return _emojiListView;
 }
 - (YLEmotionKeyboardListView *)lxhListView{
     if (!_lxhListView) {
         _lxhListView = [[YLEmotionKeyboardListView alloc]init];
+        NSString *file = [[NSBundle mainBundle]pathForResource:@"EmotionIcons/lxh/info.plist" ofType:@""];
+        NSArray *emotions = [YLEmotions objectArrayWithFile:file];
+        [emotions makeObjectsPerformSelector:@selector(setPath:) withObject:@"EmotionIcons/lxh/"];
+        self.lxhListView.emotions = emotions;
     }
     return _lxhListView;
 }
@@ -51,7 +66,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        //self.backgroundColor = [UIColor yellowColor];
+        self.backgroundColor = [UIColor yellowColor];
         self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"emoticon_keyboard_background"]];
         YLEmotionTabBar *tabBar = [[YLEmotionTabBar alloc]init];
         [tabBar setTabBarButtonClicked:^(YLEmotionTabBarButtonType type) {
@@ -69,16 +84,14 @@
     switch (type) {
         case YLEmotionTabBarButtonTypeRecent:
             NSLog(@"recent");
+            self.recentListView.emotions = [YLEmotionsTool recentEmotions];
             [self addSubview:self.recentListView];
+            
             break;
         case YLEmotionTabBarButtonTypeDefault:
         {
             NSLog(@"default");
-           NSString *file = [[NSBundle mainBundle]pathForResource:@"EmotionIcons/default/info.plist" ofType:@""];
-            NSArray *emotions = [YLEmotions objectArrayWithFile:file];
-            [emotions makeObjectsPerformSelector:@selector(setPath:) withObject:@"EmotionIcons/default/"];
-            
-            self.defaultListView.emotions = emotions;
+          
             
             [self addSubview:self.defaultListView];
             break;
@@ -86,19 +99,13 @@
         case YLEmotionTabBarButtonTypeEmoji:
         {
             NSLog(@"emoji");
-            NSString *file = [[NSBundle mainBundle]pathForResource:@"EmotionIcons/emoji/info.plist" ofType:@""];
-            NSArray *emotions = [YLEmotions objectArrayWithFile:file];
-            [emotions makeObjectsPerformSelector:@selector(setPath:) withObject:@"EmotionIcons/emoji/"];
-            self.emojiListView.emotions = emotions;
+            
             [self addSubview:self.emojiListView];
             break;
         }
         case YLEmotionTabBarButtonTypeLxh:
             NSLog(@"lax");
-            NSString *file = [[NSBundle mainBundle]pathForResource:@"EmotionIcons/lxh/info.plist" ofType:@""];
-            NSArray *emotions = [YLEmotions objectArrayWithFile:file];
-            [emotions makeObjectsPerformSelector:@selector(setPath:) withObject:@"EmotionIcons/lxh/"];
-            self.lxhListView.emotions = emotions;
+           
             [self addSubview:self.lxhListView];
             break;
     }

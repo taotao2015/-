@@ -12,6 +12,7 @@
 #import "UIButton+RemoveHighlightEffect.h"
 #import "YLEmotionButton.h"
 #import "YLPopView.h"
+#import "YLEmotionsTool.h"
 @interface YLEmotionButtonView()
 @property(weak,nonatomic)UIButton *deleteBtn;
 
@@ -49,7 +50,7 @@
         [deleteBtn setImage:[UIImage imageNamed:@"compose_emotion_delete_highlighted"] forState:UIControlStateHighlighted];
         [self addSubview:deleteBtn];
         self.deleteBtn = deleteBtn;
-        
+        [deleteBtn addTarget:self action:@selector(deleteClicke:) forControlEvents:UIControlEventTouchUpInside];
         // 给当前的view添加一个长按手势
         UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]init];
         [longPress addTarget:self action:@selector(longPress:)];
@@ -178,12 +179,20 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [popView removeFromSuperview];
     });
+    // 保存最近表情
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     dic[@"emotion"] = btn.emotion;
-    
-    //发一个表情点击的通知，并将表情按钮对应的模型信息，传递出去
+    [YLEmotionsTool addRecentEmotions:btn.emotion];
+       //发一个表情点击的通知，并将表情按钮对应的模型信息，传递出去
     [[NSNotificationCenter defaultCenter]postNotificationName:emotionDidSelected object:nil userInfo:dic];
+
+}
+
+- (void)deleteClicke:(UIButton *)btn{
+
+
+    [[NSNotificationCenter defaultCenter]postNotificationName:deleteBtnClicke object:nil];
 
 }
 
