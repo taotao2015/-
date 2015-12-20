@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="x5L-D3-JNI" customClass="YLsearchView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLk-RJ-exN">
+                    <rect key="frame" x="275" y="0.0" width="45" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="45" id="t6k-9x-n2N"/>
+                    </constraints>
+                    <state key="normal" title="取消">
+                        <color key="titleColor" red="1" green="0.7364911663" blue="0.35452914769999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="btnClicked:" destination="-1" eventType="touchUpInside" id="VuW-96-zRp"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="搜索" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DUK-bp-SnT">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
+                    <color key="backgroundColor" red="0.4873046875" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="8"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="PLk-RJ-exN" secondAttribute="bottom" id="3su-8Q-u2d"/>
+                <constraint firstAttribute="bottom" secondItem="DUK-bp-SnT" secondAttribute="bottom" id="7Ap-8A-yX5"/>
+                <constraint firstAttribute="trailing" secondItem="PLk-RJ-exN" secondAttribute="trailing" id="EW6-6z-Rv7"/>
+                <constraint firstItem="DUK-bp-SnT" firstAttribute="leading" secondItem="x5L-D3-JNI" secondAttribute="leading" id="F0b-Vu-nsy"/>
+                <constraint firstItem="DUK-bp-SnT" firstAttribute="top" secondItem="x5L-D3-JNI" secondAttribute="top" id="Lma-JP-qiY"/>
+                <constraint firstItem="PLk-RJ-exN" firstAttribute="top" secondItem="x5L-D3-JNI" secondAttribute="top" id="W7i-c5-6z4"/>
+                <constraint firstAttribute="trailing" secondItem="DUK-bp-SnT" secondAttribute="trailing" id="zKh-5y-kqZ"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="btnWidth" destination="t6k-9x-n2N" id="a0R-3Q-wkg"/>
+                <outlet property="rightContant" destination="zKh-5y-kqZ" id="WCl-Nx-PWq"/>
+                <outlet property="searchField" destination="DUK-bp-SnT" id="E2e-Nc-fJQ"/>
+            </connections>
+            <point key="canvasLocation" x="235" y="-71.5"/>
+        </view>
+    </objects>
+</document>

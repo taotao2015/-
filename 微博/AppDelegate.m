@@ -7,7 +7,10 @@
 //
 
 #import "AppDelegate.h"
-
+#import "YLTabBarViewController.h"
+#import "YLFearcherViewController.h"
+#import "YLOauthViewController.h"
+#import "YLAccount.h"
 @interface AppDelegate ()
 
 @end
@@ -16,7 +19,47 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    if ([[UIDevice currentDevice].systemVersion doubleValue] >= 8.0) {
+        
+        UIUserNotificationSettings *setting = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
+        [application registerUserNotificationSettings:setting];
+    }
+    
+    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    // 版本更新首先进入新特性，判断有没登录，没有登录，进入登录，有就进入主页
+    
+   
+    YLFearcherViewController *fearcherViewController = [[YLFearcherViewController alloc]init];
+    
+    NSDictionary *infoDic = [NSBundle mainBundle].infoDictionary;
+    NSString *currentVersion = infoDic[@"CFBundleShortVersionString"];
+    
+    NSString *saveVersion = [[NSUserDefaults standardUserDefaults] valueForKey:KCFBundleShortVersionString];
+   NSComparisonResult result = [currentVersion compare:saveVersion];
+    if (!saveVersion || result == NSOrderedDescending) {
+        self.window.rootViewController = fearcherViewController;
+        [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:KCFBundleShortVersionString];
+    } else{
+        
+//        NSString *filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+//        filePath =  [filePath stringByAppendingPathComponent:@"account.achiver"];
+//        
+//        YLAccount *account = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+//        
+//        if (!account) {
+//            YLOauthViewController *oauth = [[YLOauthViewController alloc]init];
+//            self.window.rootViewController = oauth;
+//        } else{
+//             self.window.rootViewController = tableViewController;
+//        }
+        [self.window switchRootController];
+        
+    }
+    
+//    YLOauthViewController *oauth = [[YLOauthViewController alloc]init];
+//    self.window.rootViewController = oauth;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
@@ -26,8 +69,12 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    
+ __block UIBackgroundTaskIdentifier identify = [application beginBackgroundTaskWithExpirationHandler:^{
+      [application endBackgroundTask:identify];
+      
+    }];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {

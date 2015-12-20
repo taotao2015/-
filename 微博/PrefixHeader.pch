@@ -1,0 +1,44 @@
+//
+//  PrefixHeader.pch
+//  微博
+//
+//  Created by tao on 15/12/3.
+//  Copyright © 2015年 tao. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#endif /* PrefixHeader_pch */
+
+
+#if __OBJC__
+
+#ifdef DEBUG
+#define NSLog(...)  NSLog(__VA_ARGS__)
+#else
+#define NSLog(...)
+#endif
+
+#import "UIView+YLView.h"
+#import "YLhomeTittleButton.h"
+#import "UIBarButtonItem+Extention.h"
+#import "UIWindow+Extension.h"
+#import "AFNetworking.h"
+#import "MJExtension.h"
+#import "UIImageView+WebCache.h"
+#import "NSString+Extension.h"
+#import "UIImage+ImageEffects.h"
+#define FONT(x) [UIFont systemFontOfSize:x]
+#define RGB(r,g,b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1];
+#define RGBN(r,g,b,n) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:n];
+#define SCREENW  [UIScreen mainScreen].bounds.size.width
+#define SCREENH  [UIScreen mainScreen].bounds.size.height
+#define randomColor [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1]
+#define KCFBundleShortVersionString @"KCFBundleShortVersionString"
+#define PHOTOWH 70
+#define MARGIN 10
+#define emotionDidSelected @"emotionDidSelected"
+#define deleteBtnClicke  @"deleteBtnClicke"
+
+#endif
