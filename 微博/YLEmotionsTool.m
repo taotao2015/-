@@ -4,7 +4,7 @@
 //
 //  Created by tao on 15/12/18.
 //  Copyright © 2015年 tao. All rights reserved.
-//
+//微博 
 
 #import "YLEmotionsTool.h"
 #define recentEmotionsFile  [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject] stringByAppendingPathComponent:@"recentEmotion"]
