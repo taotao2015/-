@@ -48,9 +48,14 @@
 }
 
 
+- (void)setNumber:(NSInteger)number{
+    _number = number;
+
+}
+
 - (void)setPic_urls:(NSArray *)pic_urls{
     _pic_urls = pic_urls;
-    [self.subviews makeObjectsPerformSelector:@selector(setHidden:) withObject:@(YES)];
+  [self.subviews makeObjectsPerformSelector:@selector(setHidden:) withObject:@(YES)];
     
     for (int i = 0; i < pic_urls.count; i++) {
         

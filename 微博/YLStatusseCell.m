@@ -68,8 +68,11 @@
         self.thumbnail_pic.hidden = NO;
 //        NSString *imageUrl = [NSString stringWithFormat:@"%@",statueFrame.statuses.thumbnail_pic];
 //        [self.thumbnail_pic sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
+       // self.statusPhotos.number = statueFrame.statuses.pic_urls.count;
         self.statusPhotos.frame = statueFrame.photoViewF;
+        
         self.statusPhotos.pic_urls = statueFrame.statuses.pic_urls;
+        
         
     }else{
     

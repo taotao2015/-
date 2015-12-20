@@ -12,7 +12,6 @@
 
 - (void)insertEmotion:(YLEmotions *)emotion{
 
-
     NSMutableAttributedString *origialText = [[NSMutableAttributedString alloc]initWithAttributedString:self.attributedText];
     //取出当前textView显示的位置
     NSRange selecteRange = self.selectedRange;
@@ -20,8 +19,9 @@
     if (emotion.isEmoji ) {
         
         // 初始化一个不可变的属性文字
-        NSAttributedString *emojiStr = [[NSAttributedString alloc]initWithString:[emotion.code emoji]];
-        [origialText replaceCharactersInRange:selecteRange withAttributedString:emojiStr];
+//        NSAttributedString *emojiStr = [[NSAttributedString alloc]initWithString:[emotion.code emoji]];
+//        [origialText replaceCharactersInRange:selecteRange withAttributedString:emojiStr];
+        [self insertText:[emotion.code emoji]];
     }else{
         //初始化一个可以包含图片的文字附件
         NSTextAttachment *attachement = [[NSTextAttachment alloc]init];
@@ -33,7 +33,7 @@
         [origialText replaceCharactersInRange:selecteRange withAttributedString:attrString];
         
     }
-    if (self.attributedText.length) {
+    if (self.text.length) {
         [origialText addAttribute:NSFontAttributeName value:self.font range:NSMakeRange(0, origialText.length)];
     }else {
         
@@ -47,6 +47,12 @@
     selecteRange.location ++;
     selecteRange.length = 0;
     self.selectedRange = selecteRange;
+    
+    //如果当前表情添加完毕,调用一个textView的textDidChange这个代理方法
+    if ([self.delegate respondsToSelector:@selector(textViewDidChange:)]) {
+        [self.delegate textViewDidChange:self];
+    }
+
     [[NSNotificationCenter defaultCenter] postNotificationName:UITextViewTextDidChangeNotification object:self];
 
 }

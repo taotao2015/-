@@ -13,4 +13,6 @@
 @property(strong,nonatomic)NSArray *pic_urls;
 
 + (CGSize)sizeWithPhotoCount:(NSInteger)count;
+
+@property (assign ,nonatomic)NSInteger number;
 @end
